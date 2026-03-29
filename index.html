@@ -1,1355 +1,453 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="dark">
+<html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EzScript — Roblox Scripts Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-/* ===== CSS VARIABLES ===== */
-[data-theme="dark"] {
-  --bg:       #080b10;
-  --bg2:      #0c0f17;
-  --bg3:      #111520;
-  --card:     #0f1420;
-  --card2:    #141a28;
-  --border:   #1c2336;
-  --border2:  #263047;
-  --accent:   #3d8eff;
-  --accent2:  #6c3dff;
-  --green:    #1fd46a;
-  --red:      #ff3d5a;
-  --yellow:   #f0c040;
-  --text:     #dde5f7;
-  --sub:      #8899bb;
-  --muted:    #445066;
-  --glow:     rgba(61,142,255,0.18);
-  --shadow:   rgba(0,0,0,0.7);
-}
-[data-theme="light"] {
-  --bg:       #f0f2f8;
-  --bg2:      #e8eaf2;
-  --bg3:      #ffffff;
-  --card:     #ffffff;
-  --card2:    #f5f7ff;
-  --border:   #d8dded;
-  --border2:  #b8c2dc;
-  --accent:   #2570e8;
-  --accent2:  #5a30e8;
-  --green:    #15a855;
-  --red:      #e83050;
-  --yellow:   #d4a000;
-  --text:     #1a2040;
-  --sub:      #556080;
-  --muted:    #9aa8c8;
-  --glow:     rgba(37,112,232,0.12);
-  --shadow:   rgba(0,0,0,0.12);
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EzScript — Premium Script Hub</title>
+    
+    <!-- ПОДКЛЮЧЕНИЕ ПРЕМИУМ ШРИФТОВ И БИБЛИОТЕК -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #0f0f0f;
+            --surface-2: #1a1a1a;
+            --accent: #3d8eff;
+            --accent-glow: rgba(61, 142, 255, 0.4);
+            --text: #ffffff;
+            --text-dim: #949494;
+            --border: rgba(255, 255, 255, 0.05);
+            --border-hover: rgba(255, 255, 255, 0.12);
+            --danger: #ff4757;
+            --success: #2ed573;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+        /* ОСНОВНЫЕ СТИЛИ */
+        * { margin:0; padding:0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; outline: none; }
+        body { background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 10px; }
 
-body {
-  font-family: 'Sora', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
-  transition: background 0.3s, color 0.3s;
-}
+        /* HEADER */
+        header {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+        }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 24px; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; letter-spacing: -0.5px; }
+        .logo i { color: var(--accent); filter: drop-shadow(0 0 8px var(--accent-glow)); }
 
-/* Grid BG */
-body::before {
-  content:'';
-  position:fixed;
-  inset:0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 36px 36px;
-  opacity: 0.4;
-  pointer-events:none;
-  z-index:0;
-}
+        .search-area { position: relative; width: 100%; max-width: 480px; margin: 0 20px; }
+        .search-input { 
+            width: 100%; background: var(--surface); border: 1px solid var(--border); 
+            padding: 12px 18px 12px 46px; border-radius: 100px; color: #fff; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .search-input:focus { border-color: var(--accent); box-shadow: 0 0 20px rgba(61, 142, 255, 0.15); width: 105%; }
+        .search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--text-dim); }
 
-/* ===== SCROLLBAR ===== */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--bg2); }
-::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
+        /* BUTTONS */
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: var(--radius-md);
+            font-weight: 600; font-size: 14px; border: 1px solid transparent; cursor: pointer; transition: 0.2s;
+        }
+        .btn-primary { background: var(--accent); color: white; border: none; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px var(--accent-glow); }
+        .btn-outline { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+        .btn-outline:hover { background: var(--surface-2); border-color: var(--text-dim); }
+        .btn-danger { background: rgba(255, 71, 87, 0.1); color: var(--danger); border: 1px solid rgba(255, 71, 87, 0.2); }
+        .btn-danger:hover { background: var(--danger); color: white; }
 
-/* ===== TOAST ===== */
-#toast {
-  position: fixed;
-  bottom: 24px; right: 24px;
-  background: var(--card2);
-  border: 1px solid var(--border2);
-  border-radius: 12px;
-  padding: 14px 20px;
-  font-size: 13px;
-  color: var(--text);
-  box-shadow: 0 8px 32px var(--shadow);
-  z-index: 9999;
-  transform: translateY(80px);
-  opacity: 0;
-  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
-  max-width: 300px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-#toast.show { transform: translateY(0); opacity: 1; }
-#toast.success { border-color: var(--green); }
-#toast.error { border-color: var(--red); }
+        /* GRID & CARDS */
+        .main-content { min-height: 100vh; padding: 40px 0 100px; }
+        .grid-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
 
-/* ===== MODAL ===== */
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(8px);
-  z-index: 500;
-  align-items: center;
-  justify-content: center;
-}
-.overlay.open { display: flex; }
+        .script-card {
+            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+            overflow: hidden; transition: 0.3s; position: relative; animation: fadeIn 0.5s ease-out;
+        }
+        .script-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 12px 40px rgba(0,0,0,0.6); }
+        .card-cover { width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--border); background: #111; }
+        .card-body { padding: 20px; }
+        .card-title { font-weight: 700; font-size: 18px; margin-bottom: 8px; }
+        .card-info { display: flex; gap: 12px; font-size: 13px; color: var(--text-dim); }
+        .badge { background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border); }
+        .badge-verified { color: var(--success); border-color: rgba(46, 213, 115, 0.3); background: rgba(46, 213, 115, 0.05); }
 
-.modal {
-  background: var(--bg3);
-  border: 1px solid var(--border2);
-  border-radius: 20px;
-  padding: 40px;
-  width: 460px;
-  max-width: 95vw;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 0 80px var(--glow), 0 24px 60px var(--shadow);
-  animation: popIn .3s cubic-bezier(.34,1.56,.64,1);
-}
-@keyframes popIn {
-  from { transform: scale(0.85) translateY(24px); opacity:0; }
-  to   { transform: scale(1) translateY(0); opacity:1; }
-}
+        .card-admin-tools { position: absolute; top: 12px; right: 12px; z-index: 10; display: none; }
 
-.modal-close {
-  position:absolute; top:16px; right:16px;
-  width:32px; height:32px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--sub);
-  font-size:18px;
-  cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition: all .2s;
-}
-.modal-close:hover { background: var(--red); color:#fff; border-color:var(--red); }
+        /* DETAIL MODAL */
+        .detail-view {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 2000;
+            display: none; padding: 40px; overflow-y: auto; justify-content: center;
+        }
+        .detail-card {
+            background: var(--surface); width: 100%; max-width: 900px; height: fit-content;
+            border-radius: 24px; overflow: hidden; border: 1px solid var(--border);
+        }
+        .code-block {
+            background: #000; padding: 20px; border-radius: 12px; font-family: 'Consolas', monospace;
+            font-size: 14px; overflow-x: auto; color: var(--accent); margin: 20px 0; border: 1px solid var(--border);
+            max-height: 400px;
+        }
 
-.modal-logo {
-  display:flex; align-items:center; gap:10px;
-  margin-bottom:6px;
-}
-.modal-logo-icon {
-  width:38px; height:38px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  border-radius:10px;
-  display:flex; align-items:center; justify-content:center;
-  font-size:18px;
-}
-.modal h2 {
-  font-family:'Rajdhani',sans-serif;
-  font-size:28px; font-weight:700;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-}
-.modal > p { color: var(--sub); font-size:13px; margin-bottom:28px; }
+        /* FORMS & MODALS */
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 1500; display: none; align-items: center; justify-content: center; }
+        .modal { background: var(--surface); padding: 32px; border-radius: 24px; width: 90%; max-width: 460px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-size: 13px; font-weight: 600; color: var(--text-dim); margin-bottom: 8px; }
+        input, select, textarea { 
+            width: 100%; background: var(--bg); border: 1px solid var(--border); padding: 14px 18px; 
+            border-radius: 12px; color: #fff; transition: 0.2s;
+        }
+        input:focus { border-color: var(--accent); }
 
-.form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        /* MOBILE NAV */
+        .m-nav { position: fixed; bottom: 0; left:0; right:0; background: rgba(15,15,15,0.8); backdrop-filter: blur(20px); border-top: 1px solid var(--border); display: none; padding: 12px; z-index: 1000; }
+        .m-nav-btn { flex: 1; display:flex; flex-direction:column; align-items:center; gap:4px; color: var(--text-dim); text-decoration: none; font-size:11px; font-weight:600; }
+        .m-nav-btn.active { color: var(--accent); }
 
-.form-group { margin-bottom:14px; }
-.form-group label {
-  display:block;
-  font-size:11px; font-weight:600;
-  color: var(--sub);
-  text-transform:uppercase; letter-spacing:.08em;
-  margin-bottom:6px;
-}
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width:100%;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius:10px;
-  padding:11px 14px;
-  color: var(--text);
-  font-family:'Sora',sans-serif;
-  font-size:13px;
-  outline:none;
-  transition: border-color .2s, box-shadow .2s;
-  resize:vertical;
-}
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--glow);
-}
-.form-group textarea {
-  min-height:110px;
-  font-family:'JetBrains Mono',monospace;
-  font-size:12px;
-}
+        @keyframes fadeIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
 
-/* Tags */
-.tags-wrap { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
-.tag-pill {
-  padding:4px 12px;
-  border-radius:20px;
-  font-size:11px; font-weight:600;
-  cursor:pointer;
-  border:1px solid var(--border);
-  color: var(--sub);
-  transition:all .2s;
-  user-select:none;
-}
-.tag-pill.on {
-  background:rgba(61,142,255,.15);
-  border-color:var(--accent);
-  color:var(--accent);
-}
-
-/* Buttons */
-.btn {
-  display:inline-flex; align-items:center; justify-content:center;
-  gap:8px;
-  padding:12px 22px;
-  border-radius:11px;
-  font-family:'Rajdhani',sans-serif;
-  font-weight:700; font-size:15px;
-  letter-spacing:.04em;
-  cursor:pointer; border:none;
-  transition:all .2s;
-  text-decoration:none;
-}
-.btn-primary {
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff; width:100%;
-  box-shadow:0 4px 20px rgba(61,142,255,.35);
-}
-.btn-primary:hover { transform:translateY(-1px); box-shadow:0 8px 30px rgba(61,142,255,.5); }
-.btn-ghost {
-  background:transparent;
-  border:1px solid var(--border2);
-  color:var(--text);
-}
-.btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
-.btn-sm { padding:7px 14px; font-size:13px; border-radius:8px; }
-.btn-danger { background:var(--red); color:#fff; }
-
-.modal-switch { text-align:center; margin-top:18px; color:var(--sub); font-size:13px; }
-.modal-switch a { color:var(--accent); cursor:pointer; }
-
-.divider {
-  display:flex; align-items:center; gap:12px;
-  margin:20px 0; color:var(--muted); font-size:12px;
-}
-.divider::before,.divider::after {
-  content:''; flex:1; height:1px; background:var(--border);
-}
-
-/* ===== NAVBAR ===== */
-nav {
-  position:sticky; top:0; z-index:200;
-  background:rgba(8,11,16,.88);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-  height:62px;
-  display:flex; align-items:center;
-  padding:0 20px; gap:14px;
-}
-[data-theme="light"] nav { background:rgba(240,242,248,.92); }
-
-.nav-logo {
-  display:flex; align-items:center; gap:9px;
-  cursor:pointer; text-decoration:none;
-}
-.nav-logo-box {
-  width:36px; height:36px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  border-radius:9px;
-  display:flex; align-items:center; justify-content:center;
-  font-size:17px;
-}
-.nav-logo-text {
-  font-family:'Rajdhani',sans-serif;
-  font-size:21px; font-weight:700;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-}
-
-.nav-search {
-  flex:1; max-width:380px; position:relative;
-}
-.nav-search input {
-  width:100%;
-  background:var(--bg3);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:8px 14px 8px 36px;
-  color:var(--text);
-  font-family:'Sora',sans-serif;
-  font-size:13px; outline:none;
-  transition:border-color .2s;
-}
-.nav-search input:focus { border-color:var(--accent); }
-.search-icon {
-  position:absolute; left:11px; top:50%;
-  transform:translateY(-50%);
-  color:var(--sub); font-size:14px; pointer-events:none;
-}
-
-.nav-right { margin-left:auto; display:flex; align-items:center; gap:10px; }
-
-.online-badge {
-  display:flex; align-items:center; gap:6px;
-  font-size:12px; color:var(--sub);
-  padding:6px 12px;
-  background:var(--bg3);
-  border:1px solid var(--border);
-  border-radius:8px;
-}
-.pulse {
-  width:7px; height:7px;
-  background:var(--green);
-  border-radius:50%;
-  animation:pulse 2s infinite;
-}
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
-
-.theme-btn {
-  width:36px; height:36px;
-  background:var(--bg3);
-  border:1px solid var(--border);
-  border-radius:9px;
-  cursor:pointer; color:var(--sub);
-  font-size:16px;
-  display:flex; align-items:center; justify-content:center;
-  transition:all .2s;
-}
-.theme-btn:hover { border-color:var(--accent); color:var(--accent); }
-
-/* Avatar dropdown */
-.avatar-wrap { position:relative; }
-.avatar {
-  width:36px; height:36px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  border-radius:50%;
-  cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Rajdhani',sans-serif;
-  font-weight:700; font-size:14px; color:#fff;
-  border:2px solid var(--border2);
-  transition:border-color .2s;
-}
-.avatar:hover { border-color:var(--accent); }
-
-.dropdown {
-  position:absolute; top:44px; right:0;
-  width:180px;
-  background:var(--bg3);
-  border:1px solid var(--border2);
-  border-radius:12px;
-  padding:6px;
-  box-shadow:0 8px 32px var(--shadow);
-  display:none;
-  z-index:300;
-}
-.dropdown.open { display:block; animation:fadeDown .2s ease; }
-@keyframes fadeDown {
-  from { opacity:0; transform:translateY(-8px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-.dropdown a {
-  display:flex; align-items:center; gap:8px;
-  padding:9px 12px;
-  border-radius:8px;
-  color:var(--sub); font-size:13px;
-  cursor:pointer; text-decoration:none;
-  transition:all .15s;
-}
-.dropdown a:hover { background:var(--bg2); color:var(--text); }
-.dropdown a.danger:hover { color:var(--red); }
-.dropdown-divider { height:1px; background:var(--border); margin:4px 0; }
-
-/* ===== FILTERS ===== */
-.filters {
-  display:flex; align-items:center; gap:8px;
-  padding:14px 20px;
-  border-bottom:1px solid var(--border);
-  flex-wrap:wrap;
-  position:relative; z-index:1;
-}
-.f-btn {
-  padding:6px 14px;
-  border-radius:8px;
-  border:1px solid var(--border);
-  background:transparent;
-  color:var(--sub);
-  font-family:'Sora',sans-serif;
-  font-size:12px; font-weight:500;
-  cursor:pointer;
-  transition:all .2s;
-  display:flex; align-items:center; gap:6px;
-}
-.f-btn:hover, .f-btn.active {
-  border-color:var(--accent);
-  color:var(--accent);
-  background:rgba(61,142,255,.08);
-}
-.f-btn.active { font-weight:600; }
-
-.sort-wrap { margin-left:auto; display:flex; align-items:center; gap:8px; }
-.sort-select {
-  background:var(--bg3);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:7px 12px;
-  color:var(--sub);
-  font-family:'Sora',sans-serif;
-  font-size:12px; outline:none; cursor:pointer;
-}
-
-/* ===== HEADER ROW ===== */
-.page-head {
-  display:flex; align-items:center; gap:14px;
-  padding:18px 20px 0;
-  position:relative; z-index:1;
-}
-.page-title {
-  font-family:'Rajdhani',sans-serif;
-  font-size:22px; font-weight:700;
-}
-.upload-btn {
-  display:flex; align-items:center; gap:7px;
-  padding:8px 16px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  border:none; border-radius:9px;
-  color:#fff;
-  font-family:'Rajdhani',sans-serif;
-  font-weight:700; font-size:14px;
-  cursor:pointer;
-  box-shadow:0 4px 16px rgba(61,142,255,.3);
-  transition:all .2s;
-}
-.upload-btn:hover { transform:translateY(-1px); box-shadow:0 6px 24px rgba(61,142,255,.5); }
-
-/* ===== GRID ===== */
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(265px,1fr));
-  gap:16px;
-  padding:18px 20px 40px;
-  position:relative; z-index:1;
-}
-
-/* ===== CARD ===== */
-.card {
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:all .25s;
-  animation:cardIn .4s ease both;
-}
-@keyframes cardIn {
-  from { opacity:0; transform:translateY(14px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-.card:hover {
-  border-color:var(--border2);
-  background:var(--card2);
-  transform:translateY(-3px);
-  box-shadow:0 10px 40px var(--shadow);
-}
-
-.card-thumb {
-  width:100%; height:150px;
-  background:var(--bg2);
-  position:relative; overflow:hidden;
-  display:flex; align-items:center; justify-content:center;
-  font-size:46px;
-  user-select:none;
-}
-.card-thumb::after {
-  content:'';
-  position:absolute; inset:0;
-  background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.65));
-}
-.thumb-bg {
-  position:absolute; inset:0;
-  background:linear-gradient(135deg, var(--bg3), var(--bg2));
-}
-
-.badge-wrap {
-  position:absolute; top:10px; left:10px; z-index:2;
-  display:flex; gap:5px;
-}
-.badge {
-  padding:3px 8px;
-  border-radius:6px;
-  font-size:10px; font-weight:700;
-  font-family:'Rajdhani',sans-serif;
-  letter-spacing:.05em;
-}
-.badge-new { background:rgba(61,142,255,.9); color:#fff; }
-.badge-verified { background:rgba(31,212,106,.85); color:#fff; }
-.badge-bumped { background:rgba(240,192,64,.85); color:#000; }
-.badge-free { background:rgba(108,61,255,.85); color:#fff; }
-
-.card-body { padding:14px; }
-
-.card-game {
-  display:inline-flex; align-items:center; gap:5px;
-  padding:3px 8px;
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:6px;
-  font-size:10px; color:var(--sub);
-  margin-bottom:8px;
-  max-width:100%;
-  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
-}
-
-.card-title {
-  font-family:'Rajdhani',sans-serif;
-  font-weight:700; font-size:16px;
-  margin-bottom:6px;
-  line-height:1.3;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
-
-.card-meta {
-  display:flex; align-items:center; gap:6px;
-  margin-bottom:10px;
-}
-.card-author {
-  font-size:12px; color:var(--sub);
-  display:flex; align-items:center; gap:4px;
-}
-.verified-icon { color:var(--accent); font-size:11px; }
-
-.card-stats {
-  display:flex; align-items:center; gap:12px;
-  font-size:11px; color:var(--muted);
-}
-.stat { display:flex; align-items:center; gap:4px; }
-.stat.liked { color:var(--red); }
-
-.like-btn {
-  background:none; border:none;
-  cursor:pointer;
-  color:var(--muted);
-  font-size:11px;
-  display:flex; align-items:center; gap:4px;
-  padding:0;
-  transition:color .2s;
-}
-.like-btn:hover, .like-btn.liked { color:var(--red); }
-
-/* ===== SCRIPT DETAIL MODAL ===== */
-.detail-modal {
-  width:700px;
-  max-width:96vw;
-}
-.detail-header { margin-bottom:20px; }
-.detail-game {
-  display:inline-flex; align-items:center; gap:5px;
-  padding:3px 10px;
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:6px;
-  font-size:11px; color:var(--sub);
-  margin-bottom:10px;
-}
-.detail-title {
-  font-family:'Rajdhani',sans-serif;
-  font-size:28px; font-weight:700;
-  margin-bottom:6px;
-}
-.detail-author {
-  display:flex; align-items:center; gap:6px;
-  font-size:13px; color:var(--sub);
-}
-.author-av {
-  width:26px; height:26px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  font-size:11px; font-weight:700; color:#fff;
-  font-family:'Rajdhani',sans-serif;
-}
-
-.detail-desc {
-  font-size:13px; color:var(--sub);
-  line-height:1.7;
-  margin:16px 0;
-  padding:14px;
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:10px;
-}
-
-.code-block {
-  background:var(--bg);
-  border:1px solid var(--border2);
-  border-radius:12px;
-  overflow:hidden;
-  margin:16px 0;
-}
-.code-header {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:10px 16px;
-  background:var(--bg2);
-  border-bottom:1px solid var(--border);
-}
-.code-label {
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px; color:var(--sub);
-  display:flex; align-items:center; gap:6px;
-}
-.copy-btn {
-  padding:4px 12px;
-  background:var(--bg3);
-  border:1px solid var(--border2);
-  border-radius:6px;
-  color:var(--sub); font-size:11px;
-  cursor:pointer;
-  transition:all .2s;
-}
-.copy-btn:hover { border-color:var(--accent); color:var(--accent); }
-.copy-btn.copied { border-color:var(--green); color:var(--green); }
-.code-content {
-  padding:16px;
-  font-family:'JetBrains Mono',monospace;
-  font-size:12px; color:var(--text);
-  line-height:1.6;
-  max-height:260px;
-  overflow-y:auto;
-  white-space:pre-wrap;
-  word-break:break-all;
-}
-
-/* Comments */
-.comments-section { margin-top:20px; }
-.comments-title {
-  font-family:'Rajdhani',sans-serif;
-  font-size:18px; font-weight:700;
-  margin-bottom:14px;
-  display:flex; align-items:center; gap:8px;
-}
-.comment-input-wrap {
-  display:flex; gap:10px;
-  margin-bottom:14px;
-}
-.comment-input {
-  flex:1;
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:10px 14px;
-  color:var(--text);
-  font-family:'Sora',sans-serif; font-size:13px;
-  outline:none;
-  transition:border-color .2s;
-}
-.comment-input:focus { border-color:var(--accent); }
-.send-btn {
-  padding:10px 16px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  border:none; border-radius:10px;
-  color:#fff; cursor:pointer;
-  font-size:16px;
-  transition:opacity .2s;
-}
-.send-btn:hover { opacity:.85; }
-
-.comment {
-  display:flex; gap:10px;
-  padding:12px 0;
-  border-bottom:1px solid var(--border);
-}
-.comment:last-child { border-bottom:none; }
-.comment-av {
-  width:32px; height:32px; flex-shrink:0;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  font-size:12px; font-weight:700; color:#fff;
-  font-family:'Rajdhani',sans-serif;
-}
-.comment-name {
-  font-size:12px; font-weight:600; color:var(--accent);
-  margin-bottom:3px;
-}
-.comment-text { font-size:13px; color:var(--sub); line-height:1.5; }
-.comment-time { font-size:10px; color:var(--muted); margin-top:4px; }
-
-/* ===== EMPTY STATE ===== */
-.empty {
-  grid-column:1/-1;
-  text-align:center;
-  padding:80px 20px;
-  color:var(--sub);
-}
-.empty-icon { font-size:56px; margin-bottom:16px; opacity:.5; }
-.empty h3 {
-  font-family:'Rajdhani',sans-serif;
-  font-size:22px; font-weight:700;
-  margin-bottom:8px;
-  color:var(--text);
-}
-
-/* ===== LOADING ===== */
-.skeleton {
-  background:linear-gradient(90deg, var(--bg2) 25%, var(--bg3) 50%, var(--bg2) 75%);
-  background-size:400% 100%;
-  animation:shimmer 1.4s infinite;
-  border-radius:8px;
-}
-@keyframes shimmer {
-  0%   { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:600px){
-  nav { padding:0 12px; gap:8px; }
-  .nav-search { max-width:180px; }
-  .online-badge { display:none; }
-  .grid { padding:14px 12px 30px; gap:12px; }
-  .filters { padding:10px 12px; }
-  .page-head { padding:14px 12px 0; }
-  .modal { padding:28px 22px; }
-}
-</style>
+        @media (max-width: 768px) {
+            .m-nav { display: flex; }
+            .desktop-only { display: none !important; }
+            .container { padding: 0 16px; }
+            .search-area { margin: 0 10px; max-width: 140px; }
+            .detail-view { padding: 10px; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- TOAST -->
-<div id="toast"></div>
+    <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo" onclick="location.reload()">
+                <i data-lucide="zap" fill="currentColor"></i><span>EzScript</span>
+            </a>
 
-<!-- ===== AUTH MODAL ===== -->
-<div class="overlay" id="authOverlay">
-  <div class="modal" id="authModal">
-    <button class="modal-close" onclick="closeModal('authOverlay')">✕</button>
+            <div class="search-area">
+                <i data-lucide="search" size="18" class="search-icon"></i>
+                <input type="text" class="search-input" placeholder="Поиск скриптов..." id="searchBox">
+            </div>
 
-    <!-- LOGIN -->
-    <div id="loginForm">
-      <div class="modal-logo">
-        <div class="modal-logo-icon">⚡</div>
-        <h2>Войти</h2>
-      </div>
-      <p>Добро пожаловать в EzScript!</p>
+            <div class="desktop-only" id="authUI">
+                <button class="btn btn-outline" onclick="openM('loginM')">Вход</button>
+                <button class="btn btn-primary" onclick="openM('regM')">Создать аккаунт</button>
+            </div>
 
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="loginEmail" placeholder="you@example.com">
-      </div>
-      <div class="form-group">
-        <label>Пароль</label>
-        <input type="password" id="loginPassword" placeholder="••••••••">
-      </div>
-      <button class="btn btn-primary" onclick="handleLogin()">⚡ Войти</button>
-      <div class="modal-switch">Нет аккаунта? <a onclick="switchAuth('register')">Зарегистрироваться</a></div>
-    </div>
-
-    <!-- REGISTER -->
-    <div id="registerForm" style="display:none">
-      <div class="modal-logo">
-        <div class="modal-logo-icon">⚡</div>
-        <h2>Регистрация</h2>
-      </div>
-      <p>Создай аккаунт и начни делиться скриптами</p>
-
-      <div class="form-group">
-        <label>Никнейм</label>
-        <input type="text" id="regUsername" placeholder="coolscripter">
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="regEmail" placeholder="you@example.com">
-      </div>
-      <div class="form-group">
-        <label>Пароль</label>
-        <input type="password" id="regPassword" placeholder="Минимум 6 символов">
-      </div>
-      <button class="btn btn-primary" onclick="handleRegister()">🚀 Создать аккаунт</button>
-      <div class="modal-switch">Уже есть аккаунт? <a onclick="switchAuth('login')">Войти</a></div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== UPLOAD MODAL ===== -->
-<div class="overlay" id="uploadOverlay">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('uploadOverlay')">✕</button>
-    <div class="modal-logo">
-      <div class="modal-logo-icon">📤</div>
-      <h2>Загрузить скрипт</h2>
-    </div>
-    <p>Поделись своим скриптом с сообществом</p>
-
-    <div class="form-group">
-      <label>Название скрипта *</label>
-      <input type="text" id="upTitle" placeholder="ESP + Aimbot | No Key">
-    </div>
-    <div class="form-group">
-      <label>Игра *</label>
-      <input type="text" id="upGame" placeholder="Blox Fruits, Arsenal, Murder Mystery 2...">
-    </div>
-    <div class="form-group">
-      <label>Описание</label>
-      <textarea id="upDesc" placeholder="Что умеет скрипт, как использовать..."></textarea>
-    </div>
-    <div class="form-group">
-      <label>Код скрипта *</label>
-      <textarea id="upCode" placeholder="loadstring(game:HttpGet('...'))()"></textarea>
-    </div>
-    <div class="form-group">
-      <label>Теги</label>
-      <div class="tags-wrap" id="tagsPicker">
-        <span class="tag-pill" data-tag="ESP">ESP</span>
-        <span class="tag-pill" data-tag="Aimbot">Aimbot</span>
-        <span class="tag-pill" data-tag="Auto Farm">Auto Farm</span>
-        <span class="tag-pill" data-tag="GUI">GUI</span>
-        <span class="tag-pill" data-tag="No Key">No Key</span>
-        <span class="tag-pill" data-tag="Keyless">Keyless</span>
-        <span class="tag-pill" data-tag="Verified">Verified</span>
-        <span class="tag-pill" data-tag="Teleport">Teleport</span>
-        <span class="tag-pill" data-tag="Speed">Speed</span>
-        <span class="tag-pill" data-tag="Fly">Fly</span>
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Эмодзи превью</label>
-      <input type="text" id="upEmoji" placeholder="⚡ 🔫 🌀 🎮 💎" maxlength="4">
-    </div>
-    <button class="btn btn-primary" onclick="handleUpload()">📤 Опубликовать</button>
-  </div>
-</div>
-
-<!-- ===== DETAIL MODAL ===== -->
-<div class="overlay" id="detailOverlay">
-  <div class="modal detail-modal" id="detailModal">
-    <button class="modal-close" onclick="closeModal('detailOverlay')">✕</button>
-    <div id="detailContent"></div>
-  </div>
-</div>
-
-<!-- ===== NAVBAR ===== -->
-<nav>
-  <div class="nav-logo" onclick="resetSearch()">
-    <div class="nav-logo-box">⚡</div>
-    <span class="nav-logo-text">EzScript</span>
-  </div>
-
-  <div class="nav-search">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="searchInput" placeholder="Поиск скриптов, игр..." oninput="handleSearch()">
-  </div>
-
-  <div class="nav-right">
-    <div class="online-badge">
-      <div class="pulse"></div>
-      <span id="onlineCount">...</span> онлайн
-    </div>
-
-    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
-
-    <div id="authBtns" style="display:flex;gap:8px">
-      <button class="btn btn-ghost btn-sm" onclick="openModal('authOverlay','login')">Войти</button>
-      <button class="btn btn-primary btn-sm" onclick="openModal('authOverlay','register')">Регистрация</button>
-    </div>
-
-    <div id="userMenu" style="display:none">
-      <div class="avatar-wrap">
-        <div class="avatar" id="userAvatar" onclick="toggleDropdown()">?</div>
-        <div class="dropdown" id="userDropdown">
-          <a onclick="closeDropdown()">👤 Профиль</a>
-          <a onclick="openUpload()">📤 Загрузить скрипт</a>
-          <div class="dropdown-divider"></div>
-          <a class="danger" onclick="handleLogout()">🚪 Выйти</a>
+            <div class="desktop-only" id="userUI" style="display:none; gap:12px">
+                <button class="btn btn-primary" onclick="openM('uploadM')"><i data-lucide="plus"></i>Добавить</button>
+                <button class="btn btn-outline" onclick="openM('profileM')"><i data-lucide="user"></i></button>
+                <button class="btn btn-outline" style="color:var(--danger)" onclick="confirmLogout()"><i data-lucide="log-out"></i></button>
+            </div>
         </div>
-      </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main class="main-content">
+        <div class="container">
+            <div class="grid-header">
+                <div>
+                    <h1 style="font-size: 32px; font-weight: 800; letter-spacing: -1px">Новые скрипты</h1>
+                    <p style="color:var(--text-dim); margin-top: 4px" id="scriptCount">Загрузка базы данных...</p>
+                </div>
+                <div style="display:flex; gap:12px">
+                    <button class="btn btn-outline btn-sm active" onclick="loadBy('new')">Новые</button>
+                    <button class="btn btn-outline btn-sm" onclick="loadBy('verified')">Проверенные</button>
+                </div>
+            </div>
+
+            <div class="grid" id="mainGrid">
+                <!-- КАРТОЧКИ СКРИПТОВ -->
+            </div>
+        </div>
+    </main>
+
+    <!-- МОБИЛЬНАЯ НАВИГАЦИЯ -->
+    <nav class="m-nav">
+        <a href="#" class="m-nav-btn active"><i data-lucide="layout-grid"></i>Обзор</a>
+        <a href="#" class="m-nav-btn" onclick="openM('uploadM')"><i data-lucide="plus-square"></i>Пост</a>
+        <a href="#" class="m-nav-btn" id="mProfileBtn" onclick="openM('loginM')"><i data-lucide="user"></i>Профиль</a>
+    </nav>
+
+    <!-- ОКНО ПРОСМОТРА СКРИПТА -->
+    <div class="detail-view" id="scriptDetailView">
+        <div class="detail-card">
+            <img id="detImg" style="width:100%; height:350px; object-fit:cover" src="">
+            <div style="padding:40px">
+                <div style="display:flex; justify-content:space-between; align-items:start">
+                    <div>
+                        <h2 id="detTitle" style="font-size:32px; font-weight:800; margin-bottom:10px">...</h2>
+                        <div id="detBadges" style="display:flex; gap:10px; margin-bottom:20px"></div>
+                    </div>
+                    <button class="btn btn-outline" onclick="closeM('scriptDetailView')"><i data-lucide="x"></i></button>
+                </div>
+                
+                <p id="detDesc" style="color:var(--text-dim); font-size:16px; margin-bottom:30px">...</p>
+                
+                <div style="display:flex; justify-content:space-between; align-items:center">
+                    <h4 style="font-weight:700">Lua Код:</h4>
+                    <button class="btn btn-primary btn-sm" onclick="copyCode()"><i data-lucide="copy"></i> Копировать</button>
+                </div>
+                <div class="code-block"><pre id="detCode">...</pre></div>
+                
+                <div style="display:flex; gap:20px; align-items:center; border-top:1px solid var(--border); padding-top:20px">
+                    <div style="display:flex; align-items:center; gap:10px">
+                        <div style="width:40px; height:40px; background:var(--surface-2); border-radius:100%; display:flex; align-items:center; justify-content:center">
+                            <i data-lucide="user" size="20"></i>
+                        </div>
+                        <div>
+                            <p style="font-size:12px; color:var(--text-dim)">Автор:</p>
+                            <p id="detAuthor" style="font-weight:700">Unknown</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</nav>
 
-<!-- ===== FILTERS ===== -->
-<div class="filters">
-  <button class="f-btn active" onclick="setFilter('all',this)">🔥 Все</button>
-  <button class="f-btn" onclick="setFilter('verified',this)">✅ Verified</button>
-  <button class="f-btn" onclick="setFilter('nokey',this)">🔓 No Key</button>
-  <button class="f-btn" onclick="setFilter('new',this)">✨ Новые</button>
+    <!-- МОДАЛКИ: АВТОРИЗАЦИЯ -->
+    <div class="overlay" id="regM">
+        <div class="modal">
+            <h2 style="margin-bottom:24px">Регистрация</h2>
+            <div class="form-group"><label>Как тебя звать?</label><input type="text" id="rUser" placeholder="Твой ник"></div>
+            <div class="form-group"><label>Твоя почта</label><input type="email" id="rEmail" placeholder="example@mail.com"></div>
+            <div class="form-group"><label>Сложный пароль</label><input type="password" id="rPass" placeholder="******"></div>
+            <button class="btn btn-primary" style="width:100%; justify-content:center; padding:16px" onclick="doReg()">Создать аккаунт</button>
+            <p style="text-align:center; font-size:13px; margin-top:15px; color:var(--text-dim)">Уже есть аккаунт? <a href="#" style="color:var(--accent)" onclick="closeM('regM'); openM('loginM')">Войти</a></p>
+        </div>
+    </div>
 
-  <div class="sort-wrap">
-    <select class="sort-select" id="sortSelect" onchange="loadScripts()">
-      <option value="newest">Сначала новые</option>
-      <option value="popular">По популярности</option>
-      <option value="mostliked">Больше лайков</option>
-    </select>
-  </div>
-</div>
+    <div class="overlay" id="loginM">
+        <div class="modal">
+            <h2 style="margin-bottom:24px">С возвращением</h2>
+            <div class="form-group"><label>Почта</label><input type="email" id="lEmail"></div>
+            <div class="form-group"><label>Пароль</label><input type="password" id="lPass"></div>
+            <button class="btn btn-primary" style="width:100%; justify-content:center; padding:16px" onclick="doLogin()">Войти в систему</button>
+        </div>
+    </div>
 
-<!-- ===== MAIN CONTENT ===== -->
-<div class="page-head">
-  <span class="page-title">Последние скрипты</span>
-  <button class="upload-btn" onclick="openUpload()">
-    ＋ Добавить скрипт
-  </button>
-  <span style="font-size:12px;color:var(--sub);margin-left:4px" id="scriptCount"></span>
-</div>
+    <!-- МОДАЛКА: ЗАГРУЗКА -->
+    <div class="overlay" id="uploadM">
+        <div class="modal" style="max-width:550px">
+            <h2 style="margin-bottom:24px">Опубликовать скрипт</h2>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px">
+                <div class="form-group"><label>Название</label><input type="text" id="upTitle"></div>
+                <div class="form-group"><label>Игра</label><input type="text" id="upGame" placeholder="Universal"></div>
+            </div>
+            <div class="form-group"><label>Описание</label><textarea id="upDesc" rows="3"></textarea></div>
+            <div class="form-group"><label>Скрипт (Код)</label><textarea id="upCode" rows="4" style="font-family:monospace"></textarea></div>
+            <div class="form-group">
+                <label>Превью (картинка)</label>
+                <input type="file" id="upImg" accept="image/*">
+            </div>
+            <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:10px">
+                <button class="btn btn-outline" onclick="closeM('uploadM')">Отмена</button>
+                <button class="btn btn-primary" id="upBtn" onclick="doUpload()">Опубликовать</button>
+            </div>
+        </div>
+    </div>
 
-<div class="grid" id="scriptsGrid">
-  <!-- scripts load here -->
-</div>
+    <!-- МОДАЛКА: ВЫХОД -->
+    <div class="overlay" id="exitM">
+        <div class="modal" style="max-width:380px; text-align:center">
+            <div style="background:rgba(255,71,87,0.1); width:60px; height:60px; border-radius:100%; margin:0 auto 20px; display:flex; align-items:center; justify-content:center; color:var(--danger)">
+                <i data-lucide="alert-triangle" size="32"></i>
+            </div>
+            <h3>Выйти из профиля?</h3>
+            <p style="color:var(--text-dim); margin: 12px 0 24px">Твоя сессия будет завершена. Придется входить заново.</p>
+            <div style="display:flex; gap:12px">
+                <button class="btn btn-outline" style="flex:1; justify-content:center" onclick="closeM('exitM')">Нет, отмена</button>
+                <button class="btn btn-primary" style="flex:1; justify-content:center; background:var(--danger)" onclick="confirmExit()">Да, выйти</button>
+            </div>
+        </div>
+    </div>
 
-<!-- ===== SUPABASE CONFIG ===== -->
-<script>
-// ╔════════════════════════════════════════════╗
-// ║   ЗАМЕНИ НА СВОИ ДАННЫЕ С SUPABASE.COM    ║
-// ╚════════════════════════════════════════════╝
-const SUPABASE_URL = 'https://jtknimffjdkzibeqvfck.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_TxIZ7CrJ6rqvQHm6N8ZOeQ_yQ2WB0o5';
+    <!-- МОДАЛКА: ПРОФИЛЬ -->
+    <div class="overlay" id="profileM">
+        <div class="modal">
+            <div style="text-align:center; margin-bottom:24px">
+                <div style="width:80px; height:80px; background:var(--surface-2); border-radius:100%; margin:0 auto 16px; display:flex; align-items:center; justify-content:center; border:2px solid var(--accent)">
+                    <i data-lucide="user" size="40" color="var(--accent)"></i>
+                </div>
+                <h2 id="profNick">...</h2>
+                <p id="profEmail" style="color:var(--text-dim); font-size:14px">...</p>
+            </div>
+            
+            <div style="border-top:1px solid var(--border); padding-top:20px">
+                <h4>Безопасность</h4>
+                <div style="margin-top:15px; opacity:0.5; pointer-events:none">
+                    <p style="font-size:12px">Смена пароля временно недоступна</p>
+                </div>
+            </div>
+            <button class="btn btn-outline" style="width:100%; margin-top:30px" onclick="closeM('profileM')">Закрыть</button>
+        </div>
+    </div>
 
-// ════════════════════════════════════════════
+    <script>
+        // --- CONFIG ---
+        const SUPABASE_URL = 'https://jtknimffjdkzibeqvfck.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_TxIZ7CrJ6rqvQHm6N8ZOeQ_yQ2WB0o5';
+        const ADMIN_EMAIL = 'ruslandovgul83947@gmail.com';
 
-const { createClient } = supabase;
-const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+        const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        let user = null;
+        let _scripts = [];
 
-let currentUser = null;
-let currentFilter = 'all';
-let currentScript = null;
+        lucide.createIcons();
 
-// ===== DEMO DATA (пока нет Supabase) =====
-const DEMO_SCRIPTS = [
-  { id:1, title:'Moon Hub | Keyless & OP!!!', game:'Hooked!', author:'M00n_Hub', emoji:'🌙', tags:['No Key','GUI'], likes:34, views:172, comments:1, verified:true, created_at: new Date(Date.now()-7200000).toISOString(), code:'-- Moon Hub Script\nloadstring(game:HttpGet("https://raw.githubusercontent.com/moonhub/main.lua"))()' , desc:'Самый мощный хаб для Hooked! Включает ESP, Auto Farm, Speed Hack и многое другое. Полностью бесплатно, без ключей!' },
-  { id:2, title:'camlock esp aimbot wallcheck fly', game:'Murderers VS Sheriffs Du...', author:'skid3', emoji:'🎯', tags:['ESP','Aimbot','Fly'], likes:8, views:1, comments:0, verified:false, created_at: new Date(Date.now()-1560000).toISOString(), code:'-- Cam Lock ESP\nloadstring(game:HttpGet("https://example.com/script.lua"))()', desc:'Полный набор читов для Murderers VS Sheriffs. Camlock, ESP сквозь стены, Aimbot и Fly.' },
-  { id:3, title:'INF Speed, Murder All - ALL Executors Supported', game:'Forsaken', author:'moneysign', emoji:'⚡', tags:['Speed','Auto Farm'], likes:12, views:5, comments:1, verified:false, created_at: new Date(Date.now()-1800000).toISOString(), code:'-- INF Speed Script\n_G.Speed = math.huge\ngame.Players.LocalPlayer.Character.Humanoid.WalkSpeed = _G.Speed', desc:'Бесконечная скорость и мгновенное убийство всех. Работает на всех экзекьюторах.' },
-  { id:4, title:'Auto Farm, Teleport, Fruit, PVP & More...', game:'Christmas | Sailor Pi...', author:'ProBest', emoji:'🍎', tags:['Auto Farm','Teleport','GUI'], likes:47, views:67, comments:3, verified:true, created_at: new Date(Date.now()-2640000).toISOString(), code:'-- ProBest Hub\nloadstring(game:HttpGet("https://probest.xyz/main.lua"))()', desc:'Полный GUI хаб. Auto Farm фрукты, Teleport к боссам, PVP режим, Anti-AFK и ещё 20+ функций.' },
-  { id:5, title:'Arsenal Script Hub | Auto Farm | Aimbot | ESP', game:'Arsenal', author:'shiba', emoji:'🔫', tags:['ESP','Aimbot','Auto Farm'], likes:19, views:72, comments:0, verified:false, created_at: new Date(Date.now()-2940000).toISOString(), code:'-- Arsenal Hub\nlocal Library = loadstring(game:HttpGet("https://raw.github.com/arsenal.lua"))()\nLibrary.Aimbot = true\nLibrary.ESP = true', desc:'Мощный скрипт для Arsenal. Автоматическое прицеливание, ESP игроков, авто убийство.' },
-  { id:6, title:'BEST THA BRONX 3 SCRIPT FOR FREE', game:'THA BRONX 3™', author:'Utopia', emoji:'🏙️', tags:['GUI','No Key'], likes:89, views:43800, comments:1, verified:true, created_at: new Date(Date.now()-2592000000).toISOString(), code:'-- Tha Bronx 3 Script\nloadstring(game:HttpGet("https://utopia.gg/bronx3.lua"))()', desc:'Лучший бесплатный скрипт для Tha Bronx 3. GUI с кучей функций, без ключа, обновляется регулярно.' },
-  { id:7, title:'AR2 HITBOX EXPANDER | SILENT AIM & MUCH MORE', game:'Apocalypse Rising 2', author:'Utopia', emoji:'🔥', tags:['Aimbot','ESP'], likes:156, views:40100, comments:3, verified:true, created_at: new Date(Date.now()-1814400000).toISOString(), code:'-- AR2 Script\nloadstring(game:HttpGet("https://utopia.gg/ar2.lua"))()', desc:'Hitbox расширитель, Silent Aim, ESP, Speed. Лучший скрипт для Apocalypse Rising 2.' },
-  { id:8, title:'[OP] Blox-Strike | Silent aim | AC Bypass | Fly & More', game:'Blox-Strike', author:'Utopia', emoji:'💎', tags:['Aimbot','Fly','No Key'], likes:67, views:8100, comments:5, verified:true, created_at: new Date(Date.now()-345600000).toISOString(), code:'-- Blox Strike OP\nloadstring(game:HttpGet("https://utopia.gg/bloxstrike.lua"))()', desc:'Silent Aim с обходом анти-чита, Fly, ESP, Speed. Всё в одном GUI без ключа.' },
-];
-
-// ===== INIT =====
-window.onload = async () => {
-  setOnlineCount();
-  await checkSession();
-  loadScripts();
-  setupTagPicker();
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.avatar-wrap')) closeDropdown();
-  });
-};
-
-function setOnlineCount() {
-  document.getElementById('onlineCount').textContent = (Math.floor(Math.random()*3000)+2000).toLocaleString();
-}
-
-// ===== SESSION =====
-async function checkSession() {
-  try {
-    const { data: { session } } = await db.auth.getSession();
-    if (session) setUser(session.user);
-  } catch(e) {
-    // demo mode, no supabase
-  }
-}
-
-function setUser(user) {
-  currentUser = user;
-  document.getElementById('authBtns').style.display = 'none';
-  document.getElementById('userMenu').style.display = 'block';
-  const name = user.user_metadata?.username || user.email?.split('@')[0] || 'U';
-  document.getElementById('userAvatar').textContent = name[0].toUpperCase();
-}
-
-function clearUser() {
-  currentUser = null;
-  document.getElementById('authBtns').style.display = 'flex';
-  document.getElementById('userMenu').style.display = 'none';
-}
-
-// ===== AUTH =====
-async function handleLogin() {
-  const email = document.getElementById('loginEmail').value.trim();
-  const pass = document.getElementById('loginPassword').value;
-  if (!email || !pass) return toast('Заполни все поля', 'error');
-  try {
-    const { data, error } = await db.auth.signInWithPassword({ email, password: pass });
-    if (error) throw error;
-    setUser(data.user);
-    closeModal('authOverlay');
-    toast('Добро пожаловать! 👋', 'success');
-  } catch(e) {
-    toast(e.message || 'Ошибка входа', 'error');
-  }
-}
-
-async function handleRegister() {
-  const username = document.getElementById('regUsername').value.trim();
-  const email = document.getElementById('regEmail').value.trim();
-  const pass = document.getElementById('regPassword').value;
-  if (!username || !email || !pass) return toast('Заполни все поля', 'error');
-  if (pass.length < 6) return toast('Пароль минимум 6 символов', 'error');
-  try {
-    const { data, error } = await db.auth.signUp({
-      email, 
-      password: pass,
-      options: {
-        data: {
-          display_name: username
+        // --- AUTH ---
+        async function check() {
+            const { data } = await db.auth.getUser();
+            user = data.user;
+            if (user) {
+                document.getElementById('authUI').style.display = 'none';
+                document.getElementById('userUI').style.display = 'flex';
+                document.getElementById('profNick').innerText = user.user_metadata.username || 'Пользователь';
+                document.getElementById('profEmail').innerText = user.email;
+                document.getElementById('mProfileBtn').onclick = () => openM('profileM');
+            }
+            fetchScripts();
         }
-      }
-    });
-    if (error) {
-      if (error.message.includes('already registered')) {
-        throw new Error('Этот Email уже занят');
-      }
-      throw error;
-    }
-    setUser(data.user);
-    closeModal('authOverlay');
-    toast('Аккаунт создан! Попробуй войти 🎉', 'success');
-  } catch(e) {
-    toast(e.message || 'Ошибка регистрации', 'error');
-  }
-}
+        check();
 
-async function handleLogout() {
-  try { await db.auth.signOut(); } catch(e) {}
-  clearUser();
-  closeDropdown();
-  toast('Вышел из аккаунта', 'success');
-}
+        function openM(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeM(id) { document.getElementById(id).style.display = 'none'; }
+        function confirmLogout() { openM('exitM'); }
+        async function confirmExit() { await db.auth.signOut(); location.reload(); }
 
-// ===== UPLOAD =====
-async function handleUpload() {
-  const title = document.getElementById('upTitle').value.trim();
-  const game = document.getElementById('upGame').value.trim();
-  const description = document.getElementById('upDesc').value.trim();
-  const code = document.getElementById('upCode').value.trim();
-  const emoji = document.getElementById('upEmoji').value.trim();
-  const tags = [...document.querySelectorAll('.tag-pill.on')].map(t => t.dataset.tag);
+        async function doReg() {
+            const u = dID('rUser').value, e = dID('rEmail').value, p = dID('rPass').value;
+            if(!u||!e||!p) return toast('Все поля обязательны', 'danger');
+            const { error } = await db.auth.signUp({ email: e, password: p, options: { data: { username: u } } });
+            if(error) return toast(error.message, 'danger');
+            toast('Готово! Добро пожаловать', 'success'); location.reload();
+        }
 
-  if (!title || !game || !code) return toast('Заполни обязательные поля', 'error');
+        async function doLogin() {
+            const e = dID('lEmail').value, p = dID('lPass').value;
+            const { error } = await db.auth.signInWithPassword({ email: e, password: p });
+            if(error) return toast(error.message, 'danger');
+            location.reload();
+        }
 
-  const name = currentUser.user_metadata?.username || currentUser.email?.split('@')[0] || 'User';
+        // --- SCRIPTS LOGIC ---
+        async function fetchScripts() {
+            const { data, error } = await db.from('scripts').select('*').order('created_at', { ascending: false });
+            if(error) return;
+            _scripts = data;
+            render(_scripts);
+            dID('scriptCount').innerText = `${data.length} скриптов доступно`;
+        }
 
-  const { error } = await db.from('scripts').insert({
-    title, game, description, code, emoji, tags,
-    author: name,
-    author_id: currentUser.id
-  });
+        function render(arr) {
+            const g = dID('mainGrid'); g.innerHTML = '';
+            const isAdmin = user && user.email === ADMIN_EMAIL;
 
-  if (error) { toast('Ошибка: ' + error.message, 'error'); return; }
+            arr.forEach(s => {
+                const card = document.createElement('div');
+                card.className = 'script-card';
+                card.innerHTML = `
+                    <img src="${s.image_url || 'https://via.placeholder.com/400x200?text=EzScript'}" class="card-cover" onclick="showDetail('${s.id}')">
+                    <div class="card-body" onclick="showDetail('${s.id}')">
+                        <div class="card-title">${escape(s.title)}</div>
+                        <p style="color:var(--text-dim); font-size:13px; margin-bottom:12px">${escape(s.game)}</p>
+                        <div class="card-info">
+                            <span class="badge ${s.verified?'badge-verified':''}">
+                                ${s.verified ? '<i data-lucide="check-circle" size="12" style="vertical-align:middle"></i>' : ''} 
+                                ${s.verified ? 'Verified' : 'New'}
+                            </span>
+                            <span>• ${new Date(s.created_at).toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                    ${isAdmin ? `<div class="card-admin-tools" style="display:block">
+                        <button class="btn btn-danger btn-sm" onclick="delScript('${s.id}', event)"><i data-lucide="trash"></i></button>
+                    </div>` : ''}
+                `;
+                g.appendChild(card);
+            });
+            lucide.createIcons();
+        }
 
-  toast('Скрипт опубликован! 🚀', 'success');
-  closeModal('uploadOverlay');
-  loadScripts();
-}
-// ===== LOAD SCRIPTS =====
-async function loadScripts() {
-  const grid = document.getElementById('scriptsGrid');
-  grid.innerHTML = '<div class="empty"><div class="empty-icon">⏳</div><h3>Загрузка...</h3></div>';
+        async function doUpload() {
+            const t = dID('upTitle').value, g = dID('upGame').value, d = dID('upDesc').value, c = dID('upCode').value, f = dID('upImg').files[0];
+            if(!t || !c) return toast('Название и код обязательны', 'danger');
+            
+            const btn = dID('upBtn'); btn.disabled = true; btn.innerText = 'Загрузка...';
 
-  const search = document.getElementById('searchInput').value.trim();
-  const sort = document.getElementById('sortSelect').value;
+            let imgUrl = null;
+            if(f) {
+                const path = `${Date.now()}_${f.name}`;
+                const { error } = await db.storage.from('script-images').upload(path, f);
+                if(!error) imgUrl = `${SUPABASE_URL}/storage/v1/object/public/script-images/${path}`;
+            }
 
-  let query = db.from('scripts').select('*');
+            const { error } = await db.from('scripts').insert([{
+                title: t, description: d, game: g || 'Universal', code: c, image_url: imgUrl, 
+                author_id: user.id, author_name: user.user_metadata.username
+            }]);
 
-  if (search) query = query.or(`title.ilike.%${search}%,game.ilike.%${search}%`);
-  if (currentFilter === 'verified') query = query.eq('verified', true);
-  if (currentFilter === 'nokey') query = query.contains('tags', ['No Key']);
-  if (currentFilter === 'new') query = query.gte('created_at', new Date(Date.now()-86400000).toISOString());
+            if(error) toast(error.message, 'danger');
+            else { toast('Опубликовано!', 'success'); location.reload(); }
+        }
 
-  if (sort === 'popular') query = query.order('views', { ascending: false });
-  else if (sort === 'mostliked') query = query.order('likes', { ascending: false });
-  else query = query.order('created_at', { ascending: false });
+        function showDetail(id) {
+            const s = _scripts.find(x => x.id === id);
+            dID('detImg').src = s.image_url || 'https://via.placeholder.com/600x300?text=EzScript';
+            dID('detTitle').innerText = s.title;
+            dID('detDesc').innerText = s.description || 'Нет описания';
+            dID('detCode').innerText = s.code;
+            dID('detAuthor').innerText = s.author_name || 'System';
+            
+            const badges = dID('detBadges'); badges.innerHTML = `<span class="badge">${s.game}</span>`;
+            if(s.verified) badges.innerHTML += `<span class="badge badge-verified">Verified</span>`;
+            
+            window.activeCode = s.code;
+            openM('scriptDetailView');
+            lucide.createIcons();
+        }
 
-  const { data, error } = await query.limit(50);
+        function copyCode() {
+            navigator.clipboard.writeText(window.activeCode);
+            toast('Код скопирован!', 'success');
+        }
 
-  grid.innerHTML = '';
+        async function delScript(id, e) {
+            e.stopPropagation();
+            if(!confirm('Удалить скрипт навсегда?')) return;
+            await db.from('scripts').delete().eq('id', id);
+            fetchScripts();
+        }
 
-  if (!data || !data.length) {
-    // показываем демо если база пустая
-    DEMO_SCRIPTS.forEach(s => grid.appendChild(makeCard(s)));
-    document.getElementById('scriptCount').textContent = DEMO_SCRIPTS.length + ' скриптов (демо)';
-    return;
-  }
+        // --- UTILS ---
+        function toast(msg, type) {
+            const t = document.createElement('div');
+            t.style.cssText = `position:fixed;bottom:100px;left:50%;transform:translateX(-50%);padding:12px 24px;background:#1a1a1a;border-radius:100px;z-index:9999;border:1px solid ${type==='danger'?'#ff4757':'#2ed573'};animation:fadeIn 0.3s forwards;`;
+            t.innerHTML = `<b>${type==='danger'?'✕':'✓'}</b> ${msg}`;
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 3000);
+        }
+        function dID(i) { return document.getElementById(i); }
+        function escape(s) { 
+            const d = document.createElement('div');
+            d.innerText = s; return d.innerHTML;
+        }
 
-  document.getElementById('scriptCount').textContent = data.length + ' скриптов';
-  data.forEach(s => grid.appendChild(makeCard(s)));
-}
-
-function makeCard(s) {
-  const card = document.createElement('div');
-  card.className = 'script-card';
-  // Безопасная проверка тегов
-  const tagsArray = Array.isArray(s.tags) ? s.tags : [];
-  
-  const badges = [];
-  if (s.verified) badges.push('<span class="badge badge-verified">Verified</span>');
-  // Теперь проверяем через безопасный массив
-  if (tagsArray.some(t => t && String(t).toLowerCase().includes('key'))) {
-    badges.push('<span class="badge badge-free">No Key</span>');
-  }
-  
-  card.innerHTML = `
-    <div class="script-card-content" onclick="openDetail('${s.id}')">
-      <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px">
-        <h3 class="script-card-title">${escapeHtml(s.title)}</h3>
-        <div style="display:flex;gap:6px">${badges.join('')}</div>
-      </div>
-      <p class="script-card-desc">${escapeHtml(s.description || '')}</p>
-      <small style="color:var(--text-dim)">Игра: ${escapeHtml(s.game || 'Universal')}</small>
-    </div>
-  `;
-  return card;
-}
-
-// ===== DETAIL =====
-function openDetail(s) {
-  currentScript = s;
-  const content = document.getElementById('detailContent');
-  const tags = (s.tags||[]).map(t =>
-    `<span class="badge" style="background:rgba(61,142,255,.12);color:var(--accent);border:1px solid rgba(61,142,255,.3)">${t}</span>`
-  ).join(' ');
-
-  content.innerHTML = `
-    <div class="detail-header">
-      <div class="detail-game">🎮 ${s.game}</div>
-      <div class="detail-title">${s.title}</div>
-      <div class="detail-author">
-        <div class="author-av">${s.author[0].toUpperCase()}</div>
-        <span>@${s.author}</span>
-        ${s.verified ? '<span class="badge badge-verified">✓ Verified</span>' : ''}
-        <span style="color:var(--muted);margin-left:auto;font-size:11px">${timeAgo(s.created_at)}</span>
-      </div>
-      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">${tags}</div>
-    </div>
-
-    ${s.desc ? `<div class="detail-desc">${s.desc}</div>` : ''}
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-label">💻 Lua Script</div>
-        <button class="copy-btn" onclick="copyCode('${escapeAttr(s.code)}',this)">📋 Копировать</button>
-      </div>
-      <div class="code-content">${escapeHtml(s.code)}</div>
-    </div>
-
-    <div style="display:flex;gap:12px;align-items:center;margin-bottom:20px">
-      <button class="btn btn-ghost btn-sm" onclick="toggleLikeDetail(${s.id},this)">❤️ ${s.likes||0} лайков</button>
-      <span style="color:var(--sub);font-size:12px">👁 ${formatNum(s.views||0)} просмотров</span>
-    </div>
-
-    <div class="comments-section">
-      <div class="comments-title">💬 Комментарии <span style="color:var(--muted);font-size:14px">${s.comments||0}</span></div>
-      <div class="comment-input-wrap">
-        <input class="comment-input" id="commentInput" placeholder="Напиши комментарий..." onkeydown="if(event.key==='Enter')postComment()">
-        <button class="send-btn" onclick="postComment()">➤</button>
-      </div>
-      <div id="commentsList">
-        ${getDemoComments(s.id)}
-      </div>
-    </div>
-  `;
-  openOverlay('detailOverlay');
-}
-
-function getDemoComments(id) {
-  const pool = [
-    {name:'xXProXx',text:'Работает! Спасибо за скрипт 🔥'},
-    {name:'rblxhacker',text:'Хороший скрипт, но могут забанить'},
-    {name:'Utopia',text:'Обновим на следующей неделе'},
-    {name:'scriptkid99',text:'loadstring не работает, исправь'},
-    {name:'GodMode',text:'Топ! Без кея это лучшее что видел'},
-  ];
-  const count = id % 3;
-  return pool.slice(0, count).map(c => `
-    <div class="comment">
-      <div class="comment-av">${c.name[0]}</div>
-      <div>
-        <div class="comment-name">@${c.name}</div>
-        <div class="comment-text">${c.text}</div>
-        <div class="comment-time">2 часа назад</div>
-      </div>
-    </div>
-  `).join('');
-}
-
-function postComment() {
-  if (!currentUser) { toast('Войди чтобы комментировать', 'error'); return; }
-  const input = document.getElementById('commentInput');
-  const text = input.value.trim();
-  if (!text) return;
-  const name = currentUser.user_metadata?.username || currentUser.email?.split('@')[0] || 'User';
-  const html = `
-    <div class="comment" style="animation:cardIn .3s ease">
-      <div class="comment-av">${name[0].toUpperCase()}</div>
-      <div>
-        <div class="comment-name">@${name}</div>
-        <div class="comment-text">${escapeHtml(text)}</div>
-        <div class="comment-time">только что</div>
-      </div>
-    </div>
-  `;
-  document.getElementById('commentsList').insertAdjacentHTML('afterbegin', html);
-  input.value = '';
-  toast('Комментарий добавлен', 'success');
-}
-
-// ===== LIKES =====
-function toggleLike(btn, id) {
-  const liked = btn.classList.toggle('liked');
-  const num = parseInt(btn.textContent.replace(/\D/g,'')) + (liked ? 1 : -1);
-  btn.textContent = '❤️ ' + num;
-  if (liked) toast('+1 лайк ❤️', 'success');
-}
-function toggleLikeDetail(id, btn) {
-  const liked = btn.classList.toggle('liked');
-  const num = parseInt(btn.textContent.replace(/\D/g,'')) + (liked ? 1 : -1);
-  btn.textContent = '❤️ ' + num + ' лайков';
-}
-
-// ===== SEARCH & FILTER =====
-let searchTimeout;
-function handleSearch() {
-  clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(loadScripts, 250);
-}
-
-function setFilter(f, btn) {
-  currentFilter = f;
-  document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  loadScripts();
-}
-
-function resetSearch() {
-  document.getElementById('searchInput').value = '';
-  loadScripts();
-}
-
-// ===== COPY =====
-function copyCode(code, btn) {
-  navigator.clipboard.writeText(code).then(() => {
-    btn.textContent = '✅ Скопировано';
-    btn.classList.add('copied');
-    toast('Код скопирован в буфер! 📋', 'success');
-    setTimeout(() => { btn.textContent = '📋 Копировать'; btn.classList.remove('copied'); }, 2000);
-  });
-}
-
-// ===== MODAL HELPERS =====
-function openModal(overlayId, form) {
-  document.getElementById(overlayId).classList.add('open');
-  document.body.style.overflow = 'hidden';
-  if (form) switchAuth(form);
-}
-function closeModal(overlayId) {
-  document.getElementById(overlayId).classList.remove('open');
-  document.body.style.overflow = '';
-}
-function openOverlay(id) {
-  document.getElementById(id).classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function switchAuth(form) {
-  document.getElementById('loginForm').style.display = form==='login' ? 'block' : 'none';
-  document.getElementById('registerForm').style.display = form==='register' ? 'block' : 'none';
-}
-function openUpload() {
-  if (!currentUser) { openModal('authOverlay','login'); toast('Войди чтобы загружать скрипты', 'error'); return; }
-  openModal('uploadOverlay');
-  closeDropdown();
-}
-
-// Click outside modals
-document.querySelectorAll('.overlay').forEach(o => {
-  o.addEventListener('click', (e) => { if (e.target === o) closeModal(o.id); });
-});
-
-// ===== DROPDOWN =====
-function toggleDropdown() {
-  document.getElementById('userDropdown').classList.toggle('open');
-}
-function closeDropdown() {
-  document.getElementById('userDropdown').classList.remove('open');
-}
-
-// ===== TAGS =====
-function setupTagPicker() {
-  document.querySelectorAll('.tag-pill').forEach(t => {
-    t.addEventListener('click', () => t.classList.toggle('on'));
-  });
-}
-
-// ===== THEME =====
-function toggleTheme() {
-  const curr = document.documentElement.dataset.theme;
-  const next = curr === 'dark' ? 'light' : 'dark';
-  document.documentElement.dataset.theme = next;
-  document.getElementById('themeBtn').textContent = next === 'dark' ? '🌙' : '☀️';
-  localStorage.setItem('theme', next);
-}
-(function(){
-  const t = localStorage.getItem('theme');
-  if (t) { document.documentElement.dataset.theme = t; document.getElementById('themeBtn').textContent = t==='dark'?'🌙':'☀️'; }
-})();
-
-// ===== TOAST =====
-let toastTimer;
-function toast(msg, type='success') {
-  const t = document.getElementById('toast');
-  t.textContent = (type==='success'?'✅ ':'❌ ') + msg;
-  t.className = 'show ' + type;
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { t.className=''; }, 3000);
-}
-
-// ===== UTILS =====
-function formatNum(n) {
-  if (n >= 1000) return (n/1000).toFixed(1) + 'K';
-  return n;
-}
-function timeAgo(dateStr) {
-  const diff = Date.now() - new Date(dateStr);
-  const m = Math.floor(diff/60000);
-  if (m < 1) return 'только что';
-  if (m < 60) return m + 'мин назад';
-  const h = Math.floor(m/60);
-  if (h < 24) return h + 'ч назад';
-  const d = Math.floor(h/24);
-  if (d < 30) return d + 'д назад';
-  return Math.floor(d/30) + 'мес назад';
-}
-function escapeHtml(str) {
-  return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-function escapeAttr(str) {
-  return (str||'').replace(/'/g,"\\'").replace(/\n/g,'\\n');
-}
-</script>
+        dID('searchBox').oninput = (e) => {
+            const val = e.target.value.toLowerCase();
+            const filt = _scripts.filter(s => s.title.toLowerCase().includes(val) || s.game.toLowerCase().includes(val));
+            render(filt);
+        };
+    </script>
 </body>
 </html>
