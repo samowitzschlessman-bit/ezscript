@@ -1101,47 +1101,30 @@ async function loadScripts() {
   data.forEach(s => grid.appendChild(makeCard(s)));
 }
 
-function makeCard(s, i) {
-  const el = document.createElement('div');
-  el.className = 'card';
-  el.style.animationDelay = (i * 0.05) + 's';
-
-  const isNew = new Date(s.created_at) > new Date(Date.now() - 3600000 * 6);
+function makeCard(s) {
+  const card = document.createElement('div');
+  card.className = 'script-card';
+  // Безопасная проверка тегов
+  const tagsArray = Array.isArray(s.tags) ? s.tags : [];
+  
   const badges = [];
-  if (isNew) badges.push('<span class="badge badge-new">NEW</span>');
-  if (s.verified) badges.push('<span class="badge badge-verified">✓ Verified</span>');
-  if ((s.tags||[]).some(t => t.toLowerCase().includes('key'))) badges.push('<span class="badge badge-free">No Key</span>');
-
-  const colors = ['#1a2540','#1a1a2e','#0d1f2d','#1a0a2e','#0a1f1a'];
-  const bg = colors[s.id % colors.length] || colors[0];
-
-  el.innerHTML = `
-    <div class="card-thumb" style="background:${bg}">
-      <div class="thumb-bg"></div>
-      <span style="position:relative;z-index:1;">${s.emoji||'⚡'}</span>
-      <div class="badge-wrap">${badges.join('')}</div>
-    </div>
-    <div class="card-body">
-      <div class="card-game">🎮 ${s.game}</div>
-      <div class="card-title">${s.title}</div>
-      <div class="card-meta">
-        <div class="card-author">
-          <span>@${s.author}</span>
-          ${s.verified ? '<span class="verified-icon">✓</span>' : ''}
-        </div>
+  if (s.verified) badges.push('<span class="badge badge-verified">Verified</span>');
+  // Теперь проверяем через безопасный массив
+  if (tagsArray.some(t => t && String(t).toLowerCase().includes('key'))) {
+    badges.push('<span class="badge badge-free">No Key</span>');
+  }
+  
+  card.innerHTML = `
+    <div class="script-card-content" onclick="openDetail('${s.id}')">
+      <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px">
+        <h3 class="script-card-title">${escapeHtml(s.title)}</h3>
+        <div style="display:flex;gap:6px">${badges.join('')}</div>
       </div>
-      <div class="card-stats">
-        <button class="like-btn" onclick="event.stopPropagation();toggleLike(this,${s.id})">
-          ❤️ ${s.likes||0}
-        </button>
-        <span class="stat">👁 ${formatNum(s.views||0)}</span>
-        <span class="stat">💬 ${s.comments||0}</span>
-        <span class="stat" style="margin-left:auto;color:var(--muted)">${timeAgo(s.created_at)}</span>
-      </div>
+      <p class="script-card-desc">${escapeHtml(s.description || '')}</p>
+      <small style="color:var(--text-dim)">Игра: ${escapeHtml(s.game || 'Universal')}</small>
     </div>
   `;
-  el.onclick = () => openDetail(s);
-  return el;
+  return card;
 }
 
 // ===== DETAIL =====
