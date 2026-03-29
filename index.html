@@ -1013,13 +1013,23 @@ async function handleRegister() {
   if (pass.length < 6) return toast('Пароль минимум 6 символов', 'error');
   try {
     const { data, error } = await db.auth.signUp({
-      email, password: pass,
-      options: { data: { username } }
+      email, 
+      password: pass,
+      options: {
+        data: {
+          display_name: username
+        }
+      }
     });
-    if (error) throw error;
+    if (error) {
+      if (error.message.includes('already registered')) {
+        throw new Error('Этот Email уже занят');
+      }
+      throw error;
+    }
     setUser(data.user);
     closeModal('authOverlay');
-    toast('Аккаунт создан! 🎉', 'success');
+    toast('Аккаунт создан! Попробуй войти 🎉', 'success');
   } catch(e) {
     toast(e.message || 'Ошибка регистрации', 'error');
   }
