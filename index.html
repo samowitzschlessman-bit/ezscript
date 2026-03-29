@@ -28,7 +28,6 @@
       --red:#ef4444;
       --yellow:#f59e0b;
       --blue:#3b82f6;
-      --cyan:#06b6d4;
       --grad:linear-gradient(135deg,#a855f7,#6366f1);
       --shadow:0 20px 60px rgba(0,0,0,.45);
       --r:14px;
@@ -84,9 +83,7 @@
       from{opacity:0;transform:scale(.96)}
       to{opacity:1;transform:scale(1)}
     }
-    @keyframes spin{
-      to{transform:rotate(360deg)}
-    }
+    @keyframes spin{to{transform:rotate(360deg)}}
     @keyframes toastIn{
       from{opacity:0;transform:translateX(110%)}
       to{opacity:1;transform:translateX(0)}
@@ -96,7 +93,6 @@
       to{opacity:0;transform:translateX(110%)}
     }
 
-    /* TOP NAV */
     .topbar{
       position:sticky;top:0;z-index:100;
       background:rgba(10,10,16,.86);
@@ -170,17 +166,13 @@
     .btn-danger{
       background:rgba(239,68,68,.12);color:#ff8b8b;border:1px solid rgba(239,68,68,.2)
     }
-    .btn-danger:hover{background:rgba(239,68,68,.18)}
     .btn-success{
       background:rgba(34,197,94,.12);color:#6ee7a0;border:1px solid rgba(34,197,94,.2)
     }
-    .btn-success:hover{background:rgba(34,197,94,.18)}
     .btn-warning{
       background:rgba(245,158,11,.12);color:#ffd27d;border:1px solid rgba(245,158,11,.2)
     }
-    .btn-warning:hover{background:rgba(245,158,11,.18)}
 
-    /* USER MENU */
     .user-menu{position:relative}
     .avatar-btn{
       width:42px;height:42px;border-radius:50%;
@@ -191,7 +183,6 @@
       cursor:pointer;
       transition:var(--tr);
     }
-    .avatar-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(157,77,255,.25)}
     .avatar-btn img{width:100%;height:100%;object-fit:cover}
     .dropdown{
       position:absolute;right:0;top:56px;
@@ -226,10 +217,8 @@
     }
     .drop-item:hover{background:rgba(255,255,255,.04);color:var(--text)}
     .drop-item.danger{color:#ff8b8b}
-    .drop-item.danger:hover{background:rgba(239,68,68,.12)}
     .drop-divider{height:1px;background:var(--line);margin:6px 0}
 
-    /* SEARCH HEADER */
     .page-wrap{padding:26px 0 40px}
     .search-row{
       display:grid;
@@ -238,11 +227,7 @@
       align-items:center;
       margin-bottom:22px;
     }
-    .search-box{
-      position:relative;
-      max-width:620px;
-      width:100%;
-    }
+    .search-box{position:relative;max-width:620px;width:100%}
     .search-box i{
       position:absolute;left:16px;top:50%;transform:translateY(-50%);
       color:var(--muted2)
@@ -259,13 +244,8 @@
       gap:12px;flex-wrap:wrap;
       margin:18px 0 16px;
     }
-    .section-title{
-      font-size:18px;font-weight:800;
-      display:flex;align-items:center;gap:10px;
-    }
-    .section-sub{
-      color:var(--muted);font-size:13px
-    }
+    .section-title{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px}
+    .section-sub{color:var(--muted);font-size:13px}
 
     .filters{
       display:flex;align-items:center;gap:10px;flex-wrap:wrap;
@@ -294,7 +274,6 @@
       font-weight:600;
     }
 
-    /* GRID */
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
@@ -377,16 +356,13 @@
       display:flex;align-items:center;justify-content:space-between;gap:10px;
       margin-top:10px;
     }
-    .author-left{
-      display:flex;align-items:center;gap:10px;min-width:0;
-    }
+    .author-left{display:flex;align-items:center;gap:10px;min-width:0}
     .mini-avatar{
       width:34px;height:34px;border-radius:50%;
       background:var(--grad);
       display:flex;align-items:center;justify-content:center;
       font-size:13px;font-weight:800;color:#fff;
-      overflow:hidden;
-      flex-shrink:0;
+      overflow:hidden;flex-shrink:0;
     }
     .mini-avatar img{width:100%;height:100%;object-fit:cover}
     .author-text{min-width:0}
@@ -394,16 +370,13 @@
       font-size:13px;font-weight:700;color:var(--text);
       overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
     }
-    .author-sub{
-      font-size:12px;color:var(--muted2);
-    }
+    .author-sub{font-size:12px;color:var(--muted2)}
     .stats{
       display:flex;gap:12px;align-items:center;
       color:var(--muted2);font-size:12px;font-weight:700;
       flex-shrink:0;
     }
 
-    /* PANELS */
     .panel{
       background:linear-gradient(180deg,#141420,#101019);
       border:1px solid var(--line);
@@ -411,27 +384,43 @@
       padding:18px;
       box-shadow:0 10px 30px rgba(0,0,0,.2);
     }
-    .page-title{
-      font-size:28px;font-weight:900;margin-bottom:8px;
-    }
-    .page-desc{
-      color:var(--muted);font-size:14px;margin-bottom:18px;
-    }
-
-    .two-col{
-      display:grid;grid-template-columns:1fr 1fr;gap:16px;
-    }
-
+    .page-title{font-size:28px;font-weight:900;margin-bottom:8px}
+    .page-desc{color:var(--muted);font-size:14px;margin-bottom:18px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     .form-group{margin-bottom:16px}
-    .label{
-      display:block;font-size:13px;font-weight:700;color:#d7d7e4;margin-bottom:8px;
-    }
+    .label{display:block;font-size:13px;font-weight:700;color:#d7d7e4;margin-bottom:8px}
     .hint{font-size:12px;color:var(--muted2);margin-top:6px}
     .form-actions{
       display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:18px;
     }
 
-    /* AUTH MODAL */
+    .file-box{
+      border:1px dashed var(--line2);
+      background:#11111a;
+      border-radius:18px;
+      padding:18px;
+    }
+    .file-preview{
+      width:100%;
+      aspect-ratio:16/9;
+      border-radius:16px;
+      overflow:hidden;
+      background:#181826;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted2);
+      margin-top:12px;
+    }
+    .file-preview img{width:100%;height:100%;object-fit:cover}
+    .avatar-preview{
+      width:88px;height:88px;border-radius:50%;
+      overflow:hidden;background:#181826;
+      display:flex;align-items:center;justify-content:center;
+      margin-top:12px;color:var(--muted2)
+    }
+    .avatar-preview img{width:100%;height:100%;object-fit:cover}
+
     .modal{
       position:fixed;inset:0;display:none;align-items:center;justify-content:center;
       padding:18px;z-index:300;
@@ -450,7 +439,7 @@
       animation:scaleIn .18s ease;
       overflow:hidden;
     }
-    .modal-wide{max-width:760px}
+    .modal-wide{max-width:860px}
     .modal-head{
       padding:20px 22px;border-bottom:1px solid var(--line);
       display:flex;align-items:center;justify-content:space-between;
@@ -464,7 +453,6 @@
       display:flex;align-items:center;justify-content:center;
       font-size:16px;
     }
-    .close-btn:hover{background:#1f1f30;color:#fff}
     .modal-body{padding:22px}
     .auth-brand{
       display:flex;flex-direction:column;align-items:center;text-align:center;
@@ -485,16 +473,13 @@
       flex:1;border:none;background:transparent;color:var(--muted);
       padding:10px;border-radius:10px;font-weight:700;font-size:13px;
     }
-    .auth-switch button.active{
-      background:var(--grad);color:#fff;
-    }
+    .auth-switch button.active{background:var(--grad);color:#fff}
     .google-btn{
       width:100%;border:none;border-radius:14px;background:#fff;color:#222;
       font-weight:800;padding:13px 14px;font-size:14px;
       display:flex;align-items:center;justify-content:center;gap:10px;
       transition:var(--tr);
     }
-    .google-btn:hover{background:#f2f2f2}
     .divider{
       display:flex;align-items:center;gap:10px;
       color:var(--muted2);font-size:12px;font-weight:800;
@@ -504,10 +489,7 @@
       content:"";flex:1;height:1px;background:var(--line);
     }
 
-    /* VIEW MODAL */
-    .view-grid{
-      display:grid;grid-template-columns:1.1fr .9fr;gap:18px;
-    }
+    .view-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
     .code-wrap{
       background:#0d0d15;border:1px solid var(--line);
       border-radius:18px;overflow:hidden;
@@ -523,9 +505,7 @@
       color:#d5d5e8;
       font-family:Consolas,monospace;
     }
-    .info-list{
-      display:flex;flex-direction:column;gap:10px;
-    }
+    .info-list{display:flex;flex-direction:column;gap:10px}
     .info-card{
       background:#12121c;border:1px solid var(--line);
       border-radius:16px;padding:14px;
@@ -538,7 +518,6 @@
       word-break:break-word;
     }
 
-    /* ADMIN */
     .admin-shell{
       display:none;
       min-height:100vh;
@@ -550,9 +529,7 @@
       display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
       margin-bottom:18px;
     }
-    .admin-tabs{
-      display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;
-    }
+    .admin-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
     .admin-grid{
       display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;
     }
@@ -561,16 +538,13 @@
       border:1px solid var(--line);
       border-radius:20px;padding:16px;
     }
-    .admin-card h4{
-      font-size:17px;font-weight:800;margin-bottom:10px;
-    }
+    .admin-card h4{font-size:17px;font-weight:800;margin-bottom:10px}
     .admin-meta{
       display:flex;gap:10px;flex-wrap:wrap;color:var(--muted2);font-size:12px;font-weight:700;
       margin-bottom:12px;
     }
     .admin-actions{display:flex;gap:8px;flex-wrap:wrap}
 
-    /* LOADING */
     .loading{
       display:flex;flex-direction:column;align-items:center;justify-content:center;
       padding:60px 20px;color:var(--muted);
@@ -581,7 +555,6 @@
       margin-bottom:12px;
     }
 
-    /* EMPTY */
     .empty{
       padding:60px 20px;text-align:center;color:var(--muted);
       border:1px dashed var(--line2);border-radius:22px;background:rgba(255,255,255,.02)
@@ -590,7 +563,6 @@
     .empty h3{font-size:20px;color:#fff;margin-bottom:8px}
     .empty p{font-size:14px}
 
-    /* TOAST */
     .toast-box{
       position:fixed;top:20px;right:20px;z-index:9999;
       display:flex;flex-direction:column;gap:8px;
@@ -624,1430 +596,1359 @@
       .brand-name{font-size:18px}
       .section-title{font-size:16px}
       .page-title{font-size:24px}
-      .top-actions{gap:8px}
-      .btn{font-size:13px}
     }
   </style>
 </head>
 <body>
 
-  <!-- TOPBAR -->
-  <header class="topbar" id="mainTopbar">
-    <div class="container topbar-inner">
-      <a href="#" class="brand" onclick="showScreen('home')">
-        <div class="brand-logo"><i class="fas fa-bolt"></i></div>
-        <div class="brand-name">EzScript</div>
-      </a>
+<header class="topbar" id="mainTopbar">
+  <div class="container topbar-inner">
+    <a href="#" class="brand" onclick="showScreen('home')">
+      <div class="brand-logo"><i class="fas fa-bolt"></i></div>
+      <div class="brand-name">EzScript</div>
+    </a>
 
-      <nav class="main-nav">
-        <button class="nav-link active" onclick="showScreen('home')"><i class="fas fa-scroll"></i> Scripts</button>
-        <button class="nav-link" onclick="showScreen('my-scripts')"><i class="fas fa-code"></i> My Scripts</button>
-        <button class="nav-link" onclick="showScreen('settings')"><i class="fas fa-gear"></i> Settings</button>
-      </nav>
+    <nav class="main-nav">
+      <button class="nav-link active" onclick="showScreen('home')"><i class="fas fa-scroll"></i> Scripts</button>
+      <button class="nav-link" onclick="showScreen('my-scripts')"><i class="fas fa-code"></i> My Scripts</button>
+      <button class="nav-link" onclick="showScreen('settings')"><i class="fas fa-gear"></i> Settings</button>
+    </nav>
 
-      <div class="top-actions">
-        <button class="btn btn-outline btn-sm" onclick="openUpload()"><i class="fas fa-upload"></i> Upload</button>
+    <div class="top-actions">
+      <button class="btn btn-outline btn-sm" onclick="openUpload()"><i class="fas fa-upload"></i> Upload</button>
 
-        <button id="loginBtnTop" class="btn btn-primary btn-sm" onclick="openAuthModal('login')">Login</button>
+      <button id="loginBtnTop" class="btn btn-primary btn-sm" onclick="openAuthModal('login')">Login</button>
 
-        <div id="userMenuWrap" class="user-menu hidden">
-          <div class="avatar-btn" id="avatarBtn" onclick="toggleUserDropdown()">U</div>
-          <div class="dropdown" id="userDropdown">
-            <div class="dropdown-head">
-              <div class="dropdown-name" id="dropUserName">User</div>
-              <div class="dropdown-email" id="dropUserEmail">hidden@email.com</div>
-            </div>
-
-            <button class="drop-item" onclick="showScreen('profile');closeUserDropdown()"><i class="fas fa-user"></i> Мой профиль</button>
-            <button class="drop-item" onclick="showScreen('my-scripts');closeUserDropdown()"><i class="fas fa-code"></i> Мои скрипты</button>
-            <button class="drop-item" onclick="showScreen('settings');closeUserDropdown()"><i class="fas fa-gear"></i> Настройки</button>
-            <button class="drop-item hidden" id="adminMenuBtn" onclick="showAdmin();closeUserDropdown()"><i class="fas fa-shield-halved"></i> Модерация</button>
-
-            <div class="drop-divider"></div>
-            <button class="drop-item danger" onclick="logoutUser();closeUserDropdown()"><i class="fas fa-right-from-bracket"></i> Выйти</button>
+      <div id="userMenuWrap" class="user-menu hidden">
+        <div class="avatar-btn" id="avatarBtn" onclick="toggleUserDropdown()">U</div>
+        <div class="dropdown" id="userDropdown">
+          <div class="dropdown-head">
+            <div class="dropdown-name" id="dropUserName">User</div>
+            <div class="dropdown-email" id="dropUserEmail">Email hidden</div>
           </div>
+          <button class="drop-item" onclick="showScreen('profile');closeUserDropdown()"><i class="fas fa-user"></i> Мой профиль</button>
+          <button class="drop-item" onclick="showScreen('my-scripts');closeUserDropdown()"><i class="fas fa-code"></i> Мои скрипты</button>
+          <button class="drop-item" onclick="showScreen('settings');closeUserDropdown()"><i class="fas fa-gear"></i> Настройки</button>
+          <button class="drop-item hidden" id="adminMenuBtn" onclick="showAdmin();closeUserDropdown()"><i class="fas fa-shield-halved"></i> Модерация</button>
+          <div class="drop-divider"></div>
+          <button class="drop-item danger" onclick="logoutUser();closeUserDropdown()"><i class="fas fa-right-from-bracket"></i> Выйти</button>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- MAIN APP -->
-  <main id="appShell">
-    <!-- HOME -->
-    <section id="screen-home" class="screen">
-      <div class="container page-wrap">
-        <div class="search-row">
-          <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input id="searchInput" type="text" placeholder="Search scripts, games, or creators..." oninput="handleSearchInput()">
-          </div>
-
-          <select id="sortSelect" class="sort-select" onchange="setSort(this.value)">
-            <option value="newest">Newest first</option>
-            <option value="oldest">Oldest first</option>
-            <option value="views">Most viewed</option>
-            <option value="likes">Most liked</option>
-          </select>
-
-          <button class="btn btn-dark" onclick="renderPublicScripts()"><i class="fas fa-rotate-right"></i> Refresh</button>
+<main id="appShell">
+  <section id="screen-home" class="screen">
+    <div class="container page-wrap">
+      <div class="search-row">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input id="searchInput" type="text" placeholder="Search scripts, games, or creators..." oninput="handleSearchInput()">
         </div>
 
-        <div class="section-title-row">
-          <div>
-            <div class="section-title">Latest Scripts</div>
-            <div class="section-sub"><span id="publicCount">0</span> scripts available</div>
-          </div>
-          <button class="btn btn-primary" onclick="openUpload()"><i class="fas fa-plus"></i> Add your script</button>
-        </div>
+        <select id="sortSelect" class="sort-select" onchange="setSort(this.value)">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="views">Most viewed</option>
+          <option value="likes">Most liked</option>
+        </select>
 
-        <div class="filters">
-          <button class="chip active" onclick="setFilter('all',this)">All</button>
-          <button class="chip" onclick="setFilter('Roblox',this)">Roblox</button>
-          <button class="chip" onclick="setFilter('Universal',this)">Universal</button>
-          <button class="chip" onclick="setFilter('FPS',this)">FPS</button>
-          <button class="chip" onclick="setFilter('RPG',this)">RPG</button>
-          <button class="chip" onclick="setFilter('Simulator',this)">Simulator</button>
-        </div>
-
-        <div id="publicLoading" class="loading">
-          <div class="spinner"></div>
-          <div>Загрузка скриптов...</div>
-        </div>
-
-        <div id="publicGrid" class="grid hidden"></div>
-
-        <div id="publicEmpty" class="empty hidden">
-          <i class="fas fa-box-open"></i>
-          <h3>Скриптов пока нет</h3>
-          <p>Стань первым, кто добавит скрипт на сайт.</p>
-        </div>
+        <button class="btn btn-dark" onclick="renderPublicScripts()"><i class="fas fa-rotate-right"></i> Refresh</button>
       </div>
-    </section>
 
-    <!-- PROFILE -->
-    <section id="screen-profile" class="screen hidden">
-      <div class="container page-wrap">
-        <div class="panel" style="margin-bottom:18px">
-          <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-            <div class="avatar-btn" id="profileAvatar" style="width:74px;height:74px;font-size:24px">U</div>
-            <div>
-              <div class="page-title" id="profileTitle">Мой профиль</div>
-              <div class="page-desc" id="profileSubtitle">Информация о пользователе</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel" style="margin-bottom:18px">
-          <div class="two-col">
-            <div>
-              <div class="label">Username</div>
-              <div id="profileUsername" class="page-desc" style="color:#fff">-</div>
-            </div>
-            <div>
-              <div class="label">Email</div>
-              <div id="profileEmail" class="page-desc" style="color:#fff">Hidden</div>
-            </div>
-            <div>
-              <div class="label">Bio</div>
-              <div id="profileBio" class="page-desc" style="color:#fff">-</div>
-            </div>
-            <div>
-              <div class="label">Account type</div>
-              <div id="profileType" class="page-desc" style="color:#fff">User</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-title-row">
-          <div>
-            <div class="section-title">Мои опубликованные / отправленные скрипты</div>
-            <div class="section-sub">Все твои скрипты со статусами</div>
-          </div>
-        </div>
-
-        <div id="profileScriptsGrid" class="grid"></div>
-      </div>
-    </section>
-
-    <!-- MY SCRIPTS -->
-    <section id="screen-my-scripts" class="screen hidden">
-      <div class="container page-wrap">
-        <div class="section-title-row">
-          <div>
-            <div class="page-title">My Scripts</div>
-            <div class="page-desc">Здесь все твои скрипты, включая pending / approved / rejected</div>
-          </div>
-          <button class="btn btn-primary" onclick="openUpload()"><i class="fas fa-plus"></i> Upload script</button>
-        </div>
-
-        <div id="myScriptsLoading" class="loading hidden">
-          <div class="spinner"></div>
-          <div>Загрузка...</div>
-        </div>
-
-        <div id="myScriptsGrid" class="grid"></div>
-
-        <div id="myScriptsEmpty" class="empty hidden">
-          <i class="fas fa-code"></i>
-          <h3>У тебя пока нет скриптов</h3>
-          <p>Добавь первый скрипт и отправь его на модерацию.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SETTINGS -->
-    <section id="screen-settings" class="screen hidden">
-      <div class="container page-wrap" style="max-width:860px">
-        <div class="page-title">Settings</div>
-        <div class="page-desc">Профиль, приватность и безопасность</div>
-
-        <div class="panel" style="margin-bottom:18px">
-          <div class="section-title" style="margin-bottom:14px">Профиль</div>
-          <div class="two-col">
-            <div class="form-group">
-              <label class="label">Username</label>
-              <input id="settingsUsername" type="text" placeholder="username">
-            </div>
-            <div class="form-group">
-              <label class="label">Avatar URL</label>
-              <input id="settingsAvatar" type="text" placeholder="https://...">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="label">Bio</label>
-            <textarea id="settingsBio" rows="4" placeholder="О себе"></textarea>
-          </div>
-          <div class="form-actions">
-            <button class="btn btn-primary" onclick="saveProfileSettings()"><i class="fas fa-save"></i> Сохранить профиль</button>
-          </div>
-        </div>
-
-        <div class="panel" style="margin-bottom:18px">
-          <div class="section-title" style="margin-bottom:14px">Приватность</div>
-
-          <div style="display:flex;flex-direction:column;gap:14px">
-            <label style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#12121d;border:1px solid var(--line);padding:14px;border-radius:16px">
-              <div>
-                <div style="font-weight:800">Публичный профиль</div>
-                <div class="hint">Если выключено — профиль скрыт для других</div>
-              </div>
-              <input id="settingsPublic" type="checkbox" style="width:18px;height:18px">
-            </label>
-
-            <label style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#12121d;border:1px solid var(--line);padding:14px;border-radius:16px">
-              <div>
-                <div style="font-weight:800">Показывать email</div>
-                <div class="hint">По умолчанию email скрыт, в том числе если вход через Google</div>
-              </div>
-              <input id="settingsShowEmail" type="checkbox" style="width:18px;height:18px">
-            </label>
-          </div>
-
-          <div class="form-actions">
-            <button class="btn btn-primary" onclick="savePrivacySettings()"><i class="fas fa-shield-halved"></i> Сохранить приватность</button>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="section-title" style="margin-bottom:14px">Смена пароля</div>
-          <div class="two-col">
-            <div class="form-group">
-              <label class="label">Новый пароль</label>
-              <input id="newPassword" type="password" placeholder="Минимум 8 символов">
-            </div>
-            <div class="form-group">
-              <label class="label">Повторите пароль</label>
-              <input id="repeatPassword" type="password" placeholder="Повторите пароль">
-            </div>
-          </div>
-          <div class="form-actions">
-            <button class="btn btn-outline" onclick="changePassword()"><i class="fas fa-key"></i> Изменить пароль</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ADMIN -->
-  <section id="adminShell" class="admin-shell">
-    <div class="container">
-      <div class="admin-top">
+      <div class="section-title-row">
         <div>
-          <div class="page-title">Модерация</div>
-          <div class="page-desc">Управление скриптами пользователей</div>
+          <div class="section-title">Latest Scripts</div>
+          <div class="section-sub"><span id="publicCount">0</span> scripts available</div>
         </div>
-        <button class="btn btn-outline" onclick="hideAdmin()"><i class="fas fa-arrow-left"></i> Назад на сайт</button>
+        <button class="btn btn-primary" onclick="openUpload()"><i class="fas fa-plus"></i> Add your script</button>
       </div>
 
-      <div class="admin-tabs">
-        <button class="chip active" onclick="setAdminTab('pending',this)">Pending <span id="pendingCountBadge" style="margin-left:6px;color:#ffd37a">0</span></button>
-        <button class="chip" onclick="setAdminTab('approved',this)">Approved</button>
-        <button class="chip" onclick="setAdminTab('rejected',this)">Rejected</button>
-        <button class="chip" onclick="setAdminTab('all',this)">All</button>
+      <div class="filters">
+        <button class="chip active" onclick="setFilter('all',this)">All</button>
+        <button class="chip" onclick="setFilter('Roblox',this)">Roblox</button>
+        <button class="chip" onclick="setFilter('Universal',this)">Universal</button>
+        <button class="chip" onclick="setFilter('FPS',this)">FPS</button>
+        <button class="chip" onclick="setFilter('RPG',this)">RPG</button>
+        <button class="chip" onclick="setFilter('Simulator',this)">Simulator</button>
       </div>
 
-      <div id="adminLoading" class="loading hidden">
+      <div id="publicLoading" class="loading">
         <div class="spinner"></div>
-        <div>Загрузка модерации...</div>
+        <div>Загрузка скриптов...</div>
       </div>
 
-      <div id="adminGrid" class="admin-grid"></div>
+      <div id="publicGrid" class="grid hidden"></div>
 
-      <div id="adminEmpty" class="empty hidden">
-        <i class="fas fa-folder-open"></i>
-        <h3>Ничего не найдено</h3>
-        <p>В этой вкладке пока нет скриптов.</p>
+      <div id="publicEmpty" class="empty hidden">
+        <i class="fas fa-box-open"></i>
+        <h3>Скриптов пока нет</h3>
+        <p>Стань первым, кто добавит скрипт на сайт.</p>
       </div>
     </div>
   </section>
 
-  <!-- AUTH MODAL -->
-  <div id="authModal" class="modal">
-    <div class="modal-overlay" onclick="closeAuthModal()"></div>
-    <div class="modal-card">
-      <div class="modal-body" style="padding-top:26px">
-        <div class="auth-brand">
-          <div class="auth-icon"><i class="fas fa-bolt"></i></div>
-          <h2>EzScript</h2>
-          <p>Скрипт-хаб нового поколения</p>
+  <section id="screen-profile" class="screen hidden">
+    <div class="container page-wrap">
+      <div class="panel" style="margin-bottom:18px">
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <div class="avatar-btn" id="profileAvatar" style="width:74px;height:74px;font-size:24px">U</div>
+          <div>
+            <div class="page-title" id="profileTitle">Мой профиль</div>
+            <div class="page-desc" id="profileSubtitle">Информация о пользователе</div>
+          </div>
         </div>
+      </div>
 
-        <div class="auth-switch">
-          <button id="authTabLogin" class="active" onclick="switchAuthTab('login')">Войти</button>
-          <button id="authTabRegister" onclick="switchAuthTab('register')">Регистрация</button>
+      <div class="panel" style="margin-bottom:18px">
+        <div class="two-col">
+          <div><div class="label">Username</div><div id="profileUsername" class="page-desc" style="color:#fff">-</div></div>
+          <div><div class="label">Email</div><div id="profileEmail" class="page-desc" style="color:#fff">Hidden</div></div>
+          <div><div class="label">Bio</div><div id="profileBio" class="page-desc" style="color:#fff">-</div></div>
+          <div><div class="label">Account type</div><div id="profileType" class="page-desc" style="color:#fff">User</div></div>
         </div>
+      </div>
 
-        <button class="google-btn" onclick="signInWithGoogle()">
-          <i class="fab fa-google"></i>
-          Продолжить с Google
-        </button>
+      <div class="section-title-row">
+        <div>
+          <div class="section-title">Мои скрипты</div>
+          <div class="section-sub">Все твои скрипты со статусами</div>
+        </div>
+      </div>
+      <div id="profileScriptsGrid" class="grid"></div>
+    </div>
+  </section>
 
-        <div class="divider">или</div>
+  <section id="screen-my-scripts" class="screen hidden">
+    <div class="container page-wrap">
+      <div class="section-title-row">
+        <div>
+          <div class="page-title">My Scripts</div>
+          <div class="page-desc">Все твои pending / approved / rejected скрипты</div>
+        </div>
+        <button class="btn btn-primary" onclick="openUpload()"><i class="fas fa-plus"></i> Upload script</button>
+      </div>
 
-        <!-- LOGIN -->
-        <form id="loginForm" onsubmit="handleEmailLogin(event)">
-          <div class="form-group">
-            <label class="label">Email</label>
-            <input id="loginEmail" type="email" required placeholder="name@gmail.com">
-          </div>
-          <div class="form-group">
-            <label class="label">Пароль</label>
-            <input id="loginPassword" type="password" required placeholder="••••••••">
-          </div>
-          <button id="loginSubmitBtn" class="btn btn-primary btn-full" type="submit">
-            <i class="fas fa-right-to-bracket"></i> Войти
-          </button>
-          <div class="form-actions" style="justify-content:center;margin-top:12px">
-            <button type="button" class="btn btn-dark btn-sm" onclick="resetPassword()">Забыли пароль?</button>
-          </div>
-        </form>
+      <div id="myScriptsLoading" class="loading hidden">
+        <div class="spinner"></div>
+        <div>Загрузка...</div>
+      </div>
 
-        <!-- REGISTER -->
-        <form id="registerForm" class="hidden" onsubmit="handleEmailRegister(event)">
+      <div id="myScriptsGrid" class="grid"></div>
+
+      <div id="myScriptsEmpty" class="empty hidden">
+        <i class="fas fa-code"></i>
+        <h3>У тебя пока нет скриптов</h3>
+        <p>Добавь первый скрипт и отправь его на модерацию.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="screen-settings" class="screen hidden">
+    <div class="container page-wrap" style="max-width:860px">
+      <div class="page-title">Settings</div>
+      <div class="page-desc">Профиль, аватар, приватность и безопасность</div>
+
+      <div class="panel" style="margin-bottom:18px">
+        <div class="section-title" style="margin-bottom:14px">Профиль</div>
+        <div class="two-col">
           <div class="form-group">
             <label class="label">Username</label>
-            <input id="registerUsername" type="text" required placeholder="your_username">
+            <input id="settingsUsername" type="text" placeholder="username">
+          </div>
+
+          <div class="form-group">
+            <label class="label">Avatar image</label>
+            <input id="settingsAvatarFile" type="file" accept="image/*">
+            <div class="avatar-preview" id="avatarPreview">No image</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label">Bio</label>
+          <textarea id="settingsBio" rows="4" placeholder="О себе"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" onclick="saveProfileSettings()"><i class="fas fa-save"></i> Сохранить профиль</button>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-bottom:18px">
+        <div class="section-title" style="margin-bottom:14px">Приватность</div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <label style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#12121d;border:1px solid var(--line);padding:14px;border-radius:16px">
+            <div>
+              <div style="font-weight:800">Публичный профиль</div>
+              <div class="hint">Если выключено — профиль скрыт для других</div>
+            </div>
+            <input id="settingsPublic" type="checkbox" style="width:18px;height:18px">
+          </label>
+
+          <label style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#12121d;border:1px solid var(--line);padding:14px;border-radius:16px">
+            <div>
+              <div style="font-weight:800">Показывать email</div>
+              <div class="hint">По умолчанию email скрыт, в том числе если вход через Google</div>
+            </div>
+            <input id="settingsShowEmail" type="checkbox" style="width:18px;height:18px">
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" onclick="savePrivacySettings()"><i class="fas fa-shield-halved"></i> Сохранить приватность</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="section-title" style="margin-bottom:14px">Смена пароля</div>
+        <div class="two-col">
+          <div class="form-group">
+            <label class="label">Новый пароль</label>
+            <input id="newPassword" type="password" placeholder="Минимум 8 символов">
           </div>
           <div class="form-group">
-            <label class="label">Email</label>
-            <input id="registerEmail" type="email" required placeholder="name@gmail.com">
+            <label class="label">Повторите пароль</label>
+            <input id="repeatPassword" type="password" placeholder="Повторите пароль">
           </div>
-          <div class="form-group">
-            <label class="label">Пароль</label>
-            <input id="registerPassword" type="password" required minlength="8" placeholder="Минимум 8 символов">
-          </div>
-          <button id="registerSubmitBtn" class="btn btn-primary btn-full" type="submit">
-            <i class="fas fa-user-plus"></i> Создать аккаунт
-          </button>
-          <div class="hint" style="margin-top:12px;text-align:center">
-            После регистрации нужно подтвердить email через письмо.
-          </div>
-        </form>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-outline" onclick="changePassword()"><i class="fas fa-key"></i> Изменить пароль</button>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+</main>
 
-  <!-- UPLOAD MODAL -->
-  <div id="uploadModal" class="modal">
-    <div class="modal-overlay" onclick="closeUploadModal()"></div>
-    <div class="modal-card modal-wide">
-      <div class="modal-head">
-        <div class="modal-title"><i class="fas fa-cloud-upload-alt"></i> Загрузить скрипт</div>
-        <button class="close-btn" onclick="closeUploadModal()"><i class="fas fa-xmark"></i></button>
+<section id="adminShell" class="admin-shell">
+  <div class="container">
+    <div class="admin-top">
+      <div>
+        <div class="page-title">Модерация</div>
+        <div class="page-desc">Управление скриптами пользователей</div>
       </div>
-      <div class="modal-body">
-        <form onsubmit="submitScript(event)">
-          <div class="panel" style="padding:16px;margin-bottom:16px;background:#101019">
-            <div style="font-size:14px;font-weight:800;margin-bottom:4px">Basic Information</div>
-            <div class="hint">Title, game link, preview & description</div>
-          </div>
+      <button class="btn btn-outline" onclick="hideAdmin()"><i class="fas fa-arrow-left"></i> Назад на сайт</button>
+    </div>
 
-          <div class="form-group">
-            <label class="label">Script Title *</label>
-            <input id="scriptTitle" type="text" required maxlength="80" placeholder="Например: Auto Farm, ESP, Infinite Jump">
-            <div class="hint">Не добавляй название игры в title, если оно уже есть ниже.</div>
-          </div>
+    <div class="admin-tabs">
+      <button class="chip active" onclick="setAdminTab('pending',this)">Pending <span id="pendingCountBadge" style="margin-left:6px;color:#ffd37a">0</span></button>
+      <button class="chip" onclick="setAdminTab('approved',this)">Approved</button>
+      <button class="chip" onclick="setAdminTab('rejected',this)">Rejected</button>
+      <button class="chip" onclick="setAdminTab('all',this)">All</button>
+    </div>
 
-          <div class="form-group">
-            <label class="label">Roblox Game Link or Place ID *</label>
-            <input id="scriptGameUrl" type="text" required placeholder="https://www.roblox.com/games/... или 123456789">
-            <div class="hint">Можно вставить полную ссылку на игру или просто Place ID.</div>
-          </div>
+    <div id="adminLoading" class="loading hidden">
+      <div class="spinner"></div>
+      <div>Загрузка модерации...</div>
+    </div>
 
-          <div class="two-col">
-            <div class="form-group">
-              <label class="label">Игра</label>
-              <select id="scriptGame">
-                <option value="Roblox">Roblox</option>
-                <option value="Universal">Universal</option>
-                <option value="FPS">FPS</option>
-                <option value="RPG">RPG</option>
-                <option value="Simulator">Simulator</option>
-                <option value="Другое">Другое</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="label">Категория</label>
-              <select id="scriptCategory">
-                <option value="GUI">GUI</option>
-                <option value="Auto Farm">Auto Farm</option>
-                <option value="ESP">ESP</option>
-                <option value="Movement">Movement</option>
-                <option value="Combat">Combat</option>
-                <option value="Utility">Utility</option>
-                <option value="Другое">Другое</option>
-              </select>
-            </div>
-          </div>
+    <div id="adminGrid" class="admin-grid"></div>
 
-          <div class="form-group">
-            <label class="label">Preview Image URL</label>
-            <input id="scriptImageUrl" type="text" placeholder="https://example.com/image.jpg">
-            <div class="hint">Ссылка на картинку превью. Если пусто — будет стандартная заглушка.</div>
-          </div>
-
-          <div class="form-group">
-            <label class="label">Описание *</label>
-            <textarea id="scriptDescription" required rows="5" minlength="10" placeholder="Опиши, что делает скрипт, как использовать, что умеет..."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label class="label">Код скрипта *</label>
-            <textarea id="scriptCode" required rows="11" placeholder="-- вставьте код сюда"></textarea>
-          </div>
-
-          <div class="form-actions">
-            <button type="button" class="btn btn-dark" onclick="closeUploadModal()">Отмена</button>
-            <button id="submitScriptBtn" type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Отправить</button>
-          </div>
-        </form>
-      </div>
+    <div id="adminEmpty" class="empty hidden">
+      <i class="fas fa-folder-open"></i>
+      <h3>Ничего не найдено</h3>
+      <p>В этой вкладке пока нет скриптов.</p>
     </div>
   </div>
+</section>
 
-  <!-- VIEW SCRIPT MODAL -->
-  <div id="viewModal" class="modal">
-    <div class="modal-overlay" onclick="closeViewModal()"></div>
-    <div class="modal-card modal-wide">
-      <div class="modal-head">
-        <div class="modal-title" id="viewTitle">Просмотр скрипта</div>
-        <button class="close-btn" onclick="closeViewModal()"><i class="fas fa-xmark"></i></button>
+<div id="authModal" class="modal">
+  <div class="modal-overlay" onclick="closeAuthModal()"></div>
+  <div class="modal-card">
+    <div class="modal-body" style="padding-top:26px">
+      <div class="auth-brand">
+        <div class="auth-icon"><i class="fas fa-bolt"></i></div>
+        <h2>EzScript</h2>
+        <p>Скрипт-хаб нового поколения</p>
       </div>
-      <div class="modal-body">
-        <div class="view-grid">
-          <div>
-            <div class="code-wrap">
-              <div class="code-head">
-                <span><i class="fas fa-code"></i> Код</span>
-                <button class="btn btn-dark btn-sm" onclick="copyViewedCode()"><i class="fas fa-copy"></i> Copy</button>
-              </div>
-              <pre><code id="viewCode"></code></pre>
-            </div>
-          </div>
-          <div>
-            <div class="info-list">
-              <div class="info-card">
-                <div class="info-label">Описание</div>
-                <div class="info-value" id="viewDescription"></div>
-              </div>
-              <div class="info-card">
-                <div class="info-label">Автор</div>
-                <div class="info-value" id="viewAuthor"></div>
-              </div>
-              <div class="info-card">
-                <div class="info-label">Игра</div>
-                <div class="info-value" id="viewGame"></div>
-              </div>
-              <div class="info-card">
-                <div class="info-label">Категория</div>
-                <div class="info-value" id="viewCategory"></div>
-              </div>
-              <div class="info-card">
-                <div class="info-label">Ссылка / Place ID</div>
-                <div class="info-value" id="viewGameUrl"></div>
-              </div>
-              <div class="info-card">
-                <div class="info-label">Статус</div>
-                <div class="info-value" id="viewStatus"></div>
-              </div>
-              <div class="info-card">
-                <div class="info-label">Статистика</div>
-                <div class="info-value" id="viewStats"></div>
-              </div>
-            </div>
 
-            <div id="viewAdminActions" class="form-actions hidden" style="margin-top:16px;justify-content:flex-start">
-              <button class="btn btn-success btn-sm" id="approveBtn"><i class="fas fa-check"></i> Approve</button>
-              <button class="btn btn-warning btn-sm" id="rejectBtn"><i class="fas fa-ban"></i> Reject</button>
-              <button class="btn btn-danger btn-sm" id="deleteBtn"><i class="fas fa-trash"></i> Delete</button>
+      <div class="auth-switch">
+        <button id="authTabLogin" class="active" onclick="switchAuthTab('login')">Войти</button>
+        <button id="authTabRegister" onclick="switchAuthTab('register')">Регистрация</button>
+      </div>
+
+      <button class="google-btn" onclick="signInWithGoogle()">
+        <i class="fab fa-google"></i>
+        Продолжить с Google
+      </button>
+
+      <div class="divider">или</div>
+
+      <form id="loginForm" onsubmit="handleEmailLogin(event)">
+        <div class="form-group">
+          <label class="label">Email</label>
+          <input id="loginEmail" type="email" required placeholder="name@gmail.com">
+        </div>
+        <div class="form-group">
+          <label class="label">Пароль</label>
+          <input id="loginPassword" type="password" required placeholder="••••••••">
+        </div>
+        <button id="loginSubmitBtn" class="btn btn-primary btn-full" type="submit">
+          <i class="fas fa-right-to-bracket"></i> Войти
+        </button>
+        <div class="form-actions" style="justify-content:center;margin-top:12px">
+          <button type="button" class="btn btn-dark btn-sm" onclick="resetPassword()">Забыли пароль?</button>
+        </div>
+      </form>
+
+      <form id="registerForm" class="hidden" onsubmit="handleEmailRegister(event)">
+        <div class="form-group">
+          <label class="label">Username</label>
+          <input id="registerUsername" type="text" required placeholder="your_username">
+        </div>
+        <div class="form-group">
+          <label class="label">Email</label>
+          <input id="registerEmail" type="email" required placeholder="name@gmail.com">
+        </div>
+        <div class="form-group">
+          <label class="label">Пароль</label>
+          <input id="registerPassword" type="password" required minlength="8" placeholder="Минимум 8 символов">
+        </div>
+        <button id="registerSubmitBtn" class="btn btn-primary btn-full" type="submit">
+          <i class="fas fa-user-plus"></i> Создать аккаунт
+        </button>
+        <div class="hint" style="margin-top:12px;text-align:center">
+          После регистрации нужно подтвердить email через письмо.
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="uploadModal" class="modal">
+  <div class="modal-overlay" onclick="closeUploadModal()"></div>
+  <div class="modal-card modal-wide">
+    <div class="modal-head">
+      <div class="modal-title"><i class="fas fa-cloud-upload-alt"></i> Загрузить скрипт</div>
+      <button class="close-btn" onclick="closeUploadModal()"><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <form onsubmit="submitScript(event)">
+        <div class="panel" style="padding:16px;margin-bottom:16px;background:#101019">
+          <div style="font-size:14px;font-weight:800;margin-bottom:4px">Basic Information</div>
+          <div class="hint">Title, game link, preview & description</div>
+        </div>
+
+        <div class="form-group">
+          <label class="label">Script Title *</label>
+          <input id="scriptTitle" type="text" required maxlength="80" placeholder="Например: Auto Farm, ESP, Infinite Jump">
+        </div>
+
+        <div class="form-group">
+          <label class="label">Roblox Game Link or Place ID *</label>
+          <input id="scriptGameUrl" type="text" required placeholder="https://www.roblox.com/games/... или 123456789">
+          <div class="hint">Можно вставить полную ссылку на игру или просто Place ID.</div>
+        </div>
+
+        <div class="two-col">
+          <div class="form-group">
+            <label class="label">Игра</label>
+            <select id="scriptGame">
+              <option value="Roblox">Roblox</option>
+              <option value="Universal">Universal</option>
+              <option value="FPS">FPS</option>
+              <option value="RPG">RPG</option>
+              <option value="Simulator">Simulator</option>
+              <option value="Другое">Другое</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="label">Категория</label>
+            <select id="scriptCategory">
+              <option value="GUI">GUI</option>
+              <option value="Auto Farm">Auto Farm</option>
+              <option value="ESP">ESP</option>
+              <option value="Movement">Movement</option>
+              <option value="Combat">Combat</option>
+              <option value="Utility">Utility</option>
+              <option value="Другое">Другое</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label">Preview image</label>
+          <div class="file-box">
+            <input id="scriptImageFile" type="file" accept="image/*">
+            <div class="hint">Можно прикрепить картинку через проводник</div>
+            <div class="file-preview" id="scriptImagePreview">No image selected</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label">Описание *</label>
+          <textarea id="scriptDescription" required rows="5" minlength="10" placeholder="Опиши, что делает скрипт, как использовать, что умеет..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="label">Код скрипта *</label>
+          <textarea id="scriptCode" required rows="11" placeholder="-- вставьте код сюда"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-dark" onclick="closeUploadModal()">Отмена</button>
+          <button id="submitScriptBtn" type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Отправить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="viewModal" class="modal">
+  <div class="modal-overlay" onclick="closeViewModal()"></div>
+  <div class="modal-card modal-wide">
+    <div class="modal-head">
+      <div class="modal-title" id="viewTitle">Просмотр скрипта</div>
+      <button class="close-btn" onclick="closeViewModal()"><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="view-grid">
+        <div>
+          <div class="code-wrap">
+            <div class="code-head">
+              <span><i class="fas fa-code"></i> Код</span>
+              <button class="btn btn-dark btn-sm" onclick="copyViewedCode()"><i class="fas fa-copy"></i> Copy</button>
             </div>
+            <pre><code id="viewCode"></code></pre>
+          </div>
+        </div>
+        <div>
+          <div class="info-list">
+            <div class="info-card"><div class="info-label">Описание</div><div class="info-value" id="viewDescription"></div></div>
+            <div class="info-card"><div class="info-label">Автор</div><div class="info-value" id="viewAuthor"></div></div>
+            <div class="info-card"><div class="info-label">Игра</div><div class="info-value" id="viewGame"></div></div>
+            <div class="info-card"><div class="info-label">Категория</div><div class="info-value" id="viewCategory"></div></div>
+            <div class="info-card"><div class="info-label">Ссылка / Place ID</div><div class="info-value" id="viewGameUrl"></div></div>
+            <div class="info-card"><div class="info-label">Статус</div><div class="info-value" id="viewStatus"></div></div>
+            <div class="info-card"><div class="info-label">Статистика</div><div class="info-value" id="viewStats"></div></div>
+          </div>
+
+          <div id="viewAdminActions" class="form-actions hidden" style="margin-top:16px;justify-content:flex-start">
+            <button class="btn btn-success btn-sm" id="approveBtn"><i class="fas fa-check"></i> Approve</button>
+            <button class="btn btn-warning btn-sm" id="rejectBtn"><i class="fas fa-ban"></i> Reject</button>
+            <button class="btn btn-danger btn-sm" id="deleteBtn"><i class="fas fa-trash"></i> Delete</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="toast-box" id="toastBox"></div>
+<div class="toast-box" id="toastBox"></div>
 
-  <script>
-    // =========================
-    // CONFIG
-    // =========================
-    const SUPABASE_URL = 'https://jtknimffjdkzibeqvfck.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0a25pbWZmamRremliZXF2ZmNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3MDU0NTgsImV4cCI6MjA5MDI4MTQ1OH0.wKWaANUyOnk0oCS0WnhLBDT8xiab6D4U6HiVEEsslI4';
-    const ADMIN_EMAIL = 'samowitzschlessman@gmail.com';
+<script>
+  const SUPABASE_URL = 'https://jtknimffjdkzibeqvfck.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0a25pbWZmamRremliZXF2ZmNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3MDU0NTgsImV4cCI6MjA5MDI4MTQ1OH0.wKWaANUyOnk0oCS0WnhLBDT8xiab6D4U6HiVEEsslI4';
+  const ADMIN_EMAIL = 'intel_index@gmail.com';
 
-    const { createClient } = supabase;
-    const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const { createClient } = supabase;
+  const db = createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true
+    }
+  });
 
-    // =========================
-    // STATE
-    // =========================
-    let currentUser = null;
-    let currentProfile = null;
-    let isAdmin = false;
-    let publicScripts = [];
-    let myScripts = [];
-    let adminScripts = [];
-    let selectedSort = 'newest';
-    let selectedFilter = 'all';
-    let searchQuery = '';
-    let authTab = 'login';
-    let currentViewedScript = null;
-    let currentAdminTab = 'pending';
-    let likedIds = JSON.parse(localStorage.getItem('ez_likes') || '[]');
+  let currentUser = null;
+  let currentProfile = null;
+  let isAdmin = false;
+  let publicScripts = [];
+  let myScripts = [];
+  let adminScripts = [];
+  let selectedSort = 'newest';
+  let selectedFilter = 'all';
+  let searchQuery = '';
+  let currentViewedScript = null;
+  let currentAdminTab = 'pending';
 
-    // =========================
-    // INIT
-    // =========================
-    window.addEventListener('DOMContentLoaded', async () => {
-      bindAuthState();
-      await restoreSession();
-      await loadPublicScripts();
+  window.addEventListener('DOMContentLoaded', async () => {
+    setupPreviewInputs();
+    bindAuthState();
+    await restoreSessionSafe();
+    await loadPublicScripts();
+  });
+
+  function setupPreviewInputs() {
+    const scriptInput = document.getElementById('scriptImageFile');
+    const scriptPreview = document.getElementById('scriptImagePreview');
+    scriptInput.addEventListener('change', () => {
+      const file = scriptInput.files?.[0];
+      if (!file) {
+        scriptPreview.innerHTML = 'No image selected';
+        return;
+      }
+      const url = URL.createObjectURL(file);
+      scriptPreview.innerHTML = `<img src="${url}" alt="preview">`;
     });
 
-    function bindAuthState() {
-      db.auth.onAuthStateChange(async (event, session) => {
-        currentUser = session?.user || null;
-        isAdmin = !!(currentUser && currentUser.email === ADMIN_EMAIL);
+    const avatarInput = document.getElementById('settingsAvatarFile');
+    const avatarPreview = document.getElementById('avatarPreview');
+    avatarInput.addEventListener('change', () => {
+      const file = avatarInput.files?.[0];
+      if (!file) {
+        avatarPreview.innerHTML = 'No image';
+        return;
+      }
+      const url = URL.createObjectURL(file);
+      avatarPreview.innerHTML = `<img src="${url}" alt="avatar">`;
+    });
+  }
 
-        if (currentUser) {
-          await ensureProfile();
-          updateUserUI();
-          if (location.hash === '#auth') history.replaceState(null, '', location.pathname);
-        } else {
-          currentProfile = null;
-          updateUserUI();
-        }
-      });
-    }
+  function bindAuthState() {
+    db.auth.onAuthStateChange(async (_event, session) => {
+      currentUser = session?.user || null;
+      isAdmin = !!(currentUser && currentUser.email === ADMIN_EMAIL);
 
-    async function restoreSession() {
-      const { data } = await db.auth.getSession();
+      if (currentUser) {
+        await ensureProfile();
+      } else {
+        currentProfile = null;
+      }
+
+      updateUserUI();
+    });
+  }
+
+  async function restoreSessionSafe() {
+    try {
+      const { data, error } = await db.auth.getSession();
+      if (error) throw error;
       currentUser = data?.session?.user || null;
       isAdmin = !!(currentUser && currentUser.email === ADMIN_EMAIL);
       if (currentUser) await ensureProfile();
       updateUserUI();
+    } catch (e) {
+      console.error('restoreSessionSafe', e);
     }
+  }
 
-    // =========================
-    // UI NAV / SCREENS
-    // =========================
-    function showScreen(screen) {
-      document.querySelectorAll('.screen').forEach(el => el.classList.add('hidden'));
-      document.getElementById('screen-' + screen)?.classList.remove('hidden');
-      document.getElementById('appShell').classList.remove('hidden');
-      document.getElementById('adminShell').classList.remove('active');
+  function showScreen(screen) {
+    document.querySelectorAll('.screen').forEach(el => el.classList.add('hidden'));
+    document.getElementById('screen-' + screen)?.classList.remove('hidden');
+    document.getElementById('appShell').classList.remove('hidden');
+    document.getElementById('adminShell').classList.remove('active');
 
-      document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-      if (screen === 'home') document.querySelectorAll('.nav-link')[0]?.classList.add('active');
-      if (screen === 'my-scripts') document.querySelectorAll('.nav-link')[1]?.classList.add('active');
-      if (screen === 'settings') document.querySelectorAll('.nav-link')[2]?.classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+    if (screen === 'home') document.querySelectorAll('.nav-link')[0]?.classList.add('active');
+    if (screen === 'my-scripts') document.querySelectorAll('.nav-link')[1]?.classList.add('active');
+    if (screen === 'settings') document.querySelectorAll('.nav-link')[2]?.classList.add('active');
 
-      if (screen === 'profile') renderProfileScreen();
-      if (screen === 'my-scripts') loadMyScripts();
-      if (screen === 'settings') fillSettings();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    if (screen === 'profile') renderProfileScreen();
+    if (screen === 'my-scripts') loadMyScripts();
+    if (screen === 'settings') fillSettings();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-    function showAdmin() {
-      if (!isAdmin) return toast('Нет доступа к модерации', 'error');
-      document.getElementById('appShell').classList.add('hidden');
-      document.getElementById('adminShell').classList.add('active');
-      loadAdminScripts();
-    }
+  function showAdmin() {
+    if (!isAdmin) return toast('Нет доступа к модерации', 'error');
+    document.getElementById('appShell').classList.add('hidden');
+    document.getElementById('adminShell').classList.add('active');
+    loadAdminScripts();
+  }
 
-    function hideAdmin() {
-      document.getElementById('adminShell').classList.remove('active');
-      document.getElementById('appShell').classList.remove('hidden');
-      showScreen('home');
-    }
+  function hideAdmin() {
+    document.getElementById('adminShell').classList.remove('active');
+    document.getElementById('appShell').classList.remove('hidden');
+    showScreen('home');
+  }
 
-    // =========================
-    // USER UI
-    // =========================
-    function updateUserUI() {
-      const loginBtnTop = document.getElementById('loginBtnTop');
-      const userMenuWrap = document.getElementById('userMenuWrap');
-      const adminMenuBtn = document.getElementById('adminMenuBtn');
+  function updateUserUI() {
+    const loginBtnTop = document.getElementById('loginBtnTop');
+    const userMenuWrap = document.getElementById('userMenuWrap');
+    const adminMenuBtn = document.getElementById('adminMenuBtn');
 
-      if (currentUser) {
-        loginBtnTop.classList.add('hidden');
-        userMenuWrap.classList.remove('hidden');
-        adminMenuBtn.classList.toggle('hidden', !isAdmin);
+    if (currentUser) {
+      loginBtnTop.classList.add('hidden');
+      userMenuWrap.classList.remove('hidden');
+      adminMenuBtn.classList.toggle('hidden', !isAdmin);
 
-        const avatar = document.getElementById('avatarBtn');
-        const username = currentProfile?.username || currentUser.email.split('@')[0];
-        const avatarUrl = currentProfile?.avatar_url || currentUser.user_metadata?.avatar_url || '';
+      const avatar = document.getElementById('avatarBtn');
+      const username = currentProfile?.username || currentUser.email.split('@')[0];
+      const avatarUrl = currentProfile?.avatar_url || currentUser.user_metadata?.avatar_url || '';
 
-        if (avatarUrl) {
-          avatar.innerHTML = `<img src="${escapeHtml(avatarUrl)}" alt="avatar">`;
-        } else {
-          avatar.textContent = username.charAt(0).toUpperCase();
-        }
-
-        document.getElementById('dropUserName').textContent = username;
-        document.getElementById('dropUserEmail').textContent = currentProfile?.show_email ? currentUser.email : 'Email hidden';
+      if (avatarUrl) {
+        avatar.innerHTML = `<img src="${escapeHtml(avatarUrl)}" alt="avatar">`;
       } else {
-        loginBtnTop.classList.remove('hidden');
-        userMenuWrap.classList.add('hidden');
-      }
-    }
-
-    function toggleUserDropdown() {
-      document.getElementById('userDropdown').classList.toggle('open');
-    }
-
-    function closeUserDropdown() {
-      document.getElementById('userDropdown').classList.remove('open');
-    }
-
-    document.addEventListener('click', (e) => {
-      const wrap = document.getElementById('userMenuWrap');
-      if (!wrap.contains(e.target)) closeUserDropdown();
-    });
-
-    // =========================
-    // AUTH MODAL
-    // =========================
-    function openAuthModal(tab = 'login') {
-      switchAuthTab(tab);
-      document.getElementById('authModal').classList.add('open');
-      location.hash = 'auth';
-    }
-
-    function closeAuthModal() {
-      document.getElementById('authModal').classList.remove('open');
-      if (location.hash === '#auth') history.replaceState(null, '', location.pathname);
-    }
-
-    function switchAuthTab(tab) {
-      authTab = tab;
-      document.getElementById('authTabLogin').classList.toggle('active', tab === 'login');
-      document.getElementById('authTabRegister').classList.toggle('active', tab === 'register');
-      document.getElementById('loginForm').classList.toggle('hidden', tab !== 'login');
-      document.getElementById('registerForm').classList.toggle('hidden', tab !== 'register');
-    }
-
-    async function signInWithGoogle() {
-      try {
-        const { error } = await db.auth.signInWithOAuth({
-          provider: 'google',
-          options: {
-            redirectTo: window.location.origin
-          }
-        });
-        if (error) throw error;
-      } catch (e) {
-        toast('Ошибка входа через Google: ' + e.message, 'error');
-      }
-    }
-
-    async function handleEmailRegister(e) {
-      e.preventDefault();
-      const btn = document.getElementById('registerSubmitBtn');
-      const username = document.getElementById('registerUsername').value.trim();
-      const email = document.getElementById('registerEmail').value.trim();
-      const password = document.getElementById('registerPassword').value;
-
-      if (!/^[a-zA-Z0-9_]{3,30}$/.test(username)) {
-        return toast('Username: только латиница, цифры и _ (3-30 символов)', 'error');
+        avatar.textContent = username.charAt(0).toUpperCase();
       }
 
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Создание...';
+      document.getElementById('dropUserName').textContent = username;
+      document.getElementById('dropUserEmail').textContent = currentProfile?.show_email ? currentUser.email : 'Email hidden';
+    } else {
+      loginBtnTop.classList.remove('hidden');
+      userMenuWrap.classList.add('hidden');
+    }
+  }
 
-      try {
-        const { data, error } = await db.auth.signUp({
-          email,
-          password,
-          options: {
-            emailRedirectTo: window.location.origin,
-            data: { username }
-          }
-        });
-        if (error) throw error;
+  function toggleUserDropdown() {
+    document.getElementById('userDropdown').classList.toggle('open');
+  }
 
-        if (data.user) {
-          await db.from('profiles').upsert({
-            id: data.user.id,
-            email,
-            username,
-            bio: '',
-            avatar_url: '',
-            is_public: true,
-            show_email: false
-          });
+  function closeUserDropdown() {
+    document.getElementById('userDropdown').classList.remove('open');
+  }
+
+  document.addEventListener('click', (e) => {
+    const wrap = document.getElementById('userMenuWrap');
+    if (wrap && !wrap.contains(e.target)) closeUserDropdown();
+  });
+
+  function openAuthModal(tab = 'login') {
+    switchAuthTab(tab);
+    document.getElementById('authModal').classList.add('open');
+  }
+  function closeAuthModal() {
+    document.getElementById('authModal').classList.remove('open');
+  }
+  function switchAuthTab(tab) {
+    document.getElementById('authTabLogin').classList.toggle('active', tab === 'login');
+    document.getElementById('authTabRegister').classList.toggle('active', tab === 'register');
+    document.getElementById('loginForm').classList.toggle('hidden', tab !== 'login');
+    document.getElementById('registerForm').classList.toggle('hidden', tab !== 'register');
+  }
+
+  async function signInWithGoogle() {
+    try {
+      const { error } = await db.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: window.location.origin }
+      });
+      if (error) throw error;
+    } catch (e) {
+      toast('Ошибка входа через Google: ' + e.message, 'error');
+    }
+  }
+
+  async function handleEmailRegister(e) {
+    e.preventDefault();
+    const btn = document.getElementById('registerSubmitBtn');
+    const username = document.getElementById('registerUsername').value.trim();
+    const email = document.getElementById('registerEmail').value.trim();
+    const password = document.getElementById('registerPassword').value;
+
+    if (!/^[a-zA-Z0-9_]{3,30}$/.test(username)) {
+      return toast('Username: только латиница, цифры и _ (3-30 символов)', 'error');
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Создание...';
+
+    try {
+      const { data, error } = await db.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: window.location.origin,
+          data: { username }
         }
+      });
+      if (error) throw error;
 
-        closeAuthModal();
-        toast('Регистрация успешна. Подтверди email через письмо 📧', 'success');
-      } catch (e) {
-        toast(e.message.includes('already registered') ? 'Этот email уже зарегистрирован' : e.message, 'error');
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-user-plus"></i> Создать аккаунт';
-      }
-    }
-
-    async function handleEmailLogin(e) {
-      e.preventDefault();
-      const btn = document.getElementById('loginSubmitBtn');
-      const email = document.getElementById('loginEmail').value.trim();
-      const password = document.getElementById('loginPassword').value;
-
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Вход...';
-
-      try {
-        const { data, error } = await db.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-
-        if (!data?.user) throw new Error('Пользователь не найден');
-
-        closeAuthModal();
-        toast('Вход выполнен ✅', 'success');
-      } catch (e) {
-        let msg = e.message;
-        if (msg === 'Invalid login credentials') msg = 'Неверный email или пароль';
-        if (msg.toLowerCase().includes('email not confirmed')) msg = 'Сначала подтверди email через письмо';
-        toast(msg, 'error');
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-right-to-bracket"></i> Войти';
-      }
-    }
-
-    async function resetPassword() {
-      const email = document.getElementById('loginEmail').value.trim();
-      if (!email) return toast('Сначала введи email', 'info');
-
-      try {
-        const { error } = await db.auth.resetPasswordForEmail(email, {
-          redirectTo: window.location.origin
-        });
-        if (error) throw error;
-        toast('Письмо для сброса пароля отправлено 📧', 'success');
-      } catch (e) {
-        toast(e.message, 'error');
-      }
-    }
-
-    async function logoutUser() {
-      await db.auth.signOut();
-      currentUser = null;
-      currentProfile = null;
-      isAdmin = false;
-      updateUserUI();
-      showScreen('home');
-      toast('Вы вышли из аккаунта', 'info');
-    }
-
-    // =========================
-    // PROFILE
-    // =========================
-    async function ensureProfile() {
-      if (!currentUser) return;
-
-      const { data, error } = await db.from('profiles').select('*').eq('id', currentUser.id).maybeSingle();
-
-      if (error) {
-        console.error(error);
-        return;
-      }
-
-      if (!data) {
-        const username =
-          currentUser.user_metadata?.username ||
-          currentUser.user_metadata?.full_name ||
-          currentUser.email.split('@')[0];
-
-        const avatar_url = currentUser.user_metadata?.avatar_url || '';
-
-        const { error: insertErr } = await db.from('profiles').insert({
-          id: currentUser.id,
-          email: currentUser.email,
+      if (data.user) {
+        await db.from('profiles').upsert({
+          id: data.user.id,
+          email,
           username,
-          avatar_url,
           bio: '',
+          avatar_url: '',
           is_public: true,
           show_email: false
         });
-
-        if (insertErr) {
-          console.error(insertErr);
-        }
-
-        const { data: newProfile } = await db.from('profiles').select('*').eq('id', currentUser.id).maybeSingle();
-        currentProfile = newProfile;
-      } else {
-        currentProfile = data;
-      }
-    }
-
-    function renderProfileScreen() {
-      if (!currentUser) return showScreen('home');
-
-      const username = currentProfile?.username || currentUser.email.split('@')[0];
-      const avatarUrl = currentProfile?.avatar_url || currentUser.user_metadata?.avatar_url || '';
-      const profileAvatar = document.getElementById('profileAvatar');
-
-      if (avatarUrl) {
-        profileAvatar.innerHTML = `<img src="${escapeHtml(avatarUrl)}" alt="avatar">`;
-      } else {
-        profileAvatar.textContent = username.charAt(0).toUpperCase();
       }
 
-      document.getElementById('profileTitle').textContent = username;
-      document.getElementById('profileSubtitle').textContent = isAdmin ? 'Администратор сайта' : 'Пользователь EzScript';
-      document.getElementById('profileUsername').textContent = username;
-      document.getElementById('profileEmail').textContent = currentProfile?.show_email ? currentUser.email : 'Hidden';
-      document.getElementById('profileBio').textContent = currentProfile?.bio || 'Нет описания';
-      document.getElementById('profileType').textContent = isAdmin ? 'Admin' : 'User';
+      closeAuthModal();
+      toast('Регистрация успешна. Подтверди email через письмо 📧', 'success');
+    } catch (e) {
+      toast(e.message.includes('already registered') ? 'Этот email уже зарегистрирован' : e.message, 'error');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-user-plus"></i> Создать аккаунт';
+    }
+  }
 
-      renderProfileScripts();
+  async function handleEmailLogin(e) {
+    e.preventDefault();
+    const btn = document.getElementById('loginSubmitBtn');
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Вход...';
+
+    try {
+      const { data, error } = await db.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      if (!data?.user) throw new Error('Пользователь не найден');
+
+      closeAuthModal();
+      toast('Вход выполнен ✅', 'success');
+    } catch (e) {
+      let msg = e.message;
+      if (msg === 'Invalid login credentials') msg = 'Неверный email или пароль';
+      if (msg.toLowerCase().includes('email not confirmed')) msg = 'Сначала подтверди email через письмо';
+      toast(msg, 'error');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-right-to-bracket"></i> Войти';
+    }
+  }
+
+  async function resetPassword() {
+    const email = document.getElementById('loginEmail').value.trim();
+    if (!email) return toast('Сначала введи email', 'info');
+
+    try {
+      const { error } = await db.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin
+      });
+      if (error) throw error;
+      toast('Письмо для сброса пароля отправлено 📧', 'success');
+    } catch (e) {
+      toast(e.message, 'error');
+    }
+  }
+
+  async function logoutUser() {
+    await db.auth.signOut();
+    currentUser = null;
+    currentProfile = null;
+    isAdmin = false;
+    updateUserUI();
+    showScreen('home');
+    toast('Вы вышли из аккаунта', 'info');
+  }
+
+  async function ensureProfile() {
+    if (!currentUser) return;
+
+    const { data, error } = await db.from('profiles').select('*').eq('id', currentUser.id).maybeSingle();
+    if (error) {
+      console.error(error);
+      return;
     }
 
-    async function renderProfileScripts() {
-      if (!currentUser) return;
-      const { data, error } = await db.from('scripts').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false });
-      if (error) return console.error(error);
+    if (!data) {
+      const username =
+        currentUser.user_metadata?.username ||
+        currentUser.user_metadata?.full_name ||
+        currentUser.email.split('@')[0];
+
+      const avatar_url = currentUser.user_metadata?.avatar_url || '';
+
+      const { error: insertErr } = await db.from('profiles').insert({
+        id: currentUser.id,
+        email: currentUser.email,
+        username,
+        avatar_url,
+        bio: '',
+        is_public: true,
+        show_email: false
+      });
+      if (insertErr) console.error(insertErr);
+
+      const { data: newProfile } = await db.from('profiles').select('*').eq('id', currentUser.id).maybeSingle();
+      currentProfile = newProfile;
+    } else {
+      currentProfile = data;
+    }
+  }
+
+  function renderProfileScreen() {
+    if (!currentUser) return showScreen('home');
+
+    const username = currentProfile?.username || currentUser.email.split('@')[0];
+    const avatarUrl = currentProfile?.avatar_url || currentUser.user_metadata?.avatar_url || '';
+    const profileAvatar = document.getElementById('profileAvatar');
+
+    if (avatarUrl) {
+      profileAvatar.innerHTML = `<img src="${escapeHtml(avatarUrl)}" alt="avatar">`;
+    } else {
+      profileAvatar.textContent = username.charAt(0).toUpperCase();
+    }
+
+    document.getElementById('profileTitle').textContent = username;
+    document.getElementById('profileSubtitle').textContent = isAdmin ? 'Администратор сайта' : 'Пользователь EzScript';
+    document.getElementById('profileUsername').textContent = username;
+    document.getElementById('profileEmail').textContent = currentProfile?.show_email ? currentUser.email : 'Hidden';
+    document.getElementById('profileBio').textContent = currentProfile?.bio || 'Нет описания';
+    document.getElementById('profileType').textContent = isAdmin ? 'Admin' : 'User';
+
+    renderProfileScripts();
+  }
+
+  async function renderProfileScripts() {
+    if (!currentUser) return;
+    const { data, error } = await db.from('scripts').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false });
+    if (error) return console.error(error);
+
+    myScripts = data || [];
+    const grid = document.getElementById('profileScriptsGrid');
+
+    if (!myScripts.length) {
+      grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><i class="fas fa-box-open"></i><h3>Пока пусто</h3><p>У тебя пока нет загруженных скриптов.</p></div>`;
+      return;
+    }
+
+    grid.innerHTML = myScripts.map((s, i) => scriptCardHtml(s, true, i)).join('');
+  }
+
+  function fillSettings() {
+    if (!currentUser || !currentProfile) return showScreen('home');
+
+    document.getElementById('settingsUsername').value = currentProfile.username || '';
+    document.getElementById('settingsBio').value = currentProfile.bio || '';
+    document.getElementById('settingsPublic').checked = currentProfile.is_public ?? true;
+    document.getElementById('settingsShowEmail').checked = currentProfile.show_email ?? false;
+
+    const avatarPreview = document.getElementById('avatarPreview');
+    const avatarUrl = currentProfile.avatar_url || currentUser.user_metadata?.avatar_url || '';
+    if (avatarUrl) avatarPreview.innerHTML = `<img src="${escapeHtml(avatarUrl)}" alt="avatar">`;
+    else avatarPreview.innerHTML = 'No image';
+  }
+
+  async function uploadFile(bucket, file, folder = '') {
+    if (!file || !currentUser) return '';
+    const ext = file.name.split('.').pop();
+    const path = `${folder ? folder + '/' : ''}${currentUser.id}_${Date.now()}.${ext}`;
+
+    const { error } = await db.storage.from(bucket).upload(path, file, {
+      cacheControl: '3600',
+      upsert: true
+    });
+    if (error) throw error;
+
+    const { data } = db.storage.from(bucket).getPublicUrl(path);
+    return data.publicUrl;
+  }
+
+  async function saveProfileSettings() {
+    if (!currentUser) return;
+    const username = document.getElementById('settingsUsername').value.trim();
+    const bio = document.getElementById('settingsBio').value.trim();
+    const avatarFile = document.getElementById('settingsAvatarFile').files?.[0];
+
+    if (!/^[a-zA-Z0-9_]{3,30}$/.test(username)) {
+      return toast('Username: только латиница, цифры и _ (3-30 символов)', 'error');
+    }
+
+    try {
+      let avatar_url = currentProfile?.avatar_url || '';
+      if (avatarFile) {
+        avatar_url = await uploadFile('avatars', avatarFile, 'user-avatars');
+      }
+
+      const { error } = await db.from('profiles').update({
+        username,
+        bio,
+        avatar_url
+      }).eq('id', currentUser.id);
+
+      if (error) throw error;
+
+      await ensureProfile();
+      updateUserUI();
+      renderProfileScreen();
+      fillSettings();
+      toast('Профиль сохранён ✅', 'success');
+    } catch (e) {
+      toast(e.message.includes('duplicate') ? 'Такой username уже занят' : e.message, 'error');
+    }
+  }
+
+  async function savePrivacySettings() {
+    if (!currentUser) return;
+    const is_public = document.getElementById('settingsPublic').checked;
+    const show_email = document.getElementById('settingsShowEmail').checked;
+
+    try {
+      const { error } = await db.from('profiles').update({
+        is_public,
+        show_email
+      }).eq('id', currentUser.id);
+
+      if (error) throw error;
+
+      await ensureProfile();
+      updateUserUI();
+      renderProfileScreen();
+      toast('Приватность сохранена ✅', 'success');
+    } catch (e) {
+      toast(e.message, 'error');
+    }
+  }
+
+  async function changePassword() {
+    const p1 = document.getElementById('newPassword').value;
+    const p2 = document.getElementById('repeatPassword').value;
+
+    if (p1.length < 8) return toast('Пароль должен быть минимум 8 символов', 'error');
+    if (p1 !== p2) return toast('Пароли не совпадают', 'error');
+
+    try {
+      const { error } = await db.auth.updateUser({ password: p1 });
+      if (error) throw error;
+      document.getElementById('newPassword').value = '';
+      document.getElementById('repeatPassword').value = '';
+      toast('Пароль изменён ✅', 'success');
+    } catch (e) {
+      toast(e.message, 'error');
+    }
+  }
+
+  async function loadPublicScripts() {
+    document.getElementById('publicLoading').classList.remove('hidden');
+    document.getElementById('publicGrid').classList.add('hidden');
+    document.getElementById('publicEmpty').classList.add('hidden');
+
+    try {
+      const { data, error } = await db.from('scripts').select('*').eq('status', 'approved');
+      if (error) throw error;
+      publicScripts = data || [];
+      renderPublicScripts();
+    } catch (e) {
+      toast('Ошибка загрузки скриптов: ' + e.message, 'error');
+    } finally {
+      document.getElementById('publicLoading').classList.add('hidden');
+    }
+  }
+
+  function handleSearchInput() {
+    searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+    renderPublicScripts();
+  }
+
+  function setFilter(filter, el) {
+    selectedFilter = filter;
+    document.querySelectorAll('.filters .chip').forEach(ch => ch.classList.remove('active'));
+    el.classList.add('active');
+    renderPublicScripts();
+  }
+
+  function setSort(value) {
+    selectedSort = value;
+    renderPublicScripts();
+  }
+
+  function getFilteredSortedScripts(source) {
+    let arr = [...source];
+
+    if (selectedFilter !== 'all') {
+      arr = arr.filter(s => (s.game || '').toLowerCase() === selectedFilter.toLowerCase());
+    }
+
+    if (searchQuery) {
+      arr = arr.filter(s =>
+        (s.title || '').toLowerCase().includes(searchQuery) ||
+        (s.description || '').toLowerCase().includes(searchQuery) ||
+        (s.author || '').toLowerCase().includes(searchQuery) ||
+        (s.game || '').toLowerCase().includes(searchQuery) ||
+        (s.category || '').toLowerCase().includes(searchQuery)
+      );
+    }
+
+    if (selectedSort === 'newest') arr.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
+    if (selectedSort === 'oldest') arr.sort((a,b) => new Date(a.created_at) - new Date(b.created_at));
+    if (selectedSort === 'views') arr.sort((a,b) => (b.views||0) - (a.views||0));
+    if (selectedSort === 'likes') arr.sort((a,b) => (b.likes||0) - (a.likes||0));
+
+    return arr;
+  }
+
+  function renderPublicScripts() {
+    const grid = document.getElementById('publicGrid');
+    const empty = document.getElementById('publicEmpty');
+    const list = getFilteredSortedScripts(publicScripts);
+    document.getElementById('publicCount').textContent = list.length;
+
+    if (!list.length) {
+      grid.classList.add('hidden');
+      empty.classList.remove('hidden');
+      return;
+    }
+
+    empty.classList.add('hidden');
+    grid.classList.remove('hidden');
+    grid.innerHTML = list.map((s, i) => scriptCardHtml(s, false, i)).join('');
+  }
+
+  async function loadMyScripts() {
+    if (!currentUser) {
+      toast('Сначала войди в аккаунт', 'info');
+      return showScreen('home');
+    }
+
+    document.getElementById('myScriptsLoading').classList.remove('hidden');
+    document.getElementById('myScriptsGrid').innerHTML = '';
+    document.getElementById('myScriptsEmpty').classList.add('hidden');
+
+    try {
+      const { data, error } = await db.from('scripts').select('*').eq('user_id', currentUser.id);
+      if (error) throw error;
 
       myScripts = data || [];
-      const grid = document.getElementById('profileScriptsGrid');
-
-      if (!myScripts.length) {
-        grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><i class="fas fa-box-open"></i><h3>Пока пусто</h3><p>У тебя пока нет загруженных скриптов.</p></div>`;
-        return;
-      }
-
-      grid.innerHTML = myScripts.map((s, i) => scriptCardHtml(s, true, i)).join('');
-    }
-
-    // =========================
-    // SETTINGS
-    // =========================
-    function fillSettings() {
-      if (!currentUser || !currentProfile) return showScreen('home');
-
-      document.getElementById('settingsUsername').value = currentProfile.username || '';
-      document.getElementById('settingsAvatar').value = currentProfile.avatar_url || '';
-      document.getElementById('settingsBio').value = currentProfile.bio || '';
-      document.getElementById('settingsPublic').checked = currentProfile.is_public ?? true;
-      document.getElementById('settingsShowEmail').checked = currentProfile.show_email ?? false;
-    }
-
-    async function saveProfileSettings() {
-      if (!currentUser) return;
-      const username = document.getElementById('settingsUsername').value.trim();
-      const avatar_url = document.getElementById('settingsAvatar').value.trim();
-      const bio = document.getElementById('settingsBio').value.trim();
-
-      if (!/^[a-zA-Z0-9_]{3,30}$/.test(username)) {
-        return toast('Username: только латиница, цифры и _ (3-30 символов)', 'error');
-      }
-
-      try {
-        const { error } = await db.from('profiles').update({
-          username,
-          avatar_url,
-          bio
-        }).eq('id', currentUser.id);
-
-        if (error) throw error;
-
-        await ensureProfile();
-        updateUserUI();
-        renderProfileScreen();
-        toast('Профиль сохранён ✅', 'success');
-      } catch (e) {
-        toast(e.message.includes('duplicate') ? 'Такой username уже занят' : e.message, 'error');
-      }
-    }
-
-    async function savePrivacySettings() {
-      if (!currentUser) return;
-      const is_public = document.getElementById('settingsPublic').checked;
-      const show_email = document.getElementById('settingsShowEmail').checked;
-
-      try {
-        const { error } = await db.from('profiles').update({
-          is_public,
-          show_email
-        }).eq('id', currentUser.id);
-
-        if (error) throw error;
-
-        await ensureProfile();
-        updateUserUI();
-        renderProfileScreen();
-        toast('Приватность сохранена ✅', 'success');
-      } catch (e) {
-        toast(e.message, 'error');
-      }
-    }
-
-    async function changePassword() {
-      const p1 = document.getElementById('newPassword').value;
-      const p2 = document.getElementById('repeatPassword').value;
-
-      if (p1.length < 8) return toast('Пароль должен быть минимум 8 символов', 'error');
-      if (p1 !== p2) return toast('Пароли не совпадают', 'error');
-
-      try {
-        const { error } = await db.auth.updateUser({ password: p1 });
-        if (error) throw error;
-        document.getElementById('newPassword').value = '';
-        document.getElementById('repeatPassword').value = '';
-        toast('Пароль изменён ✅', 'success');
-      } catch (e) {
-        toast(e.message, 'error');
-      }
-    }
-
-    // =========================
-    // SCRIPTS PUBLIC
-    // =========================
-    async function loadPublicScripts() {
-      document.getElementById('publicLoading').classList.remove('hidden');
-      document.getElementById('publicGrid').classList.add('hidden');
-      document.getElementById('publicEmpty').classList.add('hidden');
-
-      try {
-        const { data, error } = await db
-          .from('scripts')
-          .select('*')
-          .eq('status', 'approved');
-
-        if (error) throw error;
-        publicScripts = data || [];
-        renderPublicScripts();
-      } catch (e) {
-        toast('Ошибка загрузки скриптов: ' + e.message, 'error');
-      } finally {
-        document.getElementById('publicLoading').classList.add('hidden');
-      }
-    }
-
-    function handleSearchInput() {
-      searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
-      renderPublicScripts();
-    }
-
-    function setFilter(filter, el) {
-      selectedFilter = filter;
-      document.querySelectorAll('.filters .chip').forEach(ch => ch.classList.remove('active'));
-      el.classList.add('active');
-      renderPublicScripts();
-    }
-
-    function setSort(value) {
-      selectedSort = value;
-      renderPublicScripts();
-    }
-
-    function getFilteredSortedScripts(source, includeStatuses = false) {
-      let arr = [...source];
-
-      if (selectedFilter !== 'all') {
-        arr = arr.filter(s => (s.game || '').toLowerCase() === selectedFilter.toLowerCase());
-      }
-
-      if (searchQuery) {
-        arr = arr.filter(s =>
-          (s.title || '').toLowerCase().includes(searchQuery) ||
-          (s.description || '').toLowerCase().includes(searchQuery) ||
-          (s.author || '').toLowerCase().includes(searchQuery) ||
-          (s.game || '').toLowerCase().includes(searchQuery) ||
-          (s.category || '').toLowerCase().includes(searchQuery)
-        );
-      }
-
-      if (selectedSort === 'newest') {
-        arr.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
-      } else if (selectedSort === 'oldest') {
-        arr.sort((a,b) => new Date(a.created_at) - new Date(b.created_at));
-      } else if (selectedSort === 'views') {
-        arr.sort((a,b) => (b.views||0) - (a.views||0));
-      } else if (selectedSort === 'likes') {
-        arr.sort((a,b) => (b.likes||0) - (a.likes||0));
-      }
-
-      return arr;
-    }
-
-    function renderPublicScripts() {
-      const grid = document.getElementById('publicGrid');
-      const empty = document.getElementById('publicEmpty');
-      const list = getFilteredSortedScripts(publicScripts);
-
-      document.getElementById('publicCount').textContent = list.length;
+      const list = [...myScripts].sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
+      const grid = document.getElementById('myScriptsGrid');
 
       if (!list.length) {
-        grid.classList.add('hidden');
-        empty.classList.remove('hidden');
-        return;
-      }
-
-      empty.classList.add('hidden');
-      grid.classList.remove('hidden');
-      grid.innerHTML = list.map((s, i) => scriptCardHtml(s, false, i)).join('');
-    }
-
-    // =========================
-    // MY SCRIPTS
-    // =========================
-    async function loadMyScripts() {
-      if (!currentUser) {
-        toast('Сначала войди в аккаунт', 'info');
-        return showScreen('home');
-      }
-
-      document.getElementById('myScriptsLoading').classList.remove('hidden');
-      document.getElementById('myScriptsGrid').innerHTML = '';
-      document.getElementById('myScriptsEmpty').classList.add('hidden');
-
-      try {
-        const { data, error } = await db
-          .from('scripts')
-          .select('*')
-          .eq('user_id', currentUser.id);
-
-        if (error) throw error;
-
-        myScripts = data || [];
-        const list = [...myScripts].sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
-        const grid = document.getElementById('myScriptsGrid');
-
-        if (!list.length) {
-          document.getElementById('myScriptsEmpty').classList.remove('hidden');
-        } else {
-          grid.innerHTML = list.map((s, i) => scriptCardHtml(s, true, i)).join('');
-        }
-      } catch (e) {
-        toast('Ошибка загрузки моих скриптов: ' + e.message, 'error');
-      } finally {
-        document.getElementById('myScriptsLoading').classList.add('hidden');
-      }
-    }
-
-    // =========================
-    // SCRIPT CARD
-    // =========================
-    function scriptCardHtml(s, own = false, i = 0) {
-      const img = s.image_url
-        ? `<img src="${escapeHtml(s.image_url)}" alt="${escapeHtml(s.title)}" onerror="this.parentElement.innerHTML='<div class=&quot;thumb-fallback&quot;><i class=&quot;fas fa-image&quot;></i></div>'">`
-        : `<div class="thumb-fallback"><i class="fas fa-image"></i></div>`;
-
-      const createdRecently = (Date.now() - new Date(s.created_at).getTime()) < 1000*60*60*24*3;
-      const avatarChar = (s.author || 'U').charAt(0).toUpperCase();
-
-      return `
-        <article class="card" style="animation-delay:${i * 0.03}s" onclick="openScriptView('${s.id}', ${own ? 'true' : 'false'})">
-          <div class="thumb">
-            ${img}
-            <div class="thumb-badges">
-              <span class="badge badge-game"><i class="fas fa-gamepad"></i> ${escapeHtml(s.game || 'Universal')}</span>
-              ${createdRecently ? `<span class="badge badge-new"><i class="fas fa-bolt"></i> NEW</span>` : ''}
-              ${own ? statusBadge(s.status) : ''}
-            </div>
-          </div>
-
-          <div class="card-body">
-            <div class="meta-row">
-              <span class="meta-pill">${escapeHtml(s.category || 'Other')}</span>
-              ${s.place_id ? `<span class="meta-pill"><i class="fas fa-hashtag"></i> ${escapeHtml(s.place_id)}</span>` : ''}
-            </div>
-
-            <div class="card-title">${escapeHtml(s.title || 'Untitled')}</div>
-            <div class="card-desc">${escapeHtml(s.description || 'Описание отсутствует')}</div>
-
-            <div class="author-row">
-              <div class="author-left">
-                <div class="mini-avatar">${avatarChar}</div>
-                <div class="author-text">
-                  <div class="author-name">${escapeHtml(s.author || 'Unknown')}</div>
-                  <div class="author-sub">${timeAgo(s.created_at)}</div>
-                </div>
-              </div>
-              <div class="stats">
-                <span><i class="fas fa-eye"></i> ${s.views || 0}</span>
-                <span><i class="fas fa-heart"></i> ${s.likes || 0}</span>
-              </div>
-            </div>
-          </div>
-        </article>
-      `;
-    }
-
-    function statusBadge(status) {
-      if (status === 'approved') return `<span class="badge badge-approved"><i class="fas fa-check"></i> APPROVED</span>`;
-      if (status === 'rejected') return `<span class="badge badge-rejected"><i class="fas fa-xmark"></i> REJECTED</span>`;
-      return `<span class="badge badge-pending"><i class="fas fa-clock"></i> PENDING</span>`;
-    }
-
-    // =========================
-    // SCRIPT VIEW
-    // =========================
-    async function openScriptView(id, own = false) {
-      const source = own ? myScripts : publicScripts;
-      const script = source.find(s => s.id === id);
-      if (!script) return;
-
-      currentViewedScript = script;
-
-      document.getElementById('viewTitle').textContent = script.title || 'Script';
-      document.getElementById('viewCode').textContent = script.code || '';
-      document.getElementById('viewDescription').textContent = script.description || 'Нет описания';
-      document.getElementById('viewAuthor').textContent = script.author || 'Unknown';
-      document.getElementById('viewGame').textContent = script.game || 'Unknown';
-      document.getElementById('viewCategory').textContent = script.category || 'Unknown';
-      document.getElementById('viewGameUrl').innerHTML = renderGameUrl(script);
-      document.getElementById('viewStatus').innerHTML = statusBadge(script.status || 'pending');
-      document.getElementById('viewStats').textContent = `Views: ${script.views || 0} • Likes: ${script.likes || 0}`;
-
-      const adminActions = document.getElementById('viewAdminActions');
-      if (isAdmin) {
-        adminActions.classList.remove('hidden');
-        document.getElementById('approveBtn').onclick = () => moderateScript(script.id, 'approved');
-        document.getElementById('rejectBtn').onclick = () => moderateScript(script.id, 'rejected');
-        document.getElementById('deleteBtn').onclick = () => deleteScript(script.id);
+        document.getElementById('myScriptsEmpty').classList.remove('hidden');
       } else {
-        adminActions.classList.add('hidden');
+        grid.innerHTML = list.map((s, i) => scriptCardHtml(s, true, i)).join('');
       }
+    } catch (e) {
+      toast('Ошибка загрузки моих скриптов: ' + e.message, 'error');
+    } finally {
+      document.getElementById('myScriptsLoading').classList.add('hidden');
+    }
+  }
 
-      document.getElementById('viewModal').classList.add('open');
+  function scriptCardHtml(s, own = false, i = 0) {
+    const img = s.image_url
+      ? `<img src="${escapeHtml(s.image_url)}" alt="${escapeHtml(s.title)}" onerror="this.parentElement.innerHTML='<div class=&quot;thumb-fallback&quot;><i class=&quot;fas fa-image&quot;></i></div>'">`
+      : `<div class="thumb-fallback"><i class="fas fa-image"></i></div>`;
 
-      if (!own && script.status === 'approved') {
-        try {
-          await db.rpc('increment_views', { script_id: script.id });
-          script.views = (script.views || 0) + 1;
-          renderPublicScripts();
-        } catch {}
-      }
+    const createdRecently = (Date.now() - new Date(s.created_at).getTime()) < 1000*60*60*24*3;
+    const avatarChar = (s.author || 'U').charAt(0).toUpperCase();
+
+    return `
+      <article class="card" style="animation-delay:${i * 0.03}s" onclick="openScriptView('${s.id}', ${own ? 'true' : 'false'})">
+        <div class="thumb">
+          ${img}
+          <div class="thumb-badges">
+            <span class="badge badge-game"><i class="fas fa-gamepad"></i> ${escapeHtml(s.game || 'Universal')}</span>
+            ${createdRecently ? `<span class="badge badge-new"><i class="fas fa-bolt"></i> NEW</span>` : ''}
+            ${own ? statusBadge(s.status) : ''}
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="meta-row">
+            <span class="meta-pill">${escapeHtml(s.category || 'Other')}</span>
+            ${s.place_id ? `<span class="meta-pill"><i class="fas fa-hashtag"></i> ${escapeHtml(s.place_id)}</span>` : ''}
+          </div>
+
+          <div class="card-title">${escapeHtml(s.title || 'Untitled')}</div>
+          <div class="card-desc">${escapeHtml(s.description || 'Описание отсутствует')}</div>
+
+          <div class="author-row">
+            <div class="author-left">
+              <div class="mini-avatar">${avatarChar}</div>
+              <div class="author-text">
+                <div class="author-name">${escapeHtml(s.author || 'Unknown')}</div>
+                <div class="author-sub">${timeAgo(s.created_at)}</div>
+              </div>
+            </div>
+            <div class="stats">
+              <span><i class="fas fa-eye"></i> ${s.views || 0}</span>
+              <span><i class="fas fa-heart"></i> ${s.likes || 0}</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function statusBadge(status) {
+    if (status === 'approved') return `<span class="badge badge-approved"><i class="fas fa-check"></i> APPROVED</span>`;
+    if (status === 'rejected') return `<span class="badge badge-rejected"><i class="fas fa-xmark"></i> REJECTED</span>`;
+    return `<span class="badge badge-pending"><i class="fas fa-clock"></i> PENDING</span>`;
+  }
+
+  async function openScriptView(id, own = false) {
+    const source = own ? myScripts : publicScripts;
+    const script = source.find(s => s.id === id);
+    if (!script) return;
+
+    currentViewedScript = script;
+    document.getElementById('viewTitle').textContent = script.title || 'Script';
+    document.getElementById('viewCode').textContent = script.code || '';
+    document.getElementById('viewDescription').textContent = script.description || 'Нет описания';
+    document.getElementById('viewAuthor').textContent = script.author || 'Unknown';
+    document.getElementById('viewGame').textContent = script.game || 'Unknown';
+    document.getElementById('viewCategory').textContent = script.category || 'Unknown';
+    document.getElementById('viewGameUrl').innerHTML = renderGameUrl(script);
+    document.getElementById('viewStatus').innerHTML = statusBadge(script.status || 'pending');
+    document.getElementById('viewStats').textContent = `Views: ${script.views || 0} • Likes: ${script.likes || 0}`;
+
+    const adminActions = document.getElementById('viewAdminActions');
+    if (isAdmin) {
+      adminActions.classList.remove('hidden');
+      document.getElementById('approveBtn').onclick = () => moderateScript(script.id, 'approved');
+      document.getElementById('rejectBtn').onclick = () => moderateScript(script.id, 'rejected');
+      document.getElementById('deleteBtn').onclick = () => deleteScript(script.id);
+    } else {
+      adminActions.classList.add('hidden');
     }
 
-    function renderGameUrl(script) {
-      const val = script.game_url || script.place_id || '-';
-      if (!val || val === '-') return '-';
+    document.getElementById('viewModal').classList.add('open');
 
-      if (val.startsWith('http://') || val.startsWith('https://')) {
-        return `<a href="${escapeHtml(val)}" target="_blank" rel="noopener noreferrer" style="color:#bda7ff">Открыть ссылку</a>`;
-      }
-
-      return escapeHtml(val);
-    }
-
-    async function copyViewedCode() {
-      if (!currentViewedScript?.code) return;
+    if (!own && script.status === 'approved') {
       try {
-        await navigator.clipboard.writeText(currentViewedScript.code);
-        toast('Код скопирован ✅', 'success');
-      } catch {
-        toast('Не удалось скопировать код', 'error');
-      }
+        await db.rpc('increment_views', { script_id: script.id });
+        script.views = (script.views || 0) + 1;
+        renderPublicScripts();
+      } catch {}
     }
+  }
 
-    function closeViewModal() {
-      document.getElementById('viewModal').classList.remove('open');
-      currentViewedScript = null;
+  function renderGameUrl(script) {
+    const val = script.game_url || script.place_id || '-';
+    if (!val || val === '-') return '-';
+    if (val.startsWith('http://') || val.startsWith('https://')) {
+      return `<a href="${escapeHtml(val)}" target="_blank" rel="noopener noreferrer" style="color:#bda7ff">Открыть ссылку</a>`;
     }
+    return escapeHtml(val);
+  }
 
-    // =========================
-    // UPLOAD
-    // =========================
-    function openUpload() {
-      if (!currentUser) {
-        openAuthModal('login');
-        return toast('Сначала войди или зарегистрируйся', 'info');
-      }
-      document.getElementById('uploadModal').classList.add('open');
+  async function copyViewedCode() {
+    if (!currentViewedScript?.code) return;
+    try {
+      await navigator.clipboard.writeText(currentViewedScript.code);
+      toast('Код скопирован ✅', 'success');
+    } catch {
+      toast('Не удалось скопировать код', 'error');
     }
+  }
 
-    function closeUploadModal() {
-      document.getElementById('uploadModal').classList.remove('open');
+  function closeViewModal() {
+    document.getElementById('viewModal').classList.remove('open');
+    currentViewedScript = null;
+  }
+
+  function openUpload() {
+    if (!currentUser) {
+      openAuthModal('login');
+      return toast('Сначала войди или зарегистрируйся', 'info');
     }
+    document.getElementById('uploadModal').classList.add('open');
+  }
 
-    function parsePlaceId(input) {
-      const trimmed = input.trim();
-      if (/^\d+$/.test(trimmed)) return trimmed;
-      const m = trimmed.match(/games\/(\d+)/i);
-      return m ? m[1] : '';
-    }
+  function closeUploadModal() {
+    document.getElementById('uploadModal').classList.remove('open');
+  }
 
-    async function submitScript(e) {
-      e.preventDefault();
-      if (!currentUser) return openAuthModal('login');
+  function parsePlaceId(input) {
+    const trimmed = input.trim();
+    if (/^\d+$/.test(trimmed)) return trimmed;
+    const m = trimmed.match(/games\/(\d+)/i);
+    return m ? m[1] : '';
+  }
 
-      const btn = document.getElementById('submitScriptBtn');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+  async function submitScript(e) {
+    e.preventDefault();
+    if (!currentUser) return openAuthModal('login');
 
+    const btn = document.getElementById('submitScriptBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+
+    try {
       const title = document.getElementById('scriptTitle').value.trim();
       const game_url = document.getElementById('scriptGameUrl').value.trim();
       const game = document.getElementById('scriptGame').value;
       const category = document.getElementById('scriptCategory').value;
-      const image_url = document.getElementById('scriptImageUrl').value.trim();
+      const imageFile = document.getElementById('scriptImageFile').files?.[0];
       const description = document.getElementById('scriptDescription').value.trim();
       const code = document.getElementById('scriptCode').value.trim();
       const place_id = parsePlaceId(game_url);
       const author = currentProfile?.username || currentUser.email.split('@')[0];
 
-      if (title.length < 3) {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить';
-        return toast('Название слишком короткое', 'error');
+      if (title.length < 3) throw new Error('Название слишком короткое');
+      if (description.length < 10) throw new Error('Описание слишком короткое');
+      if (code.length < 5) throw new Error('Код слишком короткий');
+
+      let image_url = '';
+      if (imageFile) {
+        image_url = await uploadFile('script-images', imageFile, 'previews');
       }
 
-      if (description.length < 10) {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить';
-        return toast('Описание слишком короткое', 'error');
-      }
+      const { error } = await db.from('scripts').insert({
+        title,
+        description,
+        code,
+        game,
+        category,
+        author,
+        user_id: currentUser.id,
+        status: 'pending',
+        game_url,
+        place_id,
+        image_url
+      });
 
-      if (code.length < 5) {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить';
-        return toast('Код слишком короткий', 'error');
-      }
+      if (error) throw error;
 
-      try {
-        const { error } = await db.from('scripts').insert({
-          title,
-          description,
-          code,
-          game,
-          category,
-          author,
-          user_id: currentUser.id,
-          status: 'pending',
-          game_url,
-          place_id,
-          image_url
-        });
+      closeUploadModal();
+      toast('Скрипт отправлен на модерацию ✅', 'success');
 
-        if (error) throw error;
+      document.getElementById('scriptTitle').value = '';
+      document.getElementById('scriptGameUrl').value = '';
+      document.getElementById('scriptDescription').value = '';
+      document.getElementById('scriptCode').value = '';
+      document.getElementById('scriptImageFile').value = '';
+      document.getElementById('scriptImagePreview').innerHTML = 'No image selected';
 
-        closeUploadModal();
-        toast('Скрипт отправлен на модерацию ✅', 'success');
-
-        document.getElementById('scriptTitle').value = '';
-        document.getElementById('scriptGameUrl').value = '';
-        document.getElementById('scriptImageUrl').value = '';
-        document.getElementById('scriptDescription').value = '';
-        document.getElementById('scriptCode').value = '';
-
-        await loadMyScripts();
-      } catch (e) {
-        toast('Ошибка загрузки: ' + e.message, 'error');
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить';
-      }
+      await loadMyScripts();
+      await renderProfileScripts();
+    } catch (e) {
+      console.error('submitScript error', e);
+      toast('Ошибка загрузки: ' + e.message, 'error');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить';
     }
+  }
 
-    // =========================
-    // ADMIN / MODERATION
-    // =========================
-    function setAdminTab(tab, el) {
-      currentAdminTab = tab;
-      document.querySelectorAll('.admin-tabs .chip').forEach(btn => btn.classList.remove('active'));
-      el.classList.add('active');
-      loadAdminScripts();
-    }
+  function setAdminTab(tab, el) {
+    currentAdminTab = tab;
+    document.querySelectorAll('.admin-tabs .chip').forEach(btn => btn.classList.remove('active'));
+    el.classList.add('active');
+    loadAdminScripts();
+  }
 
-    async function loadAdminScripts() {
-      if (!isAdmin) return;
+  async function loadAdminScripts() {
+    if (!isAdmin) return;
 
-      document.getElementById('adminLoading').classList.remove('hidden');
-      document.getElementById('adminEmpty').classList.add('hidden');
-      document.getElementById('adminGrid').innerHTML = '';
+    document.getElementById('adminLoading').classList.remove('hidden');
+    document.getElementById('adminEmpty').classList.add('hidden');
+    document.getElementById('adminGrid').innerHTML = '';
 
-      try {
-        let query = db.from('scripts').select('*');
-        if (currentAdminTab !== 'all') query = query.eq('status', currentAdminTab);
-        const { data, error } = await query.order('created_at', { ascending: false });
+    try {
+      let query = db.from('scripts').select('*');
+      if (currentAdminTab !== 'all') query = query.eq('status', currentAdminTab);
+      const { data, error } = await query.order('created_at', { ascending: false });
+      if (error) throw error;
 
-        if (error) throw error;
+      adminScripts = data || [];
+      const { data: pendingData } = await db.from('scripts').select('id').eq('status', 'pending');
+      document.getElementById('pendingCountBadge').textContent = pendingData?.length || 0;
 
-        adminScripts = data || [];
+      if (!adminScripts.length) {
+        document.getElementById('adminEmpty').classList.remove('hidden');
+        return;
+      }
 
-        const { data: pendingData } = await db.from('scripts').select('id').eq('status', 'pending');
-        document.getElementById('pendingCountBadge').textContent = pendingData?.length || 0;
-
-        if (!adminScripts.length) {
-          document.getElementById('adminEmpty').classList.remove('hidden');
-          return;
-        }
-
-        document.getElementById('adminGrid').innerHTML = adminScripts.map(s => `
-          <div class="admin-card">
-            <h4>${escapeHtml(s.title || 'Untitled')}</h4>
-            <div class="admin-meta">
-              <span>${statusBadge(s.status)}</span>
-              <span><i class="fas fa-user"></i> ${escapeHtml(s.author || 'Unknown')}</span>
-              <span><i class="fas fa-gamepad"></i> ${escapeHtml(s.game || 'Unknown')}</span>
-            </div>
-            <div class="page-desc" style="margin-bottom:14px">${escapeHtml((s.description || '').slice(0, 120))}${(s.description || '').length > 120 ? '...' : ''}</div>
-            <div class="admin-actions">
-              <button class="btn btn-dark btn-sm" onclick="openAdminScriptView('${s.id}')"><i class="fas fa-eye"></i> View</button>
-              ${s.status !== 'approved' ? `<button class="btn btn-success btn-sm" onclick="moderateScript('${s.id}','approved')"><i class="fas fa-check"></i> Approve</button>` : ''}
-              ${s.status !== 'rejected' ? `<button class="btn btn-warning btn-sm" onclick="moderateScript('${s.id}','rejected')"><i class="fas fa-ban"></i> Reject</button>` : ''}
-              <button class="btn btn-danger btn-sm" onclick="deleteScript('${s.id}')"><i class="fas fa-trash"></i> Delete</button>
-            </div>
+      document.getElementById('adminGrid').innerHTML = adminScripts.map(s => `
+        <div class="admin-card">
+          <h4>${escapeHtml(s.title || 'Untitled')}</h4>
+          <div class="admin-meta">
+            <span>${statusBadge(s.status)}</span>
+            <span><i class="fas fa-user"></i> ${escapeHtml(s.author || 'Unknown')}</span>
+            <span><i class="fas fa-gamepad"></i> ${escapeHtml(s.game || 'Unknown')}</span>
           </div>
-        `).join('');
-      } catch (e) {
-        toast('Ошибка модерации: ' + e.message, 'error');
-      } finally {
-        document.getElementById('adminLoading').classList.add('hidden');
-      }
+          <div class="page-desc" style="margin-bottom:14px">${escapeHtml((s.description || '').slice(0, 120))}${(s.description || '').length > 120 ? '...' : ''}</div>
+          <div class="admin-actions">
+            <button class="btn btn-dark btn-sm" onclick="openAdminScriptView('${s.id}')"><i class="fas fa-eye"></i> View</button>
+            ${s.status !== 'approved' ? `<button class="btn btn-success btn-sm" onclick="moderateScript('${s.id}','approved')"><i class="fas fa-check"></i> Approve</button>` : ''}
+            ${s.status !== 'rejected' ? `<button class="btn btn-warning btn-sm" onclick="moderateScript('${s.id}','rejected')"><i class="fas fa-ban"></i> Reject</button>` : ''}
+            <button class="btn btn-danger btn-sm" onclick="deleteScript('${s.id}')"><i class="fas fa-trash"></i> Delete</button>
+          </div>
+        </div>
+      `).join('');
+    } catch (e) {
+      toast('Ошибка модерации: ' + e.message, 'error');
+    } finally {
+      document.getElementById('adminLoading').classList.add('hidden');
     }
+  }
 
-    function openAdminScriptView(id) {
-      const script = adminScripts.find(s => s.id === id);
-      if (!script) return;
-      currentViewedScript = script;
+  function openAdminScriptView(id) {
+    const script = adminScripts.find(s => s.id === id);
+    if (!script) return;
+    currentViewedScript = script;
 
-      document.getElementById('viewTitle').textContent = script.title || 'Script';
-      document.getElementById('viewCode').textContent = script.code || '';
-      document.getElementById('viewDescription').textContent = script.description || 'Нет описания';
-      document.getElementById('viewAuthor').textContent = script.author || 'Unknown';
-      document.getElementById('viewGame').textContent = script.game || 'Unknown';
-      document.getElementById('viewCategory').textContent = script.category || 'Unknown';
-      document.getElementById('viewGameUrl').innerHTML = renderGameUrl(script);
-      document.getElementById('viewStatus').innerHTML = statusBadge(script.status || 'pending');
-      document.getElementById('viewStats').textContent = `Views: ${script.views || 0} • Likes: ${script.likes || 0}`;
+    document.getElementById('viewTitle').textContent = script.title || 'Script';
+    document.getElementById('viewCode').textContent = script.code || '';
+    document.getElementById('viewDescription').textContent = script.description || 'Нет описания';
+    document.getElementById('viewAuthor').textContent = script.author || 'Unknown';
+    document.getElementById('viewGame').textContent = script.game || 'Unknown';
+    document.getElementById('viewCategory').textContent = script.category || 'Unknown';
+    document.getElementById('viewGameUrl').innerHTML = renderGameUrl(script);
+    document.getElementById('viewStatus').innerHTML = statusBadge(script.status || 'pending');
+    document.getElementById('viewStats').textContent = `Views: ${script.views || 0} • Likes: ${script.likes || 0}`;
 
-      const adminActions = document.getElementById('viewAdminActions');
-      adminActions.classList.remove('hidden');
-      document.getElementById('approveBtn').onclick = () => moderateScript(script.id, 'approved');
-      document.getElementById('rejectBtn').onclick = () => moderateScript(script.id, 'rejected');
-      document.getElementById('deleteBtn').onclick = () => deleteScript(script.id);
+    const adminActions = document.getElementById('viewAdminActions');
+    adminActions.classList.remove('hidden');
+    document.getElementById('approveBtn').onclick = () => moderateScript(script.id, 'approved');
+    document.getElementById('rejectBtn').onclick = () => moderateScript(script.id, 'rejected');
+    document.getElementById('deleteBtn').onclick = () => deleteScript(script.id);
 
-      document.getElementById('viewModal').classList.add('open');
+    document.getElementById('viewModal').classList.add('open');
+  }
+
+  async function moderateScript(id, status) {
+    if (!isAdmin) return;
+    try {
+      const { error } = await db.from('scripts').update({ status }).eq('id', id);
+      if (error) throw error;
+      toast(status === 'approved' ? 'Скрипт одобрен ✅' : 'Скрипт отклонён ❌', 'success');
+      closeViewModal();
+      await loadAdminScripts();
+      await loadPublicScripts();
+      await loadMyScripts();
+      await renderProfileScripts();
+    } catch (e) {
+      toast('Ошибка: ' + e.message, 'error');
     }
+  }
 
-    async function moderateScript(id, status) {
-      if (!isAdmin) return;
-      try {
-        const { error } = await db.from('scripts').update({ status }).eq('id', id);
-        if (error) throw error;
-        toast(status === 'approved' ? 'Скрипт одобрен ✅' : 'Скрипт отклонён ❌', 'success');
-        closeViewModal();
-        await loadAdminScripts();
-        await loadPublicScripts();
-        await loadMyScripts();
-        await renderProfileScripts();
-      } catch (e) {
-        toast('Ошибка: ' + e.message, 'error');
-      }
+  async function deleteScript(id) {
+    if (!confirm('Удалить скрипт навсегда?')) return;
+    try {
+      const { error } = await db.from('scripts').delete().eq('id', id);
+      if (error) throw error;
+      toast('Скрипт удалён 🗑️', 'success');
+      closeViewModal();
+      await loadAdminScripts();
+      await loadPublicScripts();
+      await loadMyScripts();
+      await renderProfileScripts();
+    } catch (e) {
+      toast('Ошибка удаления: ' + e.message, 'error');
     }
+  }
 
-    async function deleteScript(id) {
-      if (!confirm('Удалить скрипт навсегда?')) return;
-      try {
-        const { error } = await db.from('scripts').delete().eq('id', id);
-        if (error) throw error;
-        toast('Скрипт удалён 🗑️', 'success');
-        closeViewModal();
-        await loadAdminScripts();
-        await loadPublicScripts();
-        await loadMyScripts();
-        await renderProfileScripts();
-      } catch (e) {
-        toast('Ошибка удаления: ' + e.message, 'error');
-      }
+  function escapeHtml(str = '') {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function timeAgo(dateString) {
+    const seconds = Math.floor((Date.now() - new Date(dateString).getTime()) / 1000);
+    if (seconds < 60) return 'только что';
+    const m = Math.floor(seconds / 60);
+    if (m < 60) return `${m} мин назад`;
+    const h = Math.floor(m / 60);
+    if (h < 24) return `${h} ч назад`;
+    const d = Math.floor(h / 24);
+    if (d < 30) return `${d} дн назад`;
+    const mo = Math.floor(d / 30);
+    return `${mo} мес назад`;
+  }
+
+  function toast(message, type = 'info') {
+    const box = document.getElementById('toastBox');
+    const icons = { info: 'fa-circle-info', success: 'fa-circle-check', error: 'fa-circle-exclamation' };
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    el.innerHTML = `<i class="fas ${icons[type] || icons.info}"></i><div>${message}</div>`;
+    box.appendChild(el);
+    setTimeout(() => {
+      el.classList.add('hide');
+      setTimeout(() => el.remove(), 240);
+    }, 3200);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAuthModal();
+      closeUploadModal();
+      closeViewModal();
+      closeUserDropdown();
     }
-
-    // =========================
-    // HELPERS
-    // =========================
-    function escapeHtml(str = '') {
-      const div = document.createElement('div');
-      div.textContent = str;
-      return div.innerHTML;
-    }
-
-    function timeAgo(dateString) {
-      const seconds = Math.floor((Date.now() - new Date(dateString).getTime()) / 1000);
-      if (seconds < 60) return 'только что';
-      const m = Math.floor(seconds / 60);
-      if (m < 60) return `${m} мин назад`;
-      const h = Math.floor(m / 60);
-      if (h < 24) return `${h} ч назад`;
-      const d = Math.floor(h / 24);
-      if (d < 30) return `${d} дн назад`;
-      const mo = Math.floor(d / 30);
-      return `${mo} мес назад`;
-    }
-
-    function toast(message, type = 'info') {
-      const box = document.getElementById('toastBox');
-      const icons = {
-        info: 'fa-circle-info',
-        success: 'fa-circle-check',
-        error: 'fa-circle-exclamation'
-      };
-      const el = document.createElement('div');
-      el.className = `toast ${type}`;
-      el.innerHTML = `<i class="fas ${icons[type] || icons.info}"></i><div>${message}</div>`;
-      box.appendChild(el);
-      setTimeout(() => {
-        el.classList.add('hide');
-        setTimeout(() => el.remove(), 240);
-      }, 3200);
-    }
-
-    // ESC
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeAuthModal();
-        closeUploadModal();
-        closeViewModal();
-        closeUserDropdown();
-      }
-    });
-  </script>
+  });
+</script>
 </body>
 </html>
