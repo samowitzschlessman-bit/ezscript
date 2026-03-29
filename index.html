@@ -42,20 +42,40 @@
     @keyframes orbF3{0%,100%{transform:translate(0,0)}33%{transform:translate(40px,-80px)}66%{transform:translate(-80px,60px)}}
     @keyframes toastIn{from{transform:translateX(120%);opacity:0}to{transform:translateX(0);opacity:1}}
     @keyframes toastOut{from{transform:translateX(0);opacity:1}to{transform:translateX(120%);opacity:0}}
+    @keyframes dropIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 
     .orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
     .orb-1{width:600px;height:600px;background:rgba(168,85,247,.07);top:-200px;left:-200px;animation:orbF1 25s ease-in-out infinite}
     .orb-2{width:500px;height:500px;background:rgba(99,102,241,.05);top:40%;right:-250px;animation:orbF2 30s ease-in-out infinite}
     .orb-3{width:400px;height:400px;background:rgba(6,182,212,.04);bottom:-100px;left:25%;animation:orbF3 22s ease-in-out infinite}
 
-    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,10,.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1200px;margin:0 auto}
-    .nav-logo{font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px}
+    /* NAVBAR */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,10,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1200px;margin:0 auto;gap:12px}
+    .nav-logo{font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px;flex-shrink:0}
     .nav-logo i{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:22px}
-    .nav-links{display:flex;align-items:center;gap:8px}
-    .nav-links a{padding:8px 16px;border-radius:var(--r);color:var(--t2);font-size:14px;font-weight:500;transition:var(--tr)}
-    .nav-links a:hover{color:var(--t1);background:var(--card)}
+    .nav-right{display:flex;align-items:center;gap:8px}
 
+    /* USER DROPDOWN */
+    .user-menu{position:relative}
+    .user-avatar{width:40px;height:40px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;cursor:pointer;border:2px solid transparent;transition:var(--tr);color:#fff;flex-shrink:0}
+    .user-avatar:hover{border-color:var(--purple);box-shadow:0 0 15px rgba(168,85,247,.3)}
+    .user-avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+    .dropdown{position:absolute;top:calc(100% + 8px);right:0;min-width:220px;background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r2);padding:8px;z-index:200;animation:dropIn .2s ease;box-shadow:0 20px 40px rgba(0,0,0,.4)}
+    .dropdown.hidden{display:none}
+    .dropdown-header{padding:12px;border-bottom:1px solid var(--brd);margin-bottom:8px}
+    .dropdown-name{font-size:14px;font-weight:700;color:var(--t1)}
+    .dropdown-email{font-size:12px;color:var(--t3);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--r);font-size:13px;font-weight:500;color:var(--t2);cursor:pointer;transition:var(--tr);border:none;background:none;width:100%;text-align:left}
+    .dropdown-item:hover{background:var(--card);color:var(--t1)}
+    .dropdown-item i{width:16px;text-align:center;font-size:14px}
+    .dropdown-divider{height:1px;background:var(--brd);margin:8px 0}
+    .dropdown-item.danger{color:var(--red)}
+    .dropdown-item.danger:hover{background:rgba(239,68,68,.1);color:var(--red)}
+    .dropdown-item.admin-item{color:var(--purple)}
+    .dropdown-item.admin-item:hover{background:rgba(168,85,247,.1)}
+
+    /* BUTTONS */
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--r);font-size:14px;font-weight:600;border:none;transition:var(--tr);white-space:nowrap}
     .btn-primary{background:var(--grad);color:#fff}
     .btn-primary:hover{box-shadow:0 0 25px rgba(168,85,247,.35);transform:translateY(-1px)}
@@ -63,6 +83,8 @@
     .btn-outline:hover{border-color:var(--purple);color:var(--purple)}
     .btn-ghost{background:transparent;color:var(--t2);border:1px solid transparent}
     .btn-ghost:hover{color:var(--t1);background:var(--card)}
+    .btn-google{background:#fff;color:#333;border:1px solid #ddd}
+    .btn-google:hover{background:#f5f5f5;box-shadow:0 4px 12px rgba(0,0,0,.15)}
     .btn-sm{padding:6px 12px;font-size:12px;border-radius:8px}
     .btn-lg{padding:14px 28px;font-size:16px;border-radius:var(--r2)}
     .btn-full{width:100%;justify-content:center}
@@ -75,6 +97,7 @@
     .btn-yellow:hover{background:rgba(245,158,11,.25)}
     .btn-copy.copied{background:rgba(34,197,94,.15)!important;color:var(--green)!important;border-color:rgba(34,197,94,.3)!important}
 
+    /* HERO */
     .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;z-index:1}
     .hero::before{content:'';position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(168,85,247,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(168,85,247,.02) 1px,transparent 1px);background-size:60px 60px}
     .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:100px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);font-size:14px;font-weight:500;color:var(--purple);margin-bottom:32px;animation:fadeUp .8s ease}
@@ -87,11 +110,13 @@
     .stat-lbl{font-size:13px;color:var(--t3);text-transform:uppercase;letter-spacing:1px}
     .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s ease .4s both}
 
+    /* SECTION */
     .section{padding:80px 0;position:relative;z-index:1}
     .section-hdr{text-align:center;margin-bottom:48px}
     .section-hdr h2{font-size:32px;font-weight:800;margin-bottom:12px}
     .section-hdr p{color:var(--t2);font-size:16px}
 
+    /* SEARCH */
     .search-filters{margin-bottom:40px}
     .search-box{position:relative;max-width:500px;margin:0 auto 20px}
     .search-box i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:16px}
@@ -101,52 +126,71 @@
     .chip:hover{border-color:var(--brd-h);color:var(--t1)}
     .chip.active{background:var(--grad);border-color:transparent;color:#fff}
 
+    /* GRID */
     .scripts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
 
+    /* CARD */
     .card{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:24px;transition:var(--tr);cursor:pointer;position:relative;overflow:hidden;animation:fadeUp .6s ease both}
     .card::before{content:'';position:absolute;inset:0;border-radius:var(--r2);background:linear-gradient(135deg,rgba(168,85,247,.06),transparent 60%);opacity:0;transition:var(--tr)}
     .card:hover{border-color:rgba(168,85,247,.25);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3),0 0 30px rgba(168,85,247,.08)}
     .card:hover::before{opacity:1}
-    .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;position:relative;z-index:1}
+    .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;position:relative;z-index:1;flex-wrap:wrap;gap:6px}
     .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
     .card-title{font-size:18px;font-weight:700;margin-bottom:8px;position:relative;z-index:1}
     .card-desc{font-size:13px;color:var(--t2);margin-bottom:16px;line-height:1.5;position:relative;z-index:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .card-meta{display:flex;gap:16px;font-size:12px;color:var(--t3);margin-bottom:16px;position:relative;z-index:1}
+    .card-meta{display:flex;gap:16px;font-size:12px;color:var(--t3);margin-bottom:16px;position:relative;z-index:1;flex-wrap:wrap}
     .card-meta i{margin-right:4px}
     .card-bottom{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;padding-top:16px;border-top:1px solid var(--brd)}
     .card-stats{display:flex;gap:16px;font-size:13px;color:var(--t3)}
-    .card-stats span{display:flex;align-items:center;gap:4px}
     .like-btn{background:none;border:none;color:var(--t3);cursor:pointer;display:flex;align-items:center;gap:4px;font-size:13px;transition:var(--tr)}
     .like-btn:hover,.like-btn.liked{color:var(--red)}
-    .like-btn.liked i{font-weight:900}
 
+    /* LOADING / EMPTY */
     .loading{text-align:center;padding:60px 20px}
     .spinner{width:40px;height:40px;border:3px solid var(--brd);border-top-color:var(--purple);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
     .loading p{color:var(--t3);font-size:14px}
-
     .empty-state{display:flex;flex-direction:column;align-items:center;padding:80px 20px;text-align:center;animation:fadeIn .5s ease}
     .empty-state i{font-size:48px;color:var(--t3);margin-bottom:20px}
     .empty-state h3{font-size:20px;margin-bottom:8px}
     .empty-state p{color:var(--t2);margin-bottom:24px}
 
+    /* MODALS */
     .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
     .modal.open{display:flex}
-    .modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:fadeIn .3s ease}
-    .modal-box{position:relative;z-index:1;background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r3);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;animation:slideUp .4s cubic-bezier(.16,1,.3,1)}
+    .modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:fadeIn .3s ease}
+    .modal-box{position:relative;z-index:1;background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r3);width:100%;max-width:480px;max-height:90vh;overflow-y:auto;animation:slideUp .4s cubic-bezier(.16,1,.3,1)}
     .modal-box.lg{max-width:720px}
-    .modal-box.sm{max-width:420px}
-    .modal-hdr{display:flex;align-items:center;justify-content:space-between;padding:24px 28px;border-bottom:1px solid var(--brd)}
+    .modal-hdr{display:flex;align-items:center;justify-content:space-between;padding:24px 28px;border-bottom:1px solid var(--brd);position:sticky;top:0;background:var(--bg2);z-index:2}
     .modal-hdr h3{font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px}
     .modal-close{width:36px;height:36px;border-radius:10px;border:none;background:var(--card);color:var(--t2);font-size:16px;display:flex;align-items:center;justify-content:center;transition:var(--tr)}
     .modal-close:hover{background:rgba(239,68,68,.15);color:var(--red)}
     .modal-body{padding:28px}
 
+    /* AUTH MODAL */
+    .auth-logo{text-align:center;padding:32px 28px 0}
+    .auth-logo-icon{width:56px;height:56px;border-radius:16px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 16px}
+    .auth-logo h2{font-size:22px;font-weight:800;margin-bottom:6px}
+    .auth-logo p{color:var(--t2);font-size:14px}
+    .auth-tabs{display:flex;gap:4px;padding:20px 28px 0}
+    .auth-tab{flex:1;padding:10px;border-radius:var(--r);font-size:13px;font-weight:600;background:transparent;border:1px solid var(--brd);color:var(--t3);cursor:pointer;transition:var(--tr);text-align:center}
+    .auth-tab.active{background:var(--grad);color:#fff;border-color:transparent}
+    .auth-divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--t3);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+    .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--brd)}
+    .google-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px;border-radius:var(--r);background:#fff;color:#333;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:var(--tr)}
+    .google-btn:hover{background:#f0f0f0;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+    .google-btn img{width:20px;height:20px}
+    .confirm-notice{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:var(--r);padding:12px 16px;font-size:13px;color:#818cf8;margin-top:16px;display:flex;align-items:flex-start;gap:10px}
+    .confirm-notice i{margin-top:2px;flex-shrink:0}
+
+    /* FORMS */
     .form-group{margin-bottom:20px}
     .form-group label{display:block;font-size:13px;font-weight:600;color:var(--t2);margin-bottom:8px}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     .form-actions{display:flex;gap:12px;justify-content:flex-end;padding-top:8px}
     .code-input{font-family:'Fira Code','Cascadia Code','Consolas',monospace;font-size:13px;line-height:1.6;tab-size:2}
+    .input-hint{font-size:11px;color:var(--t3);margin-top:6px}
 
+    /* CODE BLOCK */
     .code-block{margin-top:20px;border-radius:var(--r);overflow:hidden;border:1px solid var(--brd)}
     .code-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(0,0,0,.3);border-bottom:1px solid var(--brd);font-size:13px;color:var(--t3)}
     .code-block pre{padding:20px;margin:0;overflow-x:auto;max-height:400px;background:rgba(0,0,0,.2);font-size:13px;line-height:1.7}
@@ -155,11 +199,39 @@
     .script-desc{color:var(--t2);font-size:14px;line-height:1.7;margin-bottom:8px}
     .admin-modal-actions{display:flex;gap:8px;margin-top:20px;padding-top:16px;border-top:1px solid var(--brd)}
 
+    /* PROFILE PAGE */
+    .page{display:none;min-height:100vh;padding-top:80px}
+    .page.active{display:block;animation:fadeIn .4s ease}
+    .profile-header{padding:48px 0 32px;text-align:center;border-bottom:1px solid var(--brd);margin-bottom:40px}
+    .profile-avatar-lg{width:88px;height:88px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;margin:0 auto 16px;color:#fff;border:3px solid var(--brd)}
+    .profile-name{font-size:24px;font-weight:800;margin-bottom:4px}
+    .profile-email{color:var(--t3);font-size:14px;margin-bottom:16px}
+    .profile-bio{color:var(--t2);font-size:15px;max-width:400px;margin:0 auto 20px}
+    .profile-stats{display:flex;gap:32px;justify-content:center}
+    .profile-stat{text-align:center}
+    .profile-stat-num{font-size:22px;font-weight:800}
+    .profile-stat-lbl{font-size:12px;color:var(--t3);text-transform:uppercase;letter-spacing:1px}
+
+    /* SETTINGS */
+    .settings-section{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:24px;margin-bottom:20px}
+    .settings-section h3{font-size:16px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--brd)}
+    .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--brd)}
+    .toggle-row:last-child{border-bottom:none}
+    .toggle-info h4{font-size:14px;font-weight:600;margin-bottom:4px}
+    .toggle-info p{font-size:12px;color:var(--t3)}
+    .toggle{position:relative;width:44px;height:24px;flex-shrink:0}
+    .toggle input{opacity:0;width:0;height:0}
+    .toggle-slider{position:absolute;inset:0;background:var(--brd-h);border-radius:100px;cursor:pointer;transition:var(--tr)}
+    .toggle-slider::before{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:3px;left:3px;transition:var(--tr)}
+    .toggle input:checked+.toggle-slider{background:var(--purple)}
+    .toggle input:checked+.toggle-slider::before{transform:translateX(20px)}
+
+    /* ADMIN PANEL */
     .admin-panel{position:fixed;inset:0;z-index:300;background:var(--bg);overflow-y:auto;animation:fadeIn .3s ease}
-    .admin-hdr{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:24px 32px;border-bottom:1px solid var(--brd);background:rgba(6,6,10,.8);backdrop-filter:blur(20px);position:sticky;top:0;z-index:10}
+    .admin-hdr{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:20px 32px;border-bottom:1px solid var(--brd);background:rgba(6,6,10,.9);backdrop-filter:blur(20px);position:sticky;top:0;z-index:10}
     .admin-hdr-left{display:flex;align-items:center;gap:16px}
     .admin-hdr h2{font-size:20px;font-weight:800;display:flex;align-items:center;gap:10px}
-    .admin-badge{padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;background:rgba(168,85,247,.15);color:var(--purple);text-transform:uppercase}
+    .admin-badge-pill{padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;background:rgba(168,85,247,.15);color:var(--purple);text-transform:uppercase}
     .admin-hdr-right{display:flex;gap:8px}
     .admin-tabs{display:flex;gap:4px;padding:16px 32px;border-bottom:1px solid var(--brd);overflow-x:auto;background:var(--bg2)}
     .admin-tab{padding:10px 20px;border-radius:var(--r);font-size:13px;font-weight:600;background:transparent;border:1px solid transparent;color:var(--t3);cursor:pointer;transition:var(--tr);display:flex;align-items:center;gap:8px;white-space:nowrap}
@@ -182,13 +254,15 @@
     .admin-empty{text-align:center;padding:60px 20px;color:var(--t3)}
     .admin-empty i{font-size:40px;margin-bottom:16px;display:block}
 
-    .toast-box{position:fixed;top:24px;right:24px;z-index:999;display:flex;flex-direction:column;gap:8px}
-    .toast{display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:var(--r);font-size:14px;font-weight:500;min-width:280px;animation:toastIn .4s cubic-bezier(.16,1,.3,1);border:1px solid var(--brd);backdrop-filter:blur(20px)}
+    /* TOASTS */
+    .toast-box{position:fixed;top:24px;right:24px;z-index:999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+    .toast{display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:var(--r);font-size:14px;font-weight:500;min-width:280px;animation:toastIn .4s cubic-bezier(.16,1,.3,1);border:1px solid var(--brd);backdrop-filter:blur(20px);pointer-events:all}
     .toast-hide{animation:toastOut .3s ease forwards}
     .toast-success{background:rgba(34,197,94,.12);color:var(--green);border-color:rgba(34,197,94,.2)}
     .toast-error{background:rgba(239,68,68,.12);color:var(--red);border-color:rgba(239,68,68,.2)}
     .toast-info{background:rgba(99,102,241,.12);color:#818cf8;border-color:rgba(99,102,241,.2)}
 
+    /* FOOTER */
     .footer{padding:48px 0 32px;border-top:1px solid var(--brd);text-align:center;position:relative;z-index:1}
     .footer-logo{font-size:20px;font-weight:800;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px}
     .footer-logo i{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -208,17 +282,12 @@
       .stat-num{font-size:24px}
       .scripts-grid{grid-template-columns:1fr}
       .form-row{grid-template-columns:1fr}
-      .nav-links a.hide-m{display:none}
       .hero-btns{flex-direction:column;align-items:center}
       .admin-hdr{padding:16px}
       .admin-tabs{padding:12px 16px}
       .admin-content{padding:16px}
       .admin-grid{grid-template-columns:1fr}
-      .modal-box{margin:10px}
-    }
-    @media(max-width:480px){
-      .nav-inner{padding:12px 16px}
-      .btn-lg{padding:12px 20px;font-size:14px}
+      .modal-box{margin:8px}
     }
   </style>
 </head>
@@ -228,63 +297,243 @@
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-inner">
-      <a class="nav-logo" href="#">⚡ EzScript</a>
-      <div class="nav-links">
-        <a href="#scripts" class="hide-m">Скрипты</a>
-        <button class="btn btn-primary btn-sm" onclick="openModal('upload')"><i class="fas fa-plus"></i> <span class="hide-m">Загрузить</span></button>
-        <button class="btn btn-ghost btn-icon" onclick="handleAdminBtn()" id="adminBtn" title="Админ-панель"><i class="fas fa-shield-halved"></i></button>
+      <a class="nav-logo" href="#" onclick="showPage('home')">⚡ EzScript</a>
+      <div class="nav-right">
+        <!-- Гость -->
+        <div id="guestNav" style="display:flex;gap:8px">
+          <button class="btn btn-ghost btn-sm" onclick="openModal('auth');setAuthTab('login')">Войти</button>
+          <button class="btn btn-primary btn-sm" onclick="openModal('auth');setAuthTab('register')"><i class="fas fa-user-plus"></i> Регистрация</button>
+        </div>
+        <!-- Пользователь -->
+        <div id="userNav" style="display:none">
+          <button class="btn btn-primary btn-sm" onclick="requireAuth(()=>openModal('upload'))" style="margin-right:8px"><i class="fas fa-plus"></i> Загрузить</button>
+          <div class="user-menu">
+            <div class="user-avatar" id="userAvatarBtn" onclick="toggleDropdown()">?</div>
+            <div class="dropdown hidden" id="userDropdown">
+              <div class="dropdown-header">
+                <div class="dropdown-name" id="dropName">Пользователь</div>
+                <div class="dropdown-email" id="dropEmail">email@example.com</div>
+              </div>
+              <button class="dropdown-item" onclick="showPage('profile');closeDropdown()"><i class="fas fa-user"></i> Мой профиль</button>
+              <button class="dropdown-item" onclick="showPage('myscripts');closeDropdown()"><i class="fas fa-code"></i> Мои скрипты</button>
+              <button class="dropdown-item" onclick="showPage('settings');closeDropdown()"><i class="fas fa-gear"></i> Настройки</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item admin-item" id="adminDropBtn" style="display:none" onclick="openAdmin();closeDropdown()"><i class="fas fa-shield-halved"></i> Админ-панель</button>
+              <button class="dropdown-item danger" onclick="handleLogout();closeDropdown()"><i class="fas fa-right-from-bracket"></i> Выйти</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
 
-  <section class="hero">
-    <div>
-      <div class="hero-badge">⚡ Скрипт-хаб нового поколения</div>
-      <h1 class="hero-title"><span class="gradient-text">EzScript</span></h1>
-      <p class="hero-sub">Находи, делись и используй лучшие скрипты для своих любимых игр. Быстро, удобно, бесплатно.</p>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num" id="sScripts">0</span><span class="stat-lbl">Скриптов</span></div>
-        <div class="stat"><span class="stat-num" id="sViews">0</span><span class="stat-lbl">Просмотров</span></div>
-        <div class="stat"><span class="stat-num" id="sLikes">0</span><span class="stat-lbl">Лайков</span></div>
+  <!-- HOME PAGE -->
+  <div id="page-home" class="page active">
+    <section class="hero">
+      <div>
+        <div class="hero-badge">⚡ Скрипт-хаб нового поколения</div>
+        <h1 class="hero-title"><span class="gradient-text">EzScript</span></h1>
+        <p class="hero-sub">Находи, делись и используй лучшие скрипты для своих любимых игр. Быстро, удобно, бесплатно.</p>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num" id="sScripts">0</span><span class="stat-lbl">Скриптов</span></div>
+          <div class="stat"><span class="stat-num" id="sViews">0</span><span class="stat-lbl">Просмотров</span></div>
+          <div class="stat"><span class="stat-num" id="sLikes">0</span><span class="stat-lbl">Лайков</span></div>
+        </div>
+        <div class="hero-btns">
+          <button class="btn btn-primary btn-lg" onclick="document.getElementById('scripts-section').scrollIntoView({behavior:'smooth'})"><i class="fas fa-compass"></i> Смотреть скрипты</button>
+          <button class="btn btn-outline btn-lg" onclick="requireAuth(()=>openModal('upload'))"><i class="fas fa-cloud-arrow-up"></i> Загрузить скрипт</button>
+        </div>
       </div>
-      <div class="hero-btns">
-        <button class="btn btn-primary btn-lg" onclick="document.getElementById('scripts').scrollIntoView({behavior:'smooth'})"><i class="fas fa-compass"></i> Смотреть скрипты</button>
-        <button class="btn btn-outline btn-lg" onclick="openModal('upload')"><i class="fas fa-cloud-arrow-up"></i> Загрузить скрипт</button>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="scripts">
-    <div class="container">
-      <div class="section-hdr">
-        <h2>📜 Библиотека скриптов</h2>
-        <p>Проверенные и одобренные скрипты от сообщества</p>
-      </div>
-      <div class="search-filters">
-        <div class="search-box">
-          <i class="fas fa-search"></i>
-          <input type="text" id="searchInput" placeholder="Поиск по названию, игре, автору..." oninput="doSearch()">
+    <section class="section" id="scripts-section">
+      <div class="container">
+        <div class="section-hdr">
+          <h2>📜 Библиотека скриптов</h2>
+          <p>Проверенные и одобренные скрипты от сообщества</p>
         </div>
-        <div class="filter-chips" id="filterChips">
-          <button class="chip active" onclick="setFilter('all',this)">Все</button>
-          <button class="chip" onclick="setFilter('Roblox',this)">🎮 Roblox</button>
-          <button class="chip" onclick="setFilter('Universal',this)">🌍 Universal</button>
-          <button class="chip" onclick="setFilter('FPS',this)">🎯 FPS</button>
-          <button class="chip" onclick="setFilter('RPG',this)">⚔️ RPG</button>
-          <button class="chip" onclick="setFilter('Simulator',this)">🤖 Simulator</button>
+        <div class="search-filters">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Поиск по названию, игре, автору..." oninput="doSearch()">
+          </div>
+          <div class="filter-chips">
+            <button class="chip active" onclick="setFilter('all',this)">Все</button>
+            <button class="chip" onclick="setFilter('Roblox',this)">🎮 Roblox</button>
+            <button class="chip" onclick="setFilter('Universal',this)">🌍 Universal</button>
+            <button class="chip" onclick="setFilter('FPS',this)">🎯 FPS</button>
+            <button class="chip" onclick="setFilter('RPG',this)">⚔️ RPG</button>
+            <button class="chip" onclick="setFilter('Simulator',this)">🤖 Simulator</button>
+          </div>
+        </div>
+        <div id="scriptsGrid" class="scripts-grid"></div>
+        <div id="loading" class="loading"><div class="spinner"></div><p>Загрузка скриптов...</p></div>
+        <div id="emptyState" class="empty-state" style="display:none">
+          <i class="fas fa-inbox"></i><h3>Скриптов пока нет</h3>
+          <p>Будь первым, кто загрузит скрипт!</p>
+          <button class="btn btn-primary" onclick="requireAuth(()=>openModal('upload'))"><i class="fas fa-plus"></i> Загрузить</button>
         </div>
       </div>
-      <div id="scriptsGrid" class="scripts-grid"></div>
-      <div id="loading" class="loading"><div class="spinner"></div><p>Загрузка скриптов...</p></div>
-      <div id="emptyState" class="empty-state" style="display:none">
-        <i class="fas fa-inbox"></i><h3>Скриптов пока нет</h3><p>Будь первым, кто загрузит скрипт!</p>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-logo"><i class="fas fa-bolt"></i> EzScript</div>
+        <div class="footer-links">
+          <a href="https://github.com/samowitzschlessman-bit/ezscript" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+        <p>&copy; 2025 EzScript. Все права защищены.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- PROFILE PAGE -->
+  <div id="page-profile" class="page">
+    <div class="container" style="max-width:800px;padding-top:40px">
+      <div class="profile-header">
+        <div class="profile-avatar-lg" id="profAvatarLg">?</div>
+        <div class="profile-name" id="profName">Загрузка...</div>
+        <div class="profile-email" id="profEmail"></div>
+        <div class="profile-bio" id="profBio"></div>
+        <div class="profile-stats">
+          <div class="profile-stat"><div class="profile-stat-num" id="profScriptCount">0</div><div class="profile-stat-lbl">Скриптов</div></div>
+          <div class="profile-stat"><div class="profile-stat-num" id="profLikes">0</div><div class="profile-stat-lbl">Лайков</div></div>
+          <div class="profile-stat"><div class="profile-stat-num" id="profViews">0</div><div class="profile-stat-lbl">Просмотров</div></div>
+        </div>
+      </div>
+      <div class="section-hdr" style="text-align:left;margin-bottom:24px"><h2 style="font-size:22px">Мои скрипты</h2></div>
+      <div id="profileScriptsGrid" class="scripts-grid"></div>
+      <div id="profileLoading" class="loading"><div class="spinner"></div><p>Загрузка...</p></div>
+      <div id="profileEmpty" class="empty-state" style="display:none">
+        <i class="fas fa-code"></i><h3>У вас пока нет скриптов</h3>
+        <p>Загрузите первый скрипт!</p>
         <button class="btn btn-primary" onclick="openModal('upload')"><i class="fas fa-plus"></i> Загрузить</button>
       </div>
+      <div style="height:60px"></div>
     </div>
-  </section>
+  </div>
 
+  <!-- MY SCRIPTS PAGE -->
+  <div id="page-myscripts" class="page">
+    <div class="container" style="max-width:900px;padding-top:40px">
+      <div class="section-hdr">
+        <h2>📄 Мои скрипты</h2>
+        <p>Все скрипты, которые вы загрузили</p>
+      </div>
+      <div id="myScriptsGrid" class="scripts-grid"></div>
+      <div id="myScriptsLoading" class="loading"><div class="spinner"></div><p>Загрузка...</p></div>
+      <div id="myScriptsEmpty" class="empty-state" style="display:none">
+        <i class="fas fa-inbox"></i><h3>Скриптов пока нет</h3>
+        <button class="btn btn-primary" onclick="openModal('upload')"><i class="fas fa-plus"></i> Загрузить первый</button>
+      </div>
+      <div style="height:60px"></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS PAGE -->
+  <div id="page-settings" class="page">
+    <div class="container" style="max-width:640px;padding-top:40px;padding-bottom:60px">
+      <div class="section-hdr" style="text-align:left">
+        <h2>⚙️ Настройки</h2>
+        <p>Управляйте своим аккаунтом</p>
+      </div>
+
+      <!-- Profile settings -->
+      <div class="settings-section">
+        <h3><i class="fas fa-user" style="color:var(--purple);margin-right:8px"></i>Профиль</h3>
+        <div class="form-group"><label>Имя пользователя</label><input type="text" id="setUsername" placeholder="Ваш никнейм"><div class="input-hint">Видно всем пользователям</div></div>
+        <div class="form-group"><label>О себе</label><textarea id="setBio" rows="3" placeholder="Расскажите о себе..."></textarea></div>
+        <button class="btn btn-primary" onclick="saveProfile()"><i class="fas fa-save"></i> Сохранить</button>
+      </div>
+
+      <!-- Privacy settings -->
+      <div class="settings-section">
+        <h3><i class="fas fa-lock" style="color:var(--purple);margin-right:8px"></i>Приватность</h3>
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <h4>Публичный профиль</h4>
+            <p>Другие пользователи могут видеть ваш профиль</p>
+          </div>
+          <label class="toggle"><input type="checkbox" id="togPublic" checked><span class="toggle-slider"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-info">
+            <h4>Показывать email</h4>
+            <p>Отображать email на странице профиля</p>
+          </div>
+          <label class="toggle"><input type="checkbox" id="togEmail"><span class="toggle-slider"></span></label>
+        </div>
+        <div style="margin-top:16px">
+          <button class="btn btn-primary" onclick="savePrivacy()"><i class="fas fa-save"></i> Сохранить приватность</button>
+        </div>
+      </div>
+
+      <!-- Password settings -->
+      <div class="settings-section">
+        <h3><i class="fas fa-key" style="color:var(--purple);margin-right:8px"></i>Безопасность</h3>
+        <div class="form-group"><label>Новый пароль</label><input type="password" id="newPass" placeholder="Минимум 8 символов"></div>
+        <div class="form-group"><label>Повторите пароль</label><input type="password" id="newPass2" placeholder="Повторите пароль"></div>
+        <button class="btn btn-outline" onclick="changePassword()"><i class="fas fa-key"></i> Изменить пароль</button>
+      </div>
+
+      <!-- Danger zone -->
+      <div class="settings-section" style="border-color:rgba(239,68,68,.2)">
+        <h3 style="color:var(--red)"><i class="fas fa-triangle-exclamation" style="margin-right:8px"></i>Опасная зона</h3>
+        <p style="color:var(--t2);font-size:14px;margin-bottom:16px">Эти действия необратимы</p>
+        <button class="btn btn-red" onclick="handleLogout()"><i class="fas fa-right-from-bracket"></i> Выйти из аккаунта</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL -->
+  <div class="modal" id="modal-auth">
+    <div class="modal-overlay" onclick="closeModal('auth')"></div>
+    <div class="modal-box">
+      <div class="auth-logo">
+        <div class="auth-logo-icon">⚡</div>
+        <h2>EzScript</h2>
+        <p>Скрипт-хаб нового поколения</p>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin" onclick="setAuthTab('login')">Войти</button>
+        <button class="auth-tab" id="tabReg" onclick="setAuthTab('register')">Регистрация</button>
+      </div>
+      <div class="modal-body">
+        <!-- Google -->
+        <button class="google-btn" onclick="signInGoogle()">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iI0ZGQzEwNyIgZD0iTTQzLjYxMSwyMC4wODNIMjRWMjQuNDk5aDExLjMwMWMtMS42NzIsNS40MDMtNi42NjEsOS4wMDktMTMuMzAxLDkuMDA5Yy03LjczMSwwLTEzLjk5OC02LjI2Ny0xMy45OTgtMTMuOTk4UzE0LjI2OSwwLjUxMiwyMiwwLjUxMmM0LjM2NSwwLDguMTg2LDEuNTAzLDExLjE0MSw0LjIzNGwyLjkxMi0yLjkxMkMzMi4wNjgsMS4xOSwyNy4zMzgsMC4wMDQsMjIsMC4wMDRDMTAuMDMsMC4wMDQsMCwxMC4wMzQsMCwyMnMxMC4wMywyMS45OTYsMjIsMjEuOTk2YzExLjY2OSwwLDIxLjU0OC05LjA2NSwyMS41NDgtMjEuOTk2QzQzLjU0OCwyMS4wMTksNDMuNTkxLDIwLjU0Nyw0My42MTEsMjAuMDgzeiIvPjxwYXRoIGZpbGw9IiNGRjM5MzQiIGQ9Ik02LjMwNiwxMy42OTFsNC4wNSwyLjk3MUMxMS41NzQsMTIuMzA4LDE0LjU3OSwxMC41MTIsMTgsMTAuNTEyYzIuOTg5LDAsNS42OTUsMS4wNDEsNy43NDksMi43NDhsMy4wMzEtMy4wMzFDMjYuNDkzLDguMDU2LDIyLjQwNiw2LjUxMiwxOCw2LjUxMkMxMy4xMTMsNi41MTIsOC44MDgsOS4zNjMsNi4zMDYsMTMuNjkxeiIvPjxwYXRoIGZpbGw9IiM0Q0FGNTAiIGQ9Ik0xOCwzNS40ODhjLTMuMjYyLDAtNi4yNDctMS4xMjYtOC41OTQtMi45OTFsLTQuMDk2LDMuMTZDNy45NzUsNDAuMTEsMTIuNjMsNDIuNDg4LDE4LDQyLjQ4OGM0LjIxMSwwLDguMDcyLTEuNDA0LDExLjE3NS0zLjc0MmwtMy44NzEtMy4wMDdDMjMuNDkxLDM0LjY4NSwyMC44OTcsMzUuNDg4LDE4LDM1LjQ4OHoiLz48cGF0aCBmaWxsPSIjMTU2NUMwIiBkPSJNMzYsMThoLTJ2LTJoLTJ2Mmgtd3YyaDJ2MmgyVjIwaDJ2LTJ6Ii8+PC9zdmc+" alt="Google">
+          Продолжить с Google
+        </button>
+        <div class="auth-divider">или</div>
+
+        <!-- Login form -->
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group"><label>Email</label><input type="email" id="lEmail" required placeholder="name@example.com"></div>
+          <div class="form-group"><label>Пароль</label><input type="password" id="lPass" required placeholder="••••••••"></div>
+          <button type="submit" class="btn btn-primary btn-full" id="loginBtn"><i class="fas fa-right-to-bracket"></i> Войти</button>
+          <div style="text-align:center;margin-top:16px">
+            <button type="button" class="btn btn-ghost btn-sm" onclick="sendReset()">Забыли пароль?</button>
+          </div>
+        </form>
+
+        <!-- Register form -->
+        <form id="registerForm" onsubmit="handleRegister(event)" style="display:none">
+          <div class="form-group"><label>Имя пользователя</label><input type="text" id="rUsername" required placeholder="Ваш никнейм" minlength="3" maxlength="30"><div class="input-hint">Минимум 3 символа, только латиница, цифры и _</div></div>
+          <div class="form-group"><label>Email</label><input type="email" id="rEmail" required placeholder="name@example.com"></div>
+          <div class="form-group"><label>Пароль</label><input type="password" id="rPass" required placeholder="Минимум 8 символов" minlength="8"></div>
+          <button type="submit" class="btn btn-primary btn-full" id="registerBtn"><i class="fas fa-user-plus"></i> Создать аккаунт</button>
+          <div class="confirm-notice"><i class="fas fa-envelope"></i><span>После регистрации на вашу почту придёт письмо с подтверждением. Пожалуйста, перейдите по ссылке из письма.</span></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPLOAD MODAL -->
   <div class="modal" id="modal-upload">
     <div class="modal-overlay" onclick="closeModal('upload')"></div>
     <div class="modal-box">
@@ -300,9 +549,8 @@
               <select id="fCat"><option>GUI</option><option>Auto Farm</option><option>ESP</option><option>Speed</option><option>Teleport</option><option>Другое</option></select>
             </div>
           </div>
-          <div class="form-group"><label>Описание</label><textarea id="fDesc" rows="3" placeholder="Описание скрипта..."></textarea></div>
+          <div class="form-group"><label>Описание</label><textarea id="fDesc" rows="3" placeholder="Что делает скрипт?"></textarea></div>
           <div class="form-group"><label>Код скрипта *</label><textarea id="fCode" rows="8" required placeholder="-- вставьте код сюда" class="code-input"></textarea></div>
-          <div class="form-group"><label>Автор</label><input id="fAuthor" placeholder="Ваш ник (по умолчанию: Аноним)"></div>
           <div class="form-actions">
             <button type="button" class="btn btn-ghost" onclick="closeModal('upload')">Отмена</button>
             <button type="submit" class="btn btn-primary" id="uploadBtn"><i class="fas fa-paper-plane"></i> Отправить</button>
@@ -312,6 +560,7 @@
     </div>
   </div>
 
+  <!-- VIEW SCRIPT MODAL -->
   <div class="modal" id="modal-view">
     <div class="modal-overlay" onclick="closeModal('view')"></div>
     <div class="modal-box lg">
@@ -331,32 +580,18 @@
     </div>
   </div>
 
-  <div class="modal" id="modal-login">
-    <div class="modal-overlay" onclick="closeModal('login')"></div>
-    <div class="modal-box sm">
-      <div class="modal-hdr"><h3><i class="fas fa-shield-halved"></i> Вход для админа</h3><button class="modal-close" onclick="closeModal('login')"><i class="fas fa-xmark"></i></button></div>
-      <div class="modal-body">
-        <form onsubmit="handleLogin(event)">
-          <div class="form-group"><label>Email</label><input type="email" id="lEmail" required placeholder="admin@example.com"></div>
-          <div class="form-group"><label>Пароль</label><input type="password" id="lPass" required placeholder="••••••••"></div>
-          <div class="form-actions"><button type="submit" class="btn btn-primary btn-full" id="loginBtn"><i class="fas fa-right-to-bracket"></i> Войти</button></div>
-        </form>
-      </div>
-    </div>
-  </div>
-
+  <!-- ADMIN PANEL -->
   <div class="admin-panel" id="adminPanel" style="display:none">
     <div class="admin-hdr">
       <div class="admin-hdr-left">
         <h2><i class="fas fa-shield-halved"></i> Админ-панель</h2>
-        <span class="admin-badge">Admin</span>
+        <span class="admin-badge-pill">Admin</span>
       </div>
       <div class="admin-hdr-right">
         <button class="btn btn-ghost" onclick="closeAdmin()"><i class="fas fa-arrow-left"></i> На сайт</button>
-        <button class="btn btn-outline" onclick="handleLogout()"><i class="fas fa-right-from-bracket"></i> Выйти</button>
       </div>
     </div>
-    <div class="admin-tabs" id="adminTabs">
+    <div class="admin-tabs">
       <button class="admin-tab active" onclick="setAdminTab('pending',this)"><i class="fas fa-clock"></i> На модерации <span class="tab-badge" id="pendingCount">0</span></button>
       <button class="admin-tab" onclick="setAdminTab('approved',this)"><i class="fas fa-check-circle"></i> Одобренные</button>
       <button class="admin-tab" onclick="setAdminTab('rejected',this)"><i class="fas fa-times-circle"></i> Отклонённые</button>
@@ -367,133 +602,395 @@
 
   <div class="toast-box" id="toastBox"></div>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-logo"><i class="fas fa-bolt"></i> EzScript</div>
-      <div class="footer-links">
-        <a href="https://github.com/samowitzschlessman-bit/ezscript" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-discord"></i></a>
-        <a href="#"><i class="fab fa-telegram"></i></a>
-      </div>
-      <p>&copy; 2025 EzScript. Все права защищены.</p>
-    </div>
-  </footer>
-
 <script>
+// ==========================================
+// CONFIG
+// ==========================================
 const SUPABASE_URL = 'https://jtknimffjdkzibeqvfck.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0a25pbWZmamRremliZXF2ZmNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3MDU0NTgsImV4cCI6MjA5MDI4MTQ1OH0.wKWaANUyOnk0oCS0WnhLBDT8xiab6D4U6HiVEEsslI4';
+const ADMIN_EMAIL = 'intel_index@gmail.com'; // ← ТВОЙ EMAIL АДМИНА
 
-const{createClient}=supabase;
-let db;
-try{db=createClient(SUPABASE_URL,SUPABASE_KEY)}catch(e){console.error(e)}
+const {createClient} = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-let scripts=[];
-let currentFilter='all';
-let searchQ='';
-let isAdmin=false;
-let adminTab='pending';
-let adminScripts=[];
-let viewingScript=null;
-let likedIds=JSON.parse(localStorage.getItem('ez_likes')||'[]');
+// STATE
+let scripts = [];
+let currentFilter = 'all';
+let searchQ = '';
+let currentUser = null;
+let currentProfile = null;
+let isAdmin = false;
+let adminTab = 'pending';
+let adminScripts = [];
+let viewingScript = null;
+let likedIds = JSON.parse(localStorage.getItem('ez_likes') || '[]');
+let currentPage = 'home';
 
-document.addEventListener('DOMContentLoaded',async()=>{
-  await checkSession();
+// ==========================================
+// INIT
+// ==========================================
+document.addEventListener('DOMContentLoaded', async () => {
+  db.auth.onAuthStateChange(async (event, session) => {
+    if (session?.user) {
+      currentUser = session.user;
+      isAdmin = currentUser.email === ADMIN_EMAIL;
+      await loadProfile();
+      updateNavUI();
+    } else {
+      currentUser = null;
+      currentProfile = null;
+      isAdmin = false;
+      updateNavUI();
+    }
+  });
   await loadScripts();
 });
 
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){closeModal('upload');closeModal('view');closeModal('login')}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeAllModals(); }
 });
 
-async function checkSession(){
-  try{
-    const{data:{session}}=await db.auth.getSession();
-    if(session){isAdmin=true;updateAdminBtn()}
-  }catch(e){}
+document.addEventListener('click', e => {
+  const menu = document.getElementById('userDropdown');
+  const btn = document.getElementById('userAvatarBtn');
+  if (!menu.contains(e.target) && !btn.contains(e.target)) {
+    menu.classList.add('hidden');
+  }
+});
+
+// ==========================================
+// PAGES
+// ==========================================
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name)?.classList.add('active');
+  currentPage = name;
+  window.scrollTo(0, 0);
+  if (name === 'profile') loadProfilePage();
+  if (name === 'myscripts') loadMyScripts();
+  if (name === 'settings') loadSettings();
 }
 
-function updateAdminBtn(){
-  const b=document.getElementById('adminBtn');
-  if(isAdmin){b.style.color='var(--purple)';b.title='Открыть админ-панель'}
-}
-
-function handleAdminBtn(){
-  if(isAdmin){openAdmin()}else{openModal('login')}
-}
-
-async function handleLogin(e){
-  e.preventDefault();
-  const btn=document.getElementById('loginBtn');
-  btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Вход...';
-  try{
-    const{error}=await db.auth.signInWithPassword({
-      email:document.getElementById('lEmail').value,
-      password:document.getElementById('lPass').value
-    });
-    if(error)throw error;
-    isAdmin=true;
-    updateAdminBtn();
-    closeModal('login');
-    toast('Добро пожаловать, админ!','success');
-    openAdmin();
-  }catch(err){
-    toast(err.message||'Ошибка входа','error');
-  }finally{
-    btn.disabled=false;btn.innerHTML='<i class="fas fa-right-to-bracket"></i> Войти';
+// ==========================================
+// AUTH UI
+// ==========================================
+function updateNavUI() {
+  const g = document.getElementById('guestNav');
+  const u = document.getElementById('userNav');
+  if (currentUser) {
+    g.style.display = 'none';
+    u.style.display = 'flex';
+    updateAvatar();
+    document.getElementById('dropEmail').textContent = currentUser.email;
+    const name = currentProfile?.username || currentUser.email.split('@')[0];
+    document.getElementById('dropName').textContent = name;
+    document.getElementById('adminDropBtn').style.display = isAdmin ? 'flex' : 'none';
+  } else {
+    g.style.display = 'flex';
+    u.style.display = 'none';
   }
 }
 
-async function handleLogout(){
-  await db.auth.signOut();
-  isAdmin=false;
-  document.getElementById('adminBtn').style.color='';
-  closeAdmin();
-  toast('Вы вышли из аккаунта','info');
-  await loadScripts();
+function updateAvatar() {
+  const el = document.getElementById('userAvatarBtn');
+  const name = currentProfile?.username || currentUser?.email?.split('@')[0] || '?';
+  if (currentProfile?.avatar_url) {
+    el.innerHTML = `<img src="${currentProfile.avatar_url}" alt="avatar">`;
+  } else {
+    el.textContent = name[0].toUpperCase();
+  }
 }
 
-async function loadScripts(){
-  const grid=document.getElementById('scriptsGrid');
-  const loading=document.getElementById('loading');
-  const empty=document.getElementById('emptyState');
-  loading.style.display='block';grid.innerHTML='';empty.style.display='none';
-  try{
-    const{data,error}=await db.from('scripts').select('*').eq('status','approved').order('created_at',{ascending:false});
-    if(error)throw error;
-    scripts=data||[];
+function toggleDropdown() {
+  document.getElementById('userDropdown').classList.toggle('hidden');
+}
+function closeDropdown() {
+  document.getElementById('userDropdown').classList.add('hidden');
+}
+
+function requireAuth(cb) {
+  if (currentUser) { cb(); }
+  else { openModal('auth'); setAuthTab('login'); toast('Войдите в аккаунт, чтобы продолжить', 'info'); }
+}
+
+// ==========================================
+// AUTH MODAL TABS
+// ==========================================
+function setAuthTab(tab) {
+  const loginForm = document.getElementById('loginForm');
+  const regForm = document.getElementById('registerForm');
+  const tabL = document.getElementById('tabLogin');
+  const tabR = document.getElementById('tabReg');
+  if (tab === 'login') {
+    loginForm.style.display = 'block'; regForm.style.display = 'none';
+    tabL.classList.add('active'); tabR.classList.remove('active');
+  } else {
+    loginForm.style.display = 'none'; regForm.style.display = 'block';
+    tabL.classList.remove('active'); tabR.classList.add('active');
+  }
+}
+
+// ==========================================
+// GOOGLE AUTH
+// ==========================================
+async function signInGoogle() {
+  try {
+    const {error} = await db.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.origin }
+    });
+    if (error) throw error;
+  } catch(e) { toast('Ошибка Google входа: ' + e.message, 'error'); }
+}
+
+// ==========================================
+// LOGIN
+// ==========================================
+async function handleLogin(e) {
+  e.preventDefault();
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Вход...';
+  try {
+    const {error} = await db.auth.signInWithPassword({
+      email: document.getElementById('lEmail').value.trim(),
+      password: document.getElementById('lPass').value
+    });
+    if (error) throw error;
+    closeModal('auth');
+    toast('Добро пожаловать! 👋', 'success');
+  } catch(err) {
+    toast(err.message === 'Invalid login credentials' ? 'Неверный email или пароль' : err.message, 'error');
+  } finally {
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-right-to-bracket"></i> Войти';
+  }
+}
+
+// ==========================================
+// REGISTER
+// ==========================================
+async function handleRegister(e) {
+  e.preventDefault();
+  const btn = document.getElementById('registerBtn');
+  const username = document.getElementById('rUsername').value.trim();
+  const email = document.getElementById('rEmail').value.trim();
+  const pass = document.getElementById('rPass').value;
+  if (!/^[a-zA-Z0-9_]{3,30}$/.test(username)) {
+    toast('Никнейм: только латиница, цифры и _ (3-30 символов)', 'error'); return;
+  }
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Создание...';
+  try {
+    const {data, error} = await db.auth.signUp({
+      email, password: pass,
+      options: { data: { username } }
+    });
+    if (error) throw error;
+    // Create profile
+    if (data.user) {
+      await db.from('profiles').upsert({
+        id: data.user.id, email, username
+      });
+    }
+    closeModal('auth');
+    toast('Аккаунт создан! Проверьте email для подтверждения 📧', 'success');
+  } catch(err) {
+    const msg = err.message.includes('already registered') ? 'Этот email уже зарегистрирован' : err.message;
+    toast(msg, 'error');
+  } finally {
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-user-plus"></i> Создать аккаунт';
+  }
+}
+
+// ==========================================
+// RESET PASSWORD
+// ==========================================
+async function sendReset() {
+  const email = document.getElementById('lEmail').value.trim();
+  if (!email) { toast('Введите email для сброса пароля', 'error'); return; }
+  try {
+    const {error} = await db.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin
+    });
+    if (error) throw error;
+    toast('Письмо для сброса пароля отправлено 📧', 'success');
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+// ==========================================
+// LOGOUT
+// ==========================================
+async function handleLogout() {
+  await db.auth.signOut();
+  showPage('home');
+  toast('Вы вышли из аккаунта', 'info');
+}
+
+// ==========================================
+// PROFILE
+// ==========================================
+async function loadProfile() {
+  if (!currentUser) return;
+  try {
+    const {data} = await db.from('profiles').select('*').eq('id', currentUser.id).single();
+    currentProfile = data;
+    if (!data) {
+      const username = currentUser.user_metadata?.username || currentUser.email.split('@')[0];
+      await db.from('profiles').insert({ id: currentUser.id, email: currentUser.email, username });
+      const {data: d2} = await db.from('profiles').select('*').eq('id', currentUser.id).single();
+      currentProfile = d2;
+    }
+    updateAvatar();
+    updateNavUI();
+  } catch(e) {}
+}
+
+async function loadProfilePage() {
+  if (!currentUser) { showPage('home'); return; }
+  document.getElementById('profileLoading').style.display = 'block';
+  document.getElementById('profileScriptsGrid').innerHTML = '';
+  document.getElementById('profileEmpty').style.display = 'none';
+  const name = currentProfile?.username || currentUser.email.split('@')[0];
+  document.getElementById('profAvatarLg').textContent = name[0].toUpperCase();
+  document.getElementById('profName').textContent = name;
+  document.getElementById('profEmail').textContent = currentUser.email;
+  document.getElementById('profBio').textContent = currentProfile?.bio || 'Нет описания';
+  try {
+    const {data} = await db.from('scripts').select('*').eq('user_id', currentUser.id).order('created_at', {ascending: false});
+    const list = data || [];
+    const approved = list.filter(s => s.status === 'approved');
+    document.getElementById('profScriptCount').textContent = list.length;
+    document.getElementById('profLikes').textContent = list.reduce((a,s)=>a+(s.likes||0),0);
+    document.getElementById('profViews').textContent = list.reduce((a,s)=>a+(s.views||0),0);
+    if (!list.length) { document.getElementById('profileEmpty').style.display = 'flex'; }
+    else { renderScriptsList(list, 'profileScriptsGrid', true); }
+  } catch(e) {}
+  document.getElementById('profileLoading').style.display = 'none';
+}
+
+async function loadMyScripts() {
+  if (!currentUser) { showPage('home'); return; }
+  document.getElementById('myScriptsLoading').style.display = 'block';
+  document.getElementById('myScriptsGrid').innerHTML = '';
+  document.getElementById('myScriptsEmpty').style.display = 'none';
+  try {
+    const {data} = await db.from('scripts').select('*').eq('user_id', currentUser.id).order('created_at', {ascending: false});
+    const list = data || [];
+    if (!list.length) { document.getElementById('myScriptsEmpty').style.display = 'flex'; }
+    else { renderScriptsList(list, 'myScriptsGrid', true); }
+  } catch(e) { toast('Ошибка загрузки', 'error'); }
+  document.getElementById('myScriptsLoading').style.display = 'none';
+}
+
+function renderScriptsList(list, gridId, showStatus=false) {
+  const grid = document.getElementById(gridId);
+  grid.innerHTML = list.map((s,i) => `
+    <div class="card" style="animation-delay:${i*0.05}s" onclick="openViewFull('${s.id}', ${JSON.stringify(list).replace(/"/g,'&quot;')})">
+      <div class="card-top">
+        ${gameBadge(s.game)}
+        ${showStatus ? `<span class="status-badge status-${s.status}">${statusText(s.status)}</span>` : catBadge(s.category)}
+      </div>
+      <div class="card-title">${esc(s.title)}</div>
+      <div class="card-desc">${esc(s.description || 'Описание отсутствует')}</div>
+      <div class="card-meta">
+        <span><i class="fas fa-clock"></i>${timeAgo(s.created_at)}</span>
+        <span><i class="fas fa-heart"></i>${s.likes||0}</span>
+        <span><i class="fas fa-eye"></i>${s.views||0}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ==========================================
+// SETTINGS
+// ==========================================
+function loadSettings() {
+  if (!currentProfile) return;
+  document.getElementById('setUsername').value = currentProfile.username || '';
+  document.getElementById('setBio').value = currentProfile.bio || '';
+  document.getElementById('togPublic').checked = currentProfile.is_public !== false;
+}
+
+async function saveProfile() {
+  const username = document.getElementById('setUsername').value.trim();
+  const bio = document.getElementById('setBio').value.trim();
+  if (username && !/^[a-zA-Z0-9_]{3,30}$/.test(username)) {
+    toast('Никнейм: только латиница, цифры и _ (3-30 символов)', 'error'); return;
+  }
+  try {
+    const {error} = await db.from('profiles').update({username, bio}).eq('id', currentUser.id);
+    if (error) throw error;
+    currentProfile = {...currentProfile, username, bio};
+    updateNavUI();
+    toast('Профиль сохранён ✅', 'success');
+  } catch(e) {
+    toast(e.message.includes('unique') ? 'Этот никнейм уже занят' : e.message, 'error');
+  }
+}
+
+async function savePrivacy() {
+  const is_public = document.getElementById('togPublic').checked;
+  try {
+    const {error} = await db.from('profiles').update({is_public}).eq('id', currentUser.id);
+    if (error) throw error;
+    currentProfile = {...currentProfile, is_public};
+    toast('Настройки приватности сохранены ✅', 'success');
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function changePassword() {
+  const p1 = document.getElementById('newPass').value;
+  const p2 = document.getElementById('newPass2').value;
+  if (p1.length < 8) { toast('Пароль должен быть минимум 8 символов', 'error'); return; }
+  if (p1 !== p2) { toast('Пароли не совпадают', 'error'); return; }
+  try {
+    const {error} = await db.auth.updateUser({password: p1});
+    if (error) throw error;
+    toast('Пароль изменён ✅', 'success');
+    document.getElementById('newPass').value = '';
+    document.getElementById('newPass2').value = '';
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+// ==========================================
+// SCRIPTS - PUBLIC
+// ==========================================
+async function loadScripts() {
+  const grid = document.getElementById('scriptsGrid');
+  const loading = document.getElementById('loading');
+  const empty = document.getElementById('emptyState');
+  loading.style.display = 'block'; grid.innerHTML = ''; empty.style.display = 'none';
+  try {
+    const {data, error} = await db.from('scripts').select('*').eq('status','approved').order('created_at',{ascending:false});
+    if (error) throw error;
+    scripts = data || [];
     renderScripts();
     updateStats();
-  }catch(err){
-    toast('Ошибка загрузки: '+err.message,'error');
-  }finally{loading.style.display='none'}
+  } catch(err) { toast('Ошибка загрузки: ' + err.message, 'error'); }
+  finally { loading.style.display = 'none'; }
 }
 
-function renderScripts(){
-  const grid=document.getElementById('scriptsGrid');
-  const empty=document.getElementById('emptyState');
-  let filtered=scripts;
-  if(currentFilter!=='all')filtered=filtered.filter(s=>s.game===currentFilter);
-  if(searchQ){
-    const q=searchQ.toLowerCase();
-    filtered=filtered.filter(s=>
-      s.title.toLowerCase().includes(q)||
-      (s.description||'').toLowerCase().includes(q)||
-      (s.author||'').toLowerCase().includes(q)||
+function renderScripts() {
+  const grid = document.getElementById('scriptsGrid');
+  const empty = document.getElementById('emptyState');
+  let filtered = scripts;
+  if (currentFilter !== 'all') filtered = filtered.filter(s => s.game === currentFilter);
+  if (searchQ) {
+    const q = searchQ.toLowerCase();
+    filtered = filtered.filter(s =>
+      s.title.toLowerCase().includes(q) ||
+      (s.description||'').toLowerCase().includes(q) ||
+      (s.author||'').toLowerCase().includes(q) ||
       (s.game||'').toLowerCase().includes(q)
     );
   }
-  if(!filtered.length){grid.innerHTML='';empty.style.display='flex';return}
-  empty.style.display='none';
-  grid.innerHTML=filtered.map((s,i)=>`
+  if (!filtered.length) { grid.innerHTML = ''; empty.style.display = 'flex'; return; }
+  empty.style.display = 'none';
+  grid.innerHTML = filtered.map((s,i) => `
     <div class="card" style="animation-delay:${i*0.06}s" onclick="openView('${s.id}')">
-      <div class="card-top">
-        ${gameBadge(s.game)}
-        ${catBadge(s.category)}
-      </div>
+      <div class="card-top">${gameBadge(s.game)}${catBadge(s.category)}</div>
       <div class="card-title">${esc(s.title)}</div>
-      <div class="card-desc">${esc(s.description||'Описание отсутствует')}</div>
+      <div class="card-desc">${esc(s.description || 'Описание отсутствует')}</div>
       <div class="card-meta">
-        <span><i class="fas fa-user"></i>${esc(s.author||'Аноним')}</span>
+        <span><i class="fas fa-user"></i>${esc(s.author || 'Аноним')}</span>
         <span><i class="fas fa-clock"></i>${timeAgo(s.created_at)}</span>
       </div>
       <div class="card-bottom">
@@ -503,153 +1000,170 @@ function renderScripts(){
           </button>
           <span><i class="fas fa-eye"></i> ${s.views||0}</span>
         </div>
-        <button class="btn btn-sm btn-outline" onclick="event.stopPropagation();openView('${s.id}')">
-          <i class="fas fa-code"></i> Открыть
-        </button>
+        <button class="btn btn-sm btn-outline" onclick="event.stopPropagation();openView('${s.id}')"><i class="fas fa-code"></i> Открыть</button>
       </div>
     </div>
   `).join('');
 }
 
-function updateStats(){
-  animNum('sScripts',scripts.length);
-  animNum('sViews',scripts.reduce((a,s)=>a+(s.views||0),0));
-  animNum('sLikes',scripts.reduce((a,s)=>a+(s.likes||0),0));
+function updateStats() {
+  animNum('sScripts', scripts.length);
+  animNum('sViews', scripts.reduce((a,s)=>a+(s.views||0),0));
+  animNum('sLikes', scripts.reduce((a,s)=>a+(s.likes||0),0));
 }
 
 let searchTimer;
-function doSearch(){
+function doSearch() {
   clearTimeout(searchTimer);
-  searchTimer=setTimeout(()=>{
-    searchQ=document.getElementById('searchInput').value.trim();
+  searchTimer = setTimeout(() => {
+    searchQ = document.getElementById('searchInput').value.trim();
     renderScripts();
-  },250);
+  }, 250);
 }
 
-function setFilter(f,el){
-  currentFilter=f;
-  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  if(el)el.classList.add('active');
+function setFilter(f, el) {
+  currentFilter = f;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  if (el) el.classList.add('active');
   renderScripts();
 }
 
-async function handleUpload(e){
+// ==========================================
+// UPLOAD
+// ==========================================
+async function handleUpload(e) {
   e.preventDefault();
-  const btn=document.getElementById('uploadBtn');
-  btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Отправка...';
-  const title=document.getElementById('fTitle').value.trim();
-  const code=document.getElementById('fCode').value.trim();
-  if(code.length<5){toast('Код слишком короткий','error');btn.disabled=false;btn.innerHTML='<i class="fas fa-paper-plane"></i> Отправить';return}
-  try{
-    const{error}=await db.from('scripts').insert({
-      title,
-      description:document.getElementById('fDesc').value.trim(),
+  if (!currentUser) { openModal('auth'); return; }
+  const btn = document.getElementById('uploadBtn');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+  const code = document.getElementById('fCode').value.trim();
+  if (code.length < 5) { toast('Код слишком короткий', 'error'); btn.disabled=false; btn.innerHTML='<i class="fas fa-paper-plane"></i> Отправить'; return; }
+  const name = currentProfile?.username || currentUser.email.split('@')[0];
+  try {
+    const {error} = await db.from('scripts').insert({
+      title: document.getElementById('fTitle').value.trim(),
+      description: document.getElementById('fDesc').value.trim(),
       code,
-      game:document.getElementById('fGame').value,
-      category:document.getElementById('fCat').value,
-      author:document.getElementById('fAuthor').value.trim()||'Аноним',
-      status:'pending'
+      game: document.getElementById('fGame').value,
+      category: document.getElementById('fCat').value,
+      author: name,
+      user_id: currentUser.id,
+      status: 'pending'
     });
-    if(error)throw error;
-    toast('Скрипт отправлен на модерацию! ✅','success');
+    if (error) throw error;
+    toast('Скрипт отправлен на модерацию! ✅', 'success');
     closeModal('upload');
     document.getElementById('uploadForm').reset();
-  }catch(err){
-    toast('Ошибка: '+err.message,'error');
-  }finally{
-    btn.disabled=false;btn.innerHTML='<i class="fas fa-paper-plane"></i> Отправить';
-  }
+  } catch(err) { toast('Ошибка: ' + err.message, 'error'); }
+  finally { btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить'; }
 }
 
-async function openView(id,fromAdmin=false){
-  const list=fromAdmin?adminScripts:scripts;
-  const s=list.find(x=>x.id===id);
-  if(!s)return;
-  viewingScript=s;
-  document.getElementById('vTitle').textContent=s.title;
-  document.getElementById('vMeta').innerHTML=`
+// ==========================================
+// VIEW SCRIPT
+// ==========================================
+async function openView(id) {
+  const s = scripts.find(x => x.id === id);
+  if (!s) return;
+  viewingScript = s;
+  fillViewModal(s, false);
+  openModal('view');
+  try { await db.rpc('increment_views', {script_id: id}); s.views=(s.views||0)+1; } catch(e) {}
+}
+
+function openViewFull(id, list) {
+  const s = list.find(x => x.id === id);
+  if (!s) return;
+  viewingScript = s;
+  fillViewModal(s, isAdmin);
+  openModal('view');
+}
+
+function fillViewModal(s, showAdminActions) {
+  document.getElementById('vTitle').textContent = s.title;
+  document.getElementById('vMeta').innerHTML = `
     ${gameBadge(s.game)} ${catBadge(s.category)}
     <span class="badge" style="background:rgba(255,255,255,.06);color:var(--t2)"><i class="fas fa-user"></i> ${esc(s.author||'Аноним')}</span>
     <span class="badge" style="background:rgba(255,255,255,.06);color:var(--t2)"><i class="fas fa-clock"></i> ${timeAgo(s.created_at)}</span>
   `;
-  document.getElementById('vDesc').textContent=s.description||'';
-  document.getElementById('vCode').textContent=s.code;
-  const aa=document.getElementById('vAdminActions');
-  if(isAdmin&&fromAdmin){
-    aa.style.display='flex';
-    aa.innerHTML=`
+  document.getElementById('vDesc').textContent = s.description || '';
+  document.getElementById('vCode').textContent = s.code;
+  const aa = document.getElementById('vAdminActions');
+  if (showAdminActions && isAdmin) {
+    aa.style.display = 'flex';
+    aa.innerHTML = `
       ${s.status!=='approved'?`<button class="btn btn-sm btn-green" onclick="adminAction('${s.id}','approved')"><i class="fas fa-check"></i> Одобрить</button>`:''}
       ${s.status!=='rejected'?`<button class="btn btn-sm btn-yellow" onclick="adminAction('${s.id}','rejected')"><i class="fas fa-ban"></i> Отклонить</button>`:''}
       <button class="btn btn-sm btn-red" onclick="adminDelete('${s.id}')"><i class="fas fa-trash"></i> Удалить</button>
     `;
-  }else{aa.style.display='none'}
-  openModal('view');
-  if(!fromAdmin&&s.status==='approved'){
-    try{await db.rpc('increment_views',{script_id:id});s.views=(s.views||0)+1}catch(e){}
-  }
+  } else { aa.style.display = 'none'; }
 }
 
-async function copyCode(){
-  const code=document.getElementById('vCode').textContent;
-  try{
+async function copyCode() {
+  const code = document.getElementById('vCode').textContent;
+  try {
     await navigator.clipboard.writeText(code);
-    const b=document.querySelector('.btn-copy');
-    b.innerHTML='<i class="fas fa-check"></i> Скопировано!';b.classList.add('copied');
-    setTimeout(()=>{b.innerHTML='<i class="fas fa-copy"></i> Копировать';b.classList.remove('copied')},2000);
-    toast('Код скопирован!','success');
-  }catch(e){toast('Не удалось скопировать','error')}
+    const b = document.querySelector('.btn-copy');
+    b.innerHTML='<i class="fas fa-check"></i> Скопировано!'; b.classList.add('copied');
+    setTimeout(()=>{b.innerHTML='<i class="fas fa-copy"></i> Копировать'; b.classList.remove('copied')},2000);
+    toast('Код скопирован!', 'success');
+  } catch(e) { toast('Не удалось скопировать', 'error'); }
 }
 
-async function toggleLike(id){
-  if(likedIds.includes(id))return toast('Вы уже лайкнули этот скрипт','info');
-  try{
-    await db.rpc('increment_likes',{script_id:id});
+// ==========================================
+// LIKES
+// ==========================================
+async function toggleLike(id) {
+  if (!currentUser) { requireAuth(()=>{}); return; }
+  if (likedIds.includes(id)) { toast('Вы уже лайкнули этот скрипт', 'info'); return; }
+  try {
+    await db.rpc('increment_likes', {script_id: id});
     likedIds.push(id);
-    localStorage.setItem('ez_likes',JSON.stringify(likedIds));
-    const s=scripts.find(x=>x.id===id);
-    if(s)s.likes=(s.likes||0)+1;
-    renderScripts();
-    updateStats();
-  }catch(e){toast('Ошибка','error')}
+    localStorage.setItem('ez_likes', JSON.stringify(likedIds));
+    const s = scripts.find(x=>x.id===id);
+    if (s) s.likes=(s.likes||0)+1;
+    renderScripts(); updateStats();
+  } catch(e) { toast('Ошибка', 'error'); }
 }
 
-async function openAdmin(){
-  document.getElementById('adminPanel').style.display='block';
-  document.body.style.overflow='hidden';
+// ==========================================
+// ADMIN
+// ==========================================
+async function openAdmin() {
+  if (!isAdmin) { toast('Нет доступа', 'error'); return; }
+  document.getElementById('adminPanel').style.display = 'block';
+  document.body.style.overflow = 'hidden';
   await loadAdminScripts();
 }
 
-function closeAdmin(){
-  document.getElementById('adminPanel').style.display='none';
-  document.body.style.overflow='';
+function closeAdmin() {
+  document.getElementById('adminPanel').style.display = 'none';
+  document.body.style.overflow = '';
 }
 
-async function loadAdminScripts(){
-  const cont=document.getElementById('adminContent');
-  cont.innerHTML='<div class="loading"><div class="spinner"></div><p>Загрузка...</p></div>';
-  try{
-    let q=db.from('scripts').select('*').order('created_at',{ascending:false});
-    if(adminTab!=='all')q=q.eq('status',adminTab);
-    const{data,error}=await q;
-    if(error)throw error;
-    adminScripts=data||[];
-    if(adminTab==='pending'||adminTab==='all'){
-      const pc=adminTab==='pending'?adminScripts.length:adminScripts.filter(s=>s.status==='pending').length;
-      document.getElementById('pendingCount').textContent=pc;
-    }
+async function loadAdminScripts() {
+  const cont = document.getElementById('adminContent');
+  cont.innerHTML = '<div class="loading"><div class="spinner"></div><p>Загрузка...</p></div>';
+  try {
+    let q = db.from('scripts').select('*').order('created_at', {ascending: false});
+    if (adminTab !== 'all') q = q.eq('status', adminTab);
+    const {data, error} = await q;
+    if (error) throw error;
+    adminScripts = data || [];
+    document.getElementById('pendingCount').textContent =
+      adminTab === 'pending' ? adminScripts.length :
+      adminScripts.filter(s=>s.status==='pending').length;
     renderAdmin();
-  }catch(err){
-    cont.innerHTML=`<div class="admin-empty"><i class="fas fa-exclamation-triangle"></i><p>Ошибка: ${err.message}</p></div>`;
+  } catch(err) {
+    cont.innerHTML = `<div class="admin-empty"><i class="fas fa-exclamation-triangle"></i><p>Ошибка: ${err.message}</p></div>`;
   }
 }
 
-function renderAdmin(){
-  const cont=document.getElementById('adminContent');
-  if(!adminScripts.length){
-    cont.innerHTML='<div class="admin-empty"><i class="fas fa-inbox"></i><p>Нет скриптов в этой категории</p></div>';
-    return;
+function renderAdmin() {
+  const cont = document.getElementById('adminContent');
+  if (!adminScripts.length) {
+    cont.innerHTML = '<div class="admin-empty"><i class="fas fa-inbox"></i><p>Нет скриптов</p></div>'; return;
   }
-  cont.innerHTML='<div class="admin-grid">'+adminScripts.map(s=>`
+  cont.innerHTML = '<div class="admin-grid">' + adminScripts.map(s=>`
     <div class="admin-card">
       <div class="admin-card-top">
         <div class="admin-card-title">${esc(s.title)}</div>
@@ -657,68 +1171,86 @@ function renderAdmin(){
       </div>
       <div class="admin-card-meta">
         <span><i class="fas fa-gamepad"></i> ${esc(s.game)}</span>
-        <span><i class="fas fa-tag"></i> ${esc(s.category)}</span>
         <span><i class="fas fa-user"></i> ${esc(s.author||'Аноним')}</span>
         <span><i class="fas fa-clock"></i> ${timeAgo(s.created_at)}</span>
         <span><i class="fas fa-heart"></i> ${s.likes||0}</span>
         <span><i class="fas fa-eye"></i> ${s.views||0}</span>
       </div>
       <div class="admin-card-actions">
-        <button class="btn btn-sm btn-outline" onclick="openView('${s.id}',true)"><i class="fas fa-code"></i> Код</button>
-        ${s.status!=='approved'?`<button class="btn btn-sm btn-green" onclick="adminAction('${s.id}','approved')"><i class="fas fa-check"></i></button>`:''}
-        ${s.status!=='rejected'?`<button class="btn btn-sm btn-yellow" onclick="adminAction('${s.id}','rejected')"><i class="fas fa-ban"></i></button>`:''}
+        <button class="btn btn-sm btn-outline" onclick="openViewAdmin('${s.id}')"><i class="fas fa-code"></i> Код</button>
+        ${s.status!=='approved'?`<button class="btn btn-sm btn-green" onclick="adminAction('${s.id}','approved')"><i class="fas fa-check"></i> Одобрить</button>`:''}
+        ${s.status!=='rejected'?`<button class="btn btn-sm btn-yellow" onclick="adminAction('${s.id}','rejected')"><i class="fas fa-ban"></i> Отклонить</button>`:''}
         <button class="btn btn-sm btn-red" onclick="adminDelete('${s.id}')"><i class="fas fa-trash"></i></button>
       </div>
     </div>
-  `).join('')+'</div>';
+  `).join('') + '</div>';
 }
 
-function setAdminTab(tab,el){
-  adminTab=tab;
+function openViewAdmin(id) {
+  const s = adminScripts.find(x=>x.id===id);
+  if (!s) return;
+  viewingScript = s;
+  fillViewModal(s, true);
+  openModal('view');
+}
+
+function setAdminTab(tab, el) {
+  adminTab = tab;
   document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
-  if(el)el.classList.add('active');
+  if (el) el.classList.add('active');
   loadAdminScripts();
 }
 
-async function adminAction(id,status){
-  try{
-    const{error}=await db.from('scripts').update({status}).eq('id',id);
-    if(error)throw error;
-    toast(status==='approved'?'Скрипт одобрён ✅':'Скрипт отклонён','success');
+async function adminAction(id, status) {
+  try {
+    const {error} = await db.from('scripts').update({status}).eq('id', id);
+    if (error) throw error;
+    toast(status==='approved' ? 'Скрипт одобрён ✅' : 'Скрипт отклонён ❌', 'success');
     closeModal('view');
     await loadAdminScripts();
     await loadScripts();
-  }catch(e){toast('Ошибка: '+e.message,'error')}
+  } catch(e) { toast('Ошибка: ' + e.message, 'error'); }
 }
 
-async function adminDelete(id){
-  if(!confirm('Удалить скрипт навсегда?'))return;
-  try{
-    const{error}=await db.from('scripts').delete().eq('id',id);
-    if(error)throw error;
-    toast('Скрипт удалён 🗑️','success');
+async function adminDelete(id) {
+  if (!confirm('Удалить скрипт навсегда?')) return;
+  try {
+    const {error} = await db.from('scripts').delete().eq('id', id);
+    if (error) throw error;
+    toast('Скрипт удалён 🗑️', 'success');
     closeModal('view');
     await loadAdminScripts();
     await loadScripts();
-  }catch(e){toast('Ошибка: '+e.message,'error')}
+  } catch(e) { toast('Ошибка: ' + e.message, 'error'); }
 }
 
-function openModal(name){document.getElementById('modal-'+name).classList.add('open')}
-function closeModal(name){document.getElementById('modal-'+name).classList.remove('open')}
+// ==========================================
+// MODALS
+// ==========================================
+function openModal(name) { document.getElementById('modal-'+name).classList.add('open'); }
+function closeModal(name) { document.getElementById('modal-'+name).classList.remove('open'); }
+function closeAllModals() {
+  document.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open'));
+}
 
-function toast(msg,type='info'){
-  const box=document.getElementById('toastBox');
-  const icons={success:'check-circle',error:'exclamation-circle',info:'info-circle'};
-  const t=document.createElement('div');
-  t.className=`toast toast-${type}`;
-  t.innerHTML=`<i class="fas fa-${icons[type]||'info-circle'}"></i><span>${msg}</span>`;
+// ==========================================
+// TOAST
+// ==========================================
+function toast(msg, type='info') {
+  const box = document.getElementById('toastBox');
+  const icons = {success:'check-circle',error:'exclamation-circle',info:'info-circle'};
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.innerHTML = `<i class="fas fa-${icons[type]||'info-circle'}"></i><span>${msg}</span>`;
   box.appendChild(t);
   setTimeout(()=>{t.classList.add('toast-hide');setTimeout(()=>t.remove(),300)},3500);
 }
 
-function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
-
-function timeAgo(d){
+// ==========================================
+// HELPERS
+// ==========================================
+function esc(s) { const d=document.createElement('div');d.textContent=s;return d.innerHTML; }
+function timeAgo(d) {
   const s=Math.floor((Date.now()-new Date(d))/1000);
   if(s<60)return'только что';
   const m=Math.floor(s/60);if(m<60)return m+' мин. назад';
@@ -726,22 +1258,16 @@ function timeAgo(d){
   const dd=Math.floor(h/24);if(dd<30)return dd+' дн. назад';
   return Math.floor(dd/30)+' мес. назад';
 }
-
-function gameBadge(g){
+function gameBadge(g) {
   const c={Roblox:['rgba(239,68,68,.15)','#ef4444','fa-gamepad'],Universal:['rgba(99,102,241,.15)','#818cf8','fa-globe'],
     FPS:['rgba(245,158,11,.15)','#f59e0b','fa-crosshairs'],RPG:['rgba(34,197,94,.15)','#22c55e','fa-dragon'],
     Simulator:['rgba(168,85,247,.15)','#a855f7','fa-robot']};
   const v=c[g]||['rgba(100,116,139,.15)','#94a3b8','fa-code'];
-  return`<span class="badge" style="background:${v[0]};color:${v[1]}"><i class="fas ${v[2]}"></i> ${g}</span>`;
+  return`<span class="badge" style="background:${v[0]};color:${v[1]}"><i class="fas ${v[2]}"></i> ${g||'Other'}</span>`;
 }
-
-function catBadge(cat){
-  return`<span class="badge" style="background:rgba(255,255,255,.05);color:var(--t2)">${esc(cat||'Другое')}</span>`;
-}
-
-function statusText(s){return{pending:'⏳ Ожидает',approved:'✅ Одобрен',rejected:'❌ Отклонён'}[s]||s}
-
-function animNum(id,target){
+function catBadge(cat) { return`<span class="badge" style="background:rgba(255,255,255,.05);color:var(--t2)">${esc(cat||'Другое')}</span>`; }
+function statusText(s) { return{pending:'⏳ Ожидает',approved:'✅ Одобрен',rejected:'❌ Отклонён'}[s]||s; }
+function animNum(id,target) {
   const el=document.getElementById(id);if(!el)return;
   let cur=0;const step=Math.max(1,Math.ceil(target/40));
   const iv=setInterval(()=>{cur+=step;if(cur>=target){el.textContent=target;clearInterval(iv)}else{el.textContent=cur}},30);
